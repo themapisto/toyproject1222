@@ -23,7 +23,7 @@ public class BoardController {
 	 @RequestMapping(value = "/list", method = RequestMethod.GET)
 	 public void getList(Model model) throws Exception {
 	  
-		 
+		// 컨트롤러 연결 
 		 
 	  List<BoardVO> list = null;
 	  list = service.list();
