@@ -22,11 +22,11 @@
  <tbody>
   <c:forEach items="${list}" var="list">
  <tr>
-  <td>${list.bno}</td>
-  <td>${list.title}</td>
-  <td>${list.regDate}</td>
-  <td>${list.writer}</td>
-  <td>${list.viewCnt}</td>
+  <td>${list.userId}</td>
+  <td>${list.userNm}</td>
+  <td>${list.regDt}</td>
+  <td>${list.grade}</td>
+  <td>${list.userState}</td>
  </tr>
 </c:forEach>
  </tbody>

@@ -7,7 +7,7 @@
 </head>
 <body>
 <h1>
-	Fuck You  
+	 
 </h1>
 <p><a href="/board/list">게시물 목록</a></p>
 <P>  The time on the server is ${serverTime}. </P>
