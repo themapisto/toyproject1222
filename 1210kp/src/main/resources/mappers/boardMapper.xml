@@ -7,7 +7,7 @@
 
 <!-- 게시물 목록 -->
 <select id="list" resultType="com.kdis.demo.BoardVO">
- select * from user
+ select * from tbl_board
 </select>
 
 </mapper>
