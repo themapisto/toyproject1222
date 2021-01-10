@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kdis.demo.LoginDAO">
+
+
+	<!-- 회원가입 -->
+	<insert id="userJoin" parameterType="Map">
+		INSERT INTO USER (userId,userNm,password,birthday,phoneNumber,email,regDt,grade,userState)
+		VALUES(#{userId},#{userNm},#{password},#{birthday},#{phoneNumber},#{email},NOW(),#{grade},#{userState})
+	</insert>
+
+	<!-- 아이디 중복체크 -->
+	<select id="idCheck" parameterType="String" resultType="Integer">
+		select count(*)
+		from USER
+		where userId = #{userId}
+	</select>
+	
+	<!-- 아이디 중복체크 -->
+	<select id="loginSubmit" parameterType="Map" resultType="Integer">
+		select count(*)
+		from USER
+		where userId = #{userId} and password = #{password} and userState = '1'
+	</select>
+	
+</mapper>
