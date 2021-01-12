@@ -9,38 +9,40 @@
 <body>
 	<h2>MOVIE BOX 회원가입</h2>	
 	<hr>
+	<span>* 표시는 필수 항목입니다.</span>
 	<button class="right button" style="position:relative;right:10%;" 
 			type="button" onclick="javascript:history.back();">뒤로가기</button>
+	
 	<br><br><br>
 	<div class="joinContents">
 		<h1>MOVIE BOX <br> 회원가입</h1>
 		<form id="joinForm" name="joinForm" action="joinSubmit" method="post" onsubmit='return joinCheck();'>
 			<div class="inputBox">
-				<label for="userId">아이디</label>
+				<label for="userId">*&nbsp;아이디</label>
 				<input type="text" id="userId" name="userId" title="아이디" autofocus="on" maxlength="20">
 			</div>
 			<div id="idMsg" data-flag="false"><span>아이디는 5~20자의 영문 소문자,숫자만 사용 가능합니다.</span></div>
 			
 			<div class="inputBox">
-				<label for="password">비밀번호</label>
+				<label for="password">*&nbsp;비밀번호</label>
 				<input type="password" id="password" name="password" title="비밀번호" oninput="pwChkMsgChange();">
 			</div>
 			<div id="pwMsg" data-flag="false"><span>8~16자 영문 소문자, 숫자, 특수문자를 3개 이상 사용하세요.</span></div>
 			
 			<div class="inputBox">
-				<label for="pwChk">비밀번호 재확인</label>
+				<label for="pwChk">*&nbsp;비밀번호 재확인</label>
 				<input type="password" id="pwChk" name="pwChk" title="비밀번호 재확인" oninput="pwChkMsgChange();">	
 			</div>
 			<div id="pwChkMsg" data-flag="false"></div>		
 			
 			<div class="inputBox">
-				<label for="userNm">이름</label>
+				<label for="userNm">*&nbsp;이름</label>
 				<input type="text" id="userNm" name="userNm" title="이름">
 			</div>
 			<div id="nmMsg" data-flag="false"></div>	
 			
 			<div class="inputBox">
-				<label for="birthday">생년월일</label>
+				<label for="birthday">*&nbsp;생년월일</label>
 				<input type="date" id="birthday" name="birthday" title="생년월일">
 			</div>
 			<div id="birthdayMsg" data-flag="false"></div>	
@@ -53,9 +55,10 @@
 			<div id="emailMsg" data-flag="true"></div>	
 			
 			<div class="inputBox">
-				<label for="phoneNumber">전화번호</label>
+				<label for="phoneNumber">핸드폰 번호</label>
 				<input type="tel" id="phoneNumber" name="phoneNumber" title="전화번호">
 			</div>
+			<div id="phoneNumberMsg" data-flag="true"></div>	
 			
 			<button type="submit" title="가입하기버튼">가입하기</button>
 			<!--  가입하기 후 alert으로 가입완료창 띄운 후 로그인페이지 이동 -->
@@ -81,18 +84,31 @@
 		
 		function regex(object){
 			var regType = "";
+			var regType2 = "";
 			
 			if(object == userId){
 				regType = /^.*(?=^.{5,20}$)[a-z0-9+]*$/;
 			}else if(object == password){
 				regType = /^.*(?=^.{8,16}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/;	
+				regType2 = /^[^<>]*$/;
+			}else if(object == userNm){
+			 	regType = /^([가-힣]+|[a-zA-Z]+)$/
 			}else if(object == email){
-			 	regType = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
+			 	regType = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z^<>]{2,3}$/i;
+			}else if(object == phoneNumber){
+				regType= /^01([0|1|6|7|8|9]?)-?([0-9]{3,4})-?([0-9]{4})$/
 			}else{
 				// TODO : 에러페이지
 			}
 			
 			if(regType.test(object.value)){
+				if(object == password){
+					if(regType2.test(object.value)){
+						return true;
+					}else{
+						return false;
+					}
+				}
 				return true;
 			} else{
 				return false;
@@ -134,8 +150,14 @@
 			if(userNm.value == ""){
 				showMsg(nmMsg,"이름을 입력하시기 바랍니다.","fail");
 			}else{
-				showMsg(nmMsg,"","");
+				if(regex(userNm)){
+					showMsg(nmMsg,"","success");
+				}else{
+					showMsg(nmMsg,"이름을 정확하게 입력해주시기 바랍니다","fail");
+				}
 			}
+			
+			
 		}); 
 		
 		document.getElementById('birthday').addEventListener("blur",function(){
@@ -162,6 +184,19 @@
 			}
 		}); 
 		
+		document.getElementById('phoneNumber').addEventListener("blur",function(){
+			var phoneNumber = document.getElementById('phoneNumber');
+			var phoneNumberMsg = document.getElementById('phoneNumberMsg');
+			if(phoneNumber.value == ""){
+				showMsg(phoneNumberMsg,"","");
+			}else{
+				if(regex(phoneNumber)){
+					showMsg(phoneNumberMsg,"핸드폰 번호 양식이 맞습니다.","success");
+				}else{
+					showMsg(phoneNumberMsg,"핸드폰 번호 양식이 맞지 않습니다.","fail");
+				}
+			}
+		}); 
 		
 		
 		function idCheck(userId){
