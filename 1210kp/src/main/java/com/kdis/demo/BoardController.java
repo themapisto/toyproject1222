@@ -27,6 +27,7 @@ public class BoardController {
 		 
 	  List<BoardVO> list = null;
 	  list = service.list();
+	 
 	  model.addAttribute("list", list);
 	  
 	 }
