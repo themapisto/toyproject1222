@@ -31,7 +31,7 @@ public class BoardController {
 
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	 public void getList(Model model) throws Exception {
-		
+		//kd
 		 
 	  List<BoardVO> list = null;
 	  list = service.list();
