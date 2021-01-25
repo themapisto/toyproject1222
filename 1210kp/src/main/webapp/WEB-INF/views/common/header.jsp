@@ -1,21 +1,28 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <!-- header -->
 	<header class="header">
 		<div class="gnb">
 			<div class="right">
-				<div class="beforeLogin on">
-					<a href="/login/login" title="로그인">로그인</a>
-					|
-					<a href="/login/join" title="회원가입">회원가입</a>
-				</div>
-				<div class="afterLogin" style="display:none;">
-					<button title="회원이름">회원이름</button>
-					|
-					<a href="#" title="마이페이지">마이페이지</a>
-					|
-					<button title="로그아웃">로그아웃</button>
-				</div>
+				<c:choose>
+					<c:when test="${sessionLoginChk eq 'Y'}">
+						<div class="afterLogin">
+							<span title="회원이름">${sessionUserNm}</span>
+							|
+							<a href="/member/myInfo" title="마이페이지">마이페이지</a>
+							|
+							<a href="/login/logout" title="로그아웃">로그아웃</a>
+						</div>
+					</c:when>
+					<c:otherwise>
+						<div class="beforeLogin">
+							<a href="/login/login" title="로그인">로그인</a>
+							|
+							<a href="/login/join" title="회원가입">회원가입</a>
+						</div>
+					</c:otherwise>
+				</c:choose>
 			</div>
 		</div>
 		<div class="img">
@@ -57,11 +64,13 @@
 						</div>
 					</li>
 				</ul>
-				
 			</div>
 		</div>
 	</header>
 	<script type="text/javascript">
-		
+		window.onload = function(){
+			alert("${sessionLoginChk}");
+
+		}
 	</script>
 <!-- /header -->

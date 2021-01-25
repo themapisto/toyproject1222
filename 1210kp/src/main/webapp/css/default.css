@@ -1,6 +1,7 @@
 .on {display:block;}
 .right{float:right;}
 .left{float:left;}
+.red{color:red;}
 
 .button{
 	all:"unset";
@@ -13,7 +14,11 @@
 	font-weight:bold;
 	font-size:12px;
 }
-
+.req:before {
+  content: '*';
+  color: red;
+  font-size: 16px;
+}
 
 .header li, .header a, .header ul, .header button{
 	all:unset;
@@ -65,7 +70,8 @@
 
 .loginContents {
 	position:relative;
-	left:35%;
+	left:50%;
+	transform:translate(-50%);
 	text-align:center;
 	width:450px;
 	height:300px;
@@ -96,6 +102,9 @@
 	height:30px;
 }
 .joinContents {
+	position:relative;
+	left:50%;
+	transform:translate(-50%);
 	text-align:center;
 }
 .joinContents button{
@@ -110,7 +119,7 @@
 }
 .joinContents .inputBox{
 	position:relative;
-	right:35.5%;
+	right:31%;
 	padding:5px;
 	margin:6px;
 	text-align:right;
@@ -127,3 +136,110 @@
 	color:red;
 }
 
+.myInfoContents{
+  width:1048px;
+  height:200px;
+  position: relative;
+  left:50%;
+  padding:30px;
+  transform:translate(-50%);
+}
+.myInfoContents table{
+  border-collapse : collapse;
+  border : solid 0.1px #d7d7d7;
+  font-size: 18px;
+}
+.myInfoContents th{
+  width:200px;
+  height: 50px;
+  color: white;
+  background-color: #7aa5d2;
+  border-collapse : collapse;
+  border : solid 0.1px #d7d7d7;
+}
+.myInfoContents td{
+  max-width:300px;
+  height:50px;
+  border-collapse:collapse;
+  border:solid 0.1px #d7d7d7;
+  padding-left:10px;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+.myInfoContents a{
+  all:unset;
+  width:130px;
+  height:30px;
+  background-color:#7aa5d2;
+  color:white;
+  position:relative;
+  margin:20px 5px 20px 5px;
+  padding-top:7px;
+  float:right;
+  text-align:center;
+  cursor: pointer;
+}
+.myInfoModifyContents{
+  padding:30px;
+  text-align:center;
+}
+.myInfoModifyContents table{
+  position: relative;
+  left:50%;
+  transform:translate(-50%);
+  border-collapse : collapse;
+  border : solid 0.1px #d7d7d7;
+  margin-top:5px;
+  font-size: 18px;
+}
+.myInfoModifyContents th{
+  width:200px;
+  height: 50px;
+  color: white;
+  background-color: #7aa5d2;
+  border-collapse : collapse;
+  border : solid 0.1px #d7d7d7;
+}
+.myInfoModifyContents td{
+  max-width : 300px;
+  height: 50px;
+  border-collapse : collapse;
+  border : solid 0.1px #d7d7d7;
+  padding-left : 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.myInfoModifyContents button{
+  all:unset;
+  width:130px;
+  height: 30px;
+  background-color: #7aa5d2;
+  color:white;
+  margin: 20px 5px 20px 5px;
+  padding :4px;
+  cursor: pointer;
+}
+.myInfoModifyContents input{
+  margin : 5px;
+  width:260px;
+  height:30px;
+  font-size:18px;
+}
+#idSearchMsg{
+  display:none;
+  position: relative;
+  left:50%;
+  transform:translate(-50%);
+  width:750px;
+  height:50px;
+  font-size:32px;
+}
+#pwdSearchMsg{
+  display:none;
+  position: relative;
+  left:50%;
+  transform:translate(-50%);
+  font-size:32px;
+}

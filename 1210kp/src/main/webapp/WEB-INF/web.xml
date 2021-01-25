@@ -30,7 +30,7 @@
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
 			
-			<!--  문자 인코딩  시작 -->
+		<!--  문자 인코딩  시작 -->
 		<filter>
 		  <filter-name>encodingFilter</filter-name>
 		  <filter-class>
@@ -50,5 +50,14 @@
 		  <url-pattern>/*</url-pattern>
 		</filter-mapping>
 		<!--  문자 인코딩  끝 -->
-
+		<!-- 로그인 인증 세션 시작 -->
+		<filter>
+			<filter-name>sessionLoginFilter</filter-name>
+			<filter-class>com.kdis.demo.sessionLoginFilter</filter-class>
+		</filter>
+		<filter-mapping>
+			<filter-name>sessionLoginFilter</filter-name>
+			<url-pattern>/member/*</url-pattern>
+		</filter-mapping>
+		<!-- 로그인 인증 세션 끝 -->
 </web-app>

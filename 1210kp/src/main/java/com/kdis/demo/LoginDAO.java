@@ -13,4 +13,8 @@ public interface LoginDAO{
 	public Integer idCheck(String userId) throws Exception;
 
 	public Integer loginSubmit(HashMap<String, Object> paramMap) throws Exception;
+
+	public String getUserSalt(String userId) throws Exception;
+
+	public String getUserId(HashMap<String, Object> paramMap) throws Exception; 
 }

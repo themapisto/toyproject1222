@@ -2,17 +2,18 @@ package com.kdis.demo;
 
 import java.util.Date;
 
-public class LoginVO {
+public class UserVO {
 
 	private String userId;
 	private String userNm;
 	private String password;
-	private Date birthday;
+	private String birthday;
 	private String phoneNumber;
 	private String email;
 	private Date regDt;
 	private String grade;
 	private String userState;
+	private String salt;
 	
 	public String getUserId() {
 		return userId;
@@ -32,10 +33,10 @@ public class LoginVO {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public Date getBirthday() {
+	public String getBirthday() {
 		return birthday;
 	}
-	public void setBirthday(Date birthday) {
+	public void setBirthday(String birthday) {
 		this.birthday = birthday;
 	}
 	public String getPhoneNumber() {
@@ -67,6 +68,12 @@ public class LoginVO {
 	}
 	public void setUserState(String userState) {
 		this.userState = userState;
+	}
+	public String getSalt() {
+		return salt;
+	}
+	public void setSalt(String salt) {
+		this.salt = salt;
 	}
 	
 	

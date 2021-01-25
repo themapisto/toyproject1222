@@ -24,6 +24,14 @@ public class LoginService implements LoginDAO{
 	public Integer loginSubmit(HashMap<String, Object> paramMap) throws Exception{
 		return LoginDAO.loginSubmit(paramMap);
 	}
+
+	public String getUserSalt(String userId) throws Exception {
+		return LoginDAO.getUserSalt(userId);
+	}
+
+	public String getUserId(HashMap<String, Object> paramMap) throws Exception{
+		return LoginDAO.getUserId(paramMap);
+	}
 	
 
 }
