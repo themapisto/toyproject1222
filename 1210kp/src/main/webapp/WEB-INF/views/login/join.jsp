@@ -55,7 +55,7 @@
 			
 			<div class="inputBox">
 				<label for="phoneNumber"><span class="req"></span>&nbsp;핸드폰 번호</label>
-				<input type="tel" id="phoneNumber" name="phoneNumber" title="전화번호">
+				<input type="tel" id="phoneNumber" name="phoneNumber" title="전화번호" onkeypress="phoneNumberValidate();">
 			</div>
 			<div id="phoneNumberMsg" data-flag="false"></div>	
 			
@@ -152,6 +152,8 @@
 					showMsg(nmMsg,"이름을 정확하게 입력해주시기 바랍니다","fail");
 				}
 			}
+			
+			
 		}); 
 		
 		document.getElementById('birthday').addEventListener("blur",function(){
@@ -207,7 +209,7 @@
 			}
 		}); 
 		
-		document.getElementById('phoneNumber').addEventListener("blur",function(){
+		/* document.getElementById('phoneNumber').addEventListener("blur",function(){
 			var phoneNumber = document.getElementById('phoneNumber');
 			var phoneNumberMsg = document.getElementById('phoneNumberMsg');
 			if(phoneNumber.value == ""){
@@ -219,7 +221,26 @@
 					showMsg(phoneNumberMsg,"핸드폰 번호 양식이 맞지 않습니다.","fail");
 				}
 			}
-		}); 
+		});  */
+		
+		function phoneNumberValidate(){
+			var phoneNumber = document.getElementById('phoneNumber').value;
+			
+			if(phoneNumber.indexOf("-") > -1){
+                if(phoneNumber.length >= 12){
+					showMsg(phoneNumberMsg,"핸드폰 번호 양식이 맞습니다.","success");
+                }else{
+					showMsg(phoneNumberMsg,"핸드폰 번호 양식이 맞지 않습니다.","fail");
+                }
+            }else{
+                if(phoneNumber.length >= 10){
+					showMsg(phoneNumberMsg,"핸드폰 번호 양식이 맞습니다.","success");
+                }else{
+					showMsg(phoneNumberMsg,"핸드폰 번호 양식이 맞지 않습니다.","fail");
+                }
+            }
+
+		}
 		
 		<!-- ajax without jquery method post -->
 		function idCheck(userId){

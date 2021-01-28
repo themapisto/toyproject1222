@@ -20,7 +20,7 @@
 				<label for="password">비밀번호</label>
 				<input type="password" id="password" name="password" title="비밀번호">
 			</div>
-			<div id="loginMsg" data-idFlag="false" data-pwFlag="false"><span></span></div>
+			<div id="loginMsg" data-id-flag="false" data-pw-flag="false"><span></span></div>
 			<button type="submit" title="로그인버튼">로그인</button>
 			<div>
 				<a href="javascript:window.open('/login/idSearchPopup','_blank','width=900px,height=500px');" title="아이디찾기">아이디 찾기</a>
@@ -33,6 +33,7 @@
 	</div>
 	
 	<script type="text/javascript">
+		
 		document.getElementById('userId').addEventListener("blur",function(){
 			var userId = document.getElementById('userId');
 			var loginMsg = document.getElementById('loginMsg');
@@ -75,7 +76,6 @@
 		});
 	
 		function loginChk(){
-			
 			var loginMsg = document.getElementById('loginMsg');
 			
 			if(loginMsg.dataset.idFlag == "true" && loginMsg.dataset.pwFlag == "true"){
@@ -87,7 +87,8 @@
 				loginMsg.innerHTML = "<span style='color:red'> 비밀번호를 확인하세요.";
 				return false;
 			}else {
-			
+				// TODO : 에러페이지
+				return false;
 			}
 				
 			

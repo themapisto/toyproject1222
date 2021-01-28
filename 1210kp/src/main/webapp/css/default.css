@@ -1,4 +1,5 @@
 .on {display:block;}
+.off{display:none;}
 .right{float:right;}
 .left{float:left;}
 .red{color:red;}
@@ -119,8 +120,7 @@
 }
 .joinContents .inputBox{
 	position:relative;
-	right:31%;
-	padding:5px;
+	right:34%;
 	margin:6px;
 	text-align:right;
 }
@@ -242,4 +242,48 @@
   left:50%;
   transform:translate(-50%);
   font-size:32px;
+}
+.modal{
+  position: absolute;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%);
+  width:600px;
+  height: 200px;
+  background-color: white;
+  font-size:25px;
+  text-align:center;
+}
+.modal button{
+  all:unset;
+  width:130px;
+  height: 40px;
+  margin:5px;
+  margin-top:20px;
+  background-color: cornflowerblue;
+  color:white;
+}
+.modalHead{
+    padding-left:10px;
+    text-align: left;
+    line-height: 50px;
+    width:590px;
+    height: 50px;
+    background-color: cornflowerblue;
+    color:white;
+}
+.modalBody{
+    width:600px;
+    height: 150px;
+    background-color: white;
+}
+.modalWrap{
+      background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+   position: fixed; /* Stay in place */
+   z-index: 1; /* Sit on top */
+     left: 0;
+     top: 0;
+     width:100%;
+     height: 100%;
+     overflow: auto;
 }

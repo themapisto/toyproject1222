@@ -48,6 +48,18 @@
 			}else{
 				// TODO : 에러페이지
 				alert("회원정보 수정실패");
+				location.href="/member/myInfoModify";
+			}
+		}else if(submit == 'userWithdrawal'){
+			if(result == 'success'){
+				alert("회원탈퇴 처리되었습니다.");
+			}else if(result == 'updateFail'){
+				// TODO : 에러페이지
+				alert("회원탈퇴 처리가 실패하였습니다.");
+				location.href="/member/userWithdrawal";
+			}else if(result = 'selectFail'){
+				alert("비밀번호를 잘못 입력하셨습니다.");
+				location.href="/member/userWithdrawal";
 			}
 		}
 		

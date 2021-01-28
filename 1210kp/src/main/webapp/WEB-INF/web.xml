@@ -59,5 +59,9 @@
 			<filter-name>sessionLoginFilter</filter-name>
 			<url-pattern>/member/*</url-pattern>
 		</filter-mapping>
+		
+		<session-config>
+			<session-timeout>1</session-timeout>
+		</session-config>
 		<!-- 로그인 인증 세션 끝 -->
 </web-app>

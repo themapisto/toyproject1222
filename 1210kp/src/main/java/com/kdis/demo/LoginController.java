@@ -44,16 +44,6 @@ public class LoginController{
 		 return "/login/pwdSearchPopup";
 	 }
 	 
-	 @RequestMapping(value = "/result")
-	 public String result() throws Exception {
-		 return "/login/result";
-	 }
-	 
-	 @RequestMapping(value = "/sessionExpire")
-	 public String sessionExpire() throws Exception {
-		 return "/login/sessionExpire";
-	 }
-	 
 	 @RequestMapping(value = "/loginSubmit")
 	 public String loginSubmit(ModelMap model,HttpServletRequest request,HttpServletResponse response) throws Exception {
 		 HashMap<String,Object> paramMap = new HashMap<String,Object>();
@@ -74,16 +64,15 @@ public class LoginController{
 			 model.addAttribute("result", "Y");
 			 
 			 HttpSession session = request.getSession(true);
-			 session.setMaxInactiveInterval(1 * 60); // test 1분
 			 session.setAttribute("sessionId", userVO.getUserId());
 			 session.setAttribute("sessionUserNm", userVO.getUserNm());
 			 session.setAttribute("sessionLoginChk", "Y");
-		 }else if(result == 0) {
+		 }else{
 			 model.addAttribute("result", "N");
 		 }
 		 
 		 model.addAttribute("submit", "login");
-		 return "/login/result";
+		 return "/common/result";
 	 }
 	 
 	 @RequestMapping(value="/logout")
@@ -94,7 +83,7 @@ public class LoginController{
 		 
 		 model.addAttribute("result", "Y");
 		 model.addAttribute("submit","logout");
-		 return "/login/result";
+		 return "/common/result";
 	 }
 	 
 	 @ResponseBody
@@ -151,7 +140,7 @@ public class LoginController{
 		 }
 		 
 		 model.addAttribute("submit", "join");
-		 return "/login/result";
+		 return "/common/result";
 	 }
 	 
 	 @ResponseBody
