@@ -42,6 +42,14 @@ public class BoardController {
 	  model.addAttribute("list", list);
 	  
 	 }
+	  
+	@RequestMapping(value= "/ticketing", method= RequestMethod.GET)
+	public void ticketing() throws Exception{
+	
+	}
+	
+	
+	
 	@RequestMapping(value ="/api", method= RequestMethod.GET)
 	public void getApi() throws Exception {
 		 
