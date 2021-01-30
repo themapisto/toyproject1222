@@ -20,11 +20,27 @@
 
 
 
+<body>
+
+  <body>
+ 
+
+  <div id="paypal-button-container"></div>
+
+
+</body>
+  
+  
+</body>
 
 
 
- <body>
- <table>
+
+
+
+
+
+<table>
  <thead>
   <tr>
    <th>번호</th>
@@ -49,35 +65,8 @@
 
 </table>
 
-<div id="paypal-button-container">
-  <script>
-  paypal.Buttons({
-    createOrder: function(data, actions) {
-      // This function sets up the details of the transaction, including the amount and line item details.
-      return actions.order.create({
-        purchase_units: [{
-          amount: {
-            value: '20'
-          }
-        }]
-      });
-    }
-  }).render('#paypal-button-container');
-  </script>
-</div>
+
 
 
 </body>
-  
-
-
-
-
-
-
-
-
-
-
-
 </html>
