@@ -9,5 +9,10 @@
 <select id="list" resultType="com.kdis.demo.BoardVO">
  select * from user
 </select>
-
+<insert id="movieInsert">
+ Insert into movie (movieCd, movieNm, rank, openDt, audiAcc, salesAmt)
+       values (#{movieCd},#{movieNm},#{rank},#{openDt},#{audiAcc},#{salesAmt})
+</insert>
 </mapper>
+
+ 
