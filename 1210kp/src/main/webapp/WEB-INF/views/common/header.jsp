@@ -67,10 +67,4 @@
 			</div>
 		</div>
 	</header>
-	<script type="text/javascript">
-		window.onload = function(){
-			alert("${sessionLoginChk}");
-
-		}
-	</script>
 <!-- /header -->

@@ -11,25 +11,26 @@
 	<hr>
 	<div class="loginContents">
 		<h1>로그인</h1>
-		<form id="loginForm" name="loginForm" action="loginSubmit" method="post" onsubmit="return loginChk();">
+		<form id="loginForm" name="loginForm">
 			<div class="inputBox">
 				<label for="userId">아이디</label>
-				<input type="text" id="userId" name="userId" title="아이디">
+				<input type="text" id="userId" name="userId" title="아이디" onkeydown="javascript:if(event.keyCode == 13){loginChk(); return false;}">
 			</div>
 			<div class="inputBox">
 				<label for="password">비밀번호</label>
-				<input type="password" id="password" name="password" title="비밀번호">
-			</div>
-			<div id="loginMsg" data-id-flag="false" data-pw-flag="false"><span></span></div>
-			<button type="submit" title="로그인버튼">로그인</button>
-			<div>
-				<a href="javascript:window.open('/login/idSearchPopup','_blank','width=900px,height=500px');" title="아이디찾기">아이디 찾기</a>
-				&nbsp;|&nbsp;
-				<a href="javascript:window.open('/login/pwdSearchPopup','_blank','width=900px,height=500px');" title="비밀번호찾기">비밀번호 찾기</a>
-				&nbsp;|&nbsp;
-				<a href="/login/join" title="회원가입">회원가입</a>
+				<input type="password" id="password" name="password" title="비밀번호" onkeydown="javascript:if(event.keyCode == 13){loginChk(); return false;}">
 			</div>
 		</form>
+		<div id="loginMsg" data-id-flag="false" data-pw-flag="false"><span></span></div>
+		<button type="button" title="로그인버튼" onclick="loginChk();">로그인</button>
+		<div>
+			<a href="javascript:window.open('/login/idSearchPopup','_blank','width=900px,height=500px');" title="아이디찾기">아이디 찾기</a>
+			&nbsp;|&nbsp;
+			<a href="javascript:window.open('/login/pwdSearchPopup','_blank','width=900px,height=500px');" title="비밀번호찾기">비밀번호 찾기</a>
+			&nbsp;|&nbsp;
+			<a href="/login/join" title="회원가입">회원가입</a>
+		</div>
+		
 	</div>
 	
 	<script type="text/javascript">
@@ -76,10 +77,44 @@
 		});
 	
 		function loginChk(){
+			
+			var userId = document.getElementById("userId").value;
+	    	var password = document.getElementById("password").value;
+			
 			var loginMsg = document.getElementById('loginMsg');
 			
 			if(loginMsg.dataset.idFlag == "true" && loginMsg.dataset.pwFlag == "true"){
-				return;
+				var xhr = new XMLHttpRequest();
+				xhr.open("post","/login/loginSubmit",true);
+				xhr.onreadystatechange = function(){
+					if(xhr.readyState == xhr.DONE){
+						if(xhr.status == 200){
+							var data = xhr.responseText;	
+							data = JSON.parse(data);
+							if(data.result == "success"){
+								alert("로그인에 성공하셨습니다. 홈페이지로 이동합니다." );
+								location.href="/";
+							}else if(data.result == "0"){
+								alert("계정이 잠겼습니다. 관리자에게 문의하시기 바랍니다.");
+								return false;
+							}else if(data.result == "-1"){
+								//로그인실패횟수증감오류 에러페이지 호출
+								return false;
+							}else if(data.result == "5"){
+								alert("로그인 실패 횟수가 5회가 되어 계정이 잠겼습니다. 잠금 해제를 원하시면 관리자에게 문의하시기 바랍니다.");
+								return false;
+							}else{
+								alert("로그인을 "+data.result+"회 실패하였습니다. 로그인 5회 실패 시 계정이 잠깁니다.");
+								return false;
+							}
+						}else{
+							alert("요청 오류 : "+xhr.status);
+						}
+					}
+				}
+				xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+				xhr.send("userId="+userId+"&password="+password);
+				
 			}else if(loginMsg.dataset.idFlag == "false"){
 				loginMsg.innerHTML = "<span style='color:red'> 아이디를 확인하세요.";
 				return false;

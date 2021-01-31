@@ -14,6 +14,7 @@ public class UserVO {
 	private String grade;
 	private String userState;
 	private String salt;
+	private int loginFailCount;
 	
 	public String getUserId() {
 		return userId;
@@ -74,6 +75,12 @@ public class UserVO {
 	}
 	public void setSalt(String salt) {
 		this.salt = salt;
+	}
+	public int getLoginFailCount() {
+		return loginFailCount;
+	}
+	public void setLoginFailCount(int loginFailCount) {
+		this.loginFailCount = loginFailCount;
 	}
 	
 	

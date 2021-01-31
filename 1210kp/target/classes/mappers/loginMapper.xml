@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.kdis.demo.LoginDAO">
+<mapper namespace="prjc.baechan.login.LoginDAO">
 
 	<!-- 회원가입 -->
 	<insert id="userJoin" parameterType="Map">
@@ -21,7 +21,7 @@
 	<select id="loginSubmit" parameterType="Map" resultType="Integer">
 		select count(*)
 		from USER
-		where userId = #{userId} and password = #{password} and userState = '1'
+		where userId = #{userId} and password = #{password} and userState = '1'	
 	</select>
 	
 	<!-- 회원 기존 salt 가져오기 -->
@@ -38,7 +38,12 @@
 		where userNm = #{userNm} and phoneNumber = #{phoneNumber} and userState = '1'
 	</select>
 	
-	
+	<!-- 로그인실패카운트 처리 -->
+	<update id="updateLoginFailCount" parameterType="Map">
+		update USER
+		set loginFailCount = #{loginFailCount}
+		where userId = #{userId}
+	</update>
 	
 
 </mapper>

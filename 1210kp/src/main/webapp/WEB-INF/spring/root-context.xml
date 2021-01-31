@@ -31,10 +31,10 @@
 	 <constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory"/>
 	</bean>
 
-    <mybatis-spring:scan base-package="com.kdis.demo"/> 
+    <mybatis-spring:scan base-package="com.kdis.demo , prjc.baechan"/> 
 
 
-	<context:component-scan base-package="com.kdis.demo" />
+	<context:component-scan base-package="com.kdis.demo , prjc.baechan"/>
 
 
 

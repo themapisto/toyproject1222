@@ -1,4 +1,4 @@
-package com.kdis.demo;
+package prjc.baechan.login;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -12,6 +12,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.kdis.demo.MemberService;
+import com.kdis.demo.SHA256Util;
+import com.kdis.demo.UserVO;
 
 @Controller
 @RequestMapping("/login/*")
@@ -45,9 +49,11 @@ public class LoginController{
 	 }
 	 
 	 @RequestMapping(value = "/loginSubmit")
-	 public String loginSubmit(ModelMap model,HttpServletRequest request,HttpServletResponse response) throws Exception {
+	 @ResponseBody
+	 public Map<String, String> loginSubmit(ModelMap model,HttpServletRequest request,HttpServletResponse response) throws Exception {
 		 HashMap<String,Object> paramMap = new HashMap<String,Object>();
-		 
+		 Map<String,String> resultMap = new HashMap<String,String>();
+
 		 String userId = request.getParameter("userId");
 		 String password = request.getParameter("password");
 		 
@@ -56,23 +62,73 @@ public class LoginController{
 		 paramMap.put("userId", userId);
 		 paramMap.put("password", SHA256Util.encrypt(password,salt));
  
-		 int result = 0;
-		 result = LoginService.loginSubmit(paramMap);
+		 int loginChk = 0;
+		 String result = "";
+		 
+		 loginChk = LoginService.loginSubmit(paramMap);
 		 UserVO userVO = MemberService.selectMyInfo(paramMap);
 		 
-		 if(result == 1) {
-			 model.addAttribute("result", "Y");
+		 Integer loginFailCount = userVO.getLoginFailCount();
+		 int addLoginCntChk = 0;
+		 int userLockChk = 0;
+		 
+		 if(loginChk == 1) {
+			 loginFailCount = 0;
+			 paramMap.put("loginFailCount", loginFailCount);
+		 	 addLoginCntChk = LoginService.updateLoginFailCount(paramMap);
+
+		 	 if(addLoginCntChk == 1) {
+		 		HttpSession session = request.getSession(true);
+				 
+				 session.setAttribute("sessionId", userVO.getUserId());
+				 session.setAttribute("sessionUserNm", userVO.getUserNm());
+				 session.setAttribute("sessionLoginChk", "Y");
+				 
+				 result = "success";
+		 	 }else {
+		 		 // 로그인실패횟수초기화 오류 에러페이지 호출
+				 result = "-1";
+		 	 }
 			 
-			 HttpSession session = request.getSession(true);
-			 session.setAttribute("sessionId", userVO.getUserId());
-			 session.setAttribute("sessionUserNm", userVO.getUserNm());
-			 session.setAttribute("sessionLoginChk", "Y");
 		 }else{
-			 model.addAttribute("result", "N");
+			 String state = userVO.getUserState();
+			 if("1".equals(state)) {
+				 loginFailCount++;
+
+				 if(loginFailCount < 5) {
+					 
+					 paramMap.put("loginFailCount", loginFailCount);
+					 addLoginCntChk = LoginService.updateLoginFailCount(paramMap);
+					 
+					 if(addLoginCntChk == 1) {
+						 result = loginFailCount.toString();
+					 }else {
+						 // 로그인실패횟수증감오류 에러페이지 호출
+						 result = "-1";
+					 }
+				 }else if(loginFailCount == 5){
+					 
+					 paramMap.put("loginFailCount", loginFailCount);
+					 addLoginCntChk = LoginService.updateLoginFailCount(paramMap);
+					 
+					 userLockChk = MemberService.userLockout(paramMap);
+					 
+					 if(userLockChk == 1 && addLoginCntChk == 1) {
+						 result = "5";
+					 }else {
+						// 계정잠금오류 에러페이지 호출
+						 result = "-1";
+					 }
+				 }else {
+					 result = "0";
+				 }
+			 }else{
+				 result = "0";
+			 }
 		 }
 		 
-		 model.addAttribute("submit", "login");
-		 return "/common/result";
+		 resultMap.put("result", result);
+		 return resultMap;
 	 }
 	 
 	 @RequestMapping(value="/logout")

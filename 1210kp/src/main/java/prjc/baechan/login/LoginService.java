@@ -1,4 +1,4 @@
-package com.kdis.demo;
+package prjc.baechan.login;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -31,6 +31,10 @@ public class LoginService implements LoginDAO{
 
 	public String getUserId(HashMap<String, Object> paramMap) throws Exception{
 		return LoginDAO.getUserId(paramMap);
+	}
+
+	public Integer updateLoginFailCount(HashMap<String, Object> paramMap) throws Exception {
+		return LoginDAO.updateLoginFailCount(paramMap);
 	}
 	
 
