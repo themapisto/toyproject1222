@@ -64,4 +64,13 @@
 			<session-timeout>1</session-timeout>
 		</session-config>
 		<!-- 로그인 인증 세션 끝 -->
+		
+		<error-page>
+			<exception-type>java.lang.Exception</exception-type>
+			<location>/WEB-INF/views/exception/errorDefault.jsp</location>
+		</error-page>
+		<error-page>
+			<error-code>404</error-code>
+			<location>/WEB-INF/views/exception/errorDefault.jsp</location>
+		</error-page>
 </web-app>
