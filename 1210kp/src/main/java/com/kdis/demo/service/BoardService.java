@@ -1,10 +1,12 @@
-package com.kdis.demo;
+package com.kdis.demo.service;
 
 import java.util.List;
 
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
+
+import com.kdis.demo.dao.BoardDAO;
 
 
 	

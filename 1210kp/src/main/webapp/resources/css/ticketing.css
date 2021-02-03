@@ -47,7 +47,6 @@
     left: 0;
 }
 
-
 .controls{text-align: center;}
 .controls span{position: absolute; top: 50%; transform: translateY(-50%); width:30px; height:39px; padding: 1px 6px; line-height: 39px; cursor: pointer;}
 .time-schedule .controls span.prev{right: calc(100% - 30px);}

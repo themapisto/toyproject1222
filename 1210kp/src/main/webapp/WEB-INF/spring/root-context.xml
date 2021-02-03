@@ -15,9 +15,9 @@
 	 class="org.springframework.jdbc.datasource.DriverManagerDataSource"
 	 id="dataSource">
 	 <property name="driverClassName" value="org.mariadb.jdbc.Driver" />
-	 <property name="url" value="jdbc:mariadb://127.0.0.1:13306/movietoyproject" />
+	 <property name="url" value="jdbc:mariadb://127.0.0.1:3307/movietoyproject" />
 	 <property name="username" value="root" />
-	 <property name="password" value="1111" />
+	 <property name="password" value="1234" />
 	</bean>
 
 	<bean id="sqlSessionFactory"

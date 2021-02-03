@@ -1,4 +1,4 @@
-package com.kdis.demo;
+package com.kdis.demo.controller;
 
 
 
@@ -22,6 +22,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.kdis.demo.service.BoardService;
+import com.kdis.demo.vo.BoardVO;
 
 
 
@@ -109,7 +112,7 @@ public class BoardController {
 			System.out.println(dailyBoxOfficeList);
 			while (iter.hasNext()) {
 				JSONObject boxOffice = (JSONObject) iter.next();
-				System.out.printf("{순위:%s, 제목:%s, 개봉일:%s, 누적관객수:%s}\n", 
+				System.out.printf("{�닚�쐞:%s, �젣紐�:%s, 媛쒕큺�씪:%s, �늻�쟻愿�媛앹닔:%s}\n", 
 						boxOffice.get("rank"), boxOffice.get("movieNm"), boxOffice.get("openDt"),
 						boxOffice.get("audiAcc"));	
 			}

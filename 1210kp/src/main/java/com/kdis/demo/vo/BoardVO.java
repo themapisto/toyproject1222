@@ -1,4 +1,4 @@
-package com.kdis.demo;
+package com.kdis.demo.vo;
 
 import java.util.Date;
 

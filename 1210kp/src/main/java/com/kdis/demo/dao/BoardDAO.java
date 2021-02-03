@@ -1,7 +1,8 @@
-package com.kdis.demo;
+package com.kdis.demo.dao;
 
-import com.kdis.demo.BoardVO;
 import java.util.List;
+
+import com.kdis.demo.vo.BoardVO;
 
 
 public interface BoardDAO {
