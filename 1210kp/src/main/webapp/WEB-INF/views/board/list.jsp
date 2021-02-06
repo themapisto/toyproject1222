@@ -10,13 +10,13 @@
 
 <!DOCTYPE html>
 
+
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- Ensures optimal rendering on mobile devices. -->
   <meta http-equiv="X-UA-Compatible" content="IE=edge" /> <!-- Optimal Internet Explorer compatibility -->
 </head>
 
 <script src="https://www.paypal.com/sdk/js?client-id=AQPrrIuemnOd2qvQmtxdrRwxteZcdhs3o-0y5hZxVAdr5NqGarbDmeY0jExpXYGIVXDVK7oRpRqJ6yhz"></script>
-<script>paypal.Buttons().render('body');</script>
 
 
 
@@ -38,11 +38,9 @@
  <tbody>
   <c:forEach items="${list}" var="list">
  <tr>
-  <td>${list.userId}</td>
-  <td>${list.userNm}</td>
-  <td>${list.regDt}</td>
-  <td>${list.grade}</td>
-  <td>${list.userState}</td>
+  <td>${list.movieCd}</td>
+  <td>${list.movieNm}</td>
+
  </tr>
 </c:forEach>
  </tbody>

@@ -1,6 +1,5 @@
-package com.kdis.demo;
+package com.kdis.demo.board;
 
-import com.kdis.demo.BoardVO;
 import java.util.List;
 
 
