@@ -51,13 +51,17 @@
 
 <div id="paypal-button-container">
   <script>
+  //가격
+  var people=3;
+  var price=6*people;
+  
   paypal.Buttons({
     createOrder: function(data, actions) {
       // This function sets up the details of the transaction, including the amount and line item details.
       return actions.order.create({
         purchase_units: [{
           amount: {
-            value: '20'
+            value: price
           }
         }]
       });
