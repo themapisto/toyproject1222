@@ -26,3 +26,4 @@
   - 상단에 app facebook, instragram 로고와 링크 
 * api이용하여 영화 목록 가져오기 (ajax통신)
   - json이 아닌 xml로 가져와서 parsing함.
+  - 영화 목록 가져올 때 영화 코드로 ajax 통신 한번 더해서 관람 등급 가져와서 로그 띄우기. (javascript - promise)
