@@ -19,8 +19,10 @@
 
 # 작업 진행 상황
 
-// 2021-02-08
+// 2월 2주차
 * 빠른 예매 화면 (cgv) css 작업.
   - header와 body부분 일부 작업 완료.
+  - 날짜 추가(javascript)
+  - 상단에 app facebook, instragram 로고와 링크 
 * api이용하여 영화 목록 가져오기 (ajax통신)
   - json이 아닌 xml로 가져와서 parsing함.
