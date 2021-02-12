@@ -6,8 +6,8 @@
 
 	<!-- 회원가입 -->
 	<insert id="userJoin" parameterType="Map">
-		INSERT INTO USER (userId,userNm,password,birthday,phoneNumber,email,regDt,grade,userState,salt)
-		VALUES(#{userId},#{userNm},#{password},#{birthday},#{phoneNumber},#{email},NOW(),#{grade},#{userState},#{salt})
+		INSERT INTO USER (userId,userNm,password,birthday,phoneNumber,email,regDt,grade,userState,salt,loginFailCount)
+		VALUES(#{userId},#{userNm},#{password},#{birthday},#{phoneNumber},#{email},NOW(),#{grade},#{userState},#{salt},#{loginFailCount})
 	</insert>
 	
 	<!-- 아이디 중복체크 -->
@@ -18,10 +18,16 @@
 	</select>
 	
 	<!-- 로그인 체크 -->
+	<!-- 1) 회원상태 1 
+		 2) 회원상태 8 이면서 로그인 5회 실패 이후 30분 지났을 때-->
 	<select id="loginSubmit" parameterType="Map" resultType="Integer">
+	<![CDATA[
 		select count(*)
 		from USER
-		where userId = #{userId} and password = #{password} and userState = '1'	
+		where userId = #{userId} and password = #{password}  
+		and ((userState = '1') || (userState = '8' && 
+				((select loginFailTime from user where userId = #{userId}) < (select DATE_SUB(NOW(), INTERVAL 30 MINUTE) FROM DUAL))))
+	]]>
 	</select>
 	
 	<!-- 회원 기존 salt 가져오기 -->
@@ -35,7 +41,7 @@
 	<select id="getUserId" resultType="String">
 		select userId
 		from USER
-		where userNm = #{userNm} and phoneNumber = #{phoneNumber} and userState = '1'
+		where userNm = #{userNm} and phoneNumber = #{phoneNumber} and email = #{email} and userState = '1'
 	</select>
 	
 	<!-- 로그인실패카운트 처리 -->
@@ -45,5 +51,11 @@
 		where userId = #{userId}
 	</update>
 	
+	<!-- 로그인 이력 삽입-->
+	<insert id="insertLoginHistory" parameterType="Map">
+		update USER
+		set loginFailTime = NOW()
+		where userId = #{userId}
+	</insert>
 
 </mapper>

@@ -85,8 +85,8 @@
 			if(object == userId){
 				regType = /^.*(?=^.{5,20}$)[a-z0-9+]*$/;
 			}else if(object == password){
-				regType = /^.*(?=^.{8,16}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/;	
-				regType2 = /^[^<>]*$/;
+				regType = /^.*(?=^.{8,16}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&-_`~]).*$/;	
+				regType2 = /^[^<>+=]*$/;
 			}else if(object == userNm){
 			 	regType = /^([가-힣]{2,}|[a-zA-Z]{2,})$/;
 			}else if(object == email){

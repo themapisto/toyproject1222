@@ -59,8 +59,8 @@
 			var password = document.getElementById('password');
 			var loginMsg = document.getElementById('loginMsg');
 			
-			var regType = /^.*(?=^.{8,16}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/;	
-			var regType2 = /^[^<>]*$/;
+			var regType = /^.*(?=^.{8,16}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&-_`~]).*$/;	
+			var regType2 = /^[^<>+=]*$/;
 			
 			if(password.value == ""){
 				loginMsg.innerHTML = "<span style='color:red'>비밀번호를 입력하시기 바랍니다.</span>"
@@ -95,13 +95,13 @@
 								alert("로그인에 성공하셨습니다. 홈페이지로 이동합니다." );
 								location.href="/";
 							}else if(data.result == "0"){
-								alert("계정이 잠겼습니다. 관리자에게 문의하시기 바랍니다.");
+								alert("계정이 잠겼습니다. 관리자에게 문의하시거나 30분후에 시도해주시기 바랍니다.");
 								return false;
 							}else if(data.result == "-1"){
 								//로그인실패횟수증감오류 에러페이지 호출
 								return false;
 							}else if(data.result == "5"){
-								alert("로그인 실패 횟수가 5회가 되어 계정이 잠겼습니다. 잠금 해제를 원하시면 관리자에게 문의하시기 바랍니다.");
+								alert("로그인 실패 횟수가 5회가 되어 계정이 잠겼습니다. 30분후에 시도해주시기 바랍니다.");
 								return false;
 							}else{
 								alert("로그인을 "+data.result+"회 실패하였습니다. 로그인 5회 실패 시 계정이 잠깁니다.");
@@ -113,7 +113,7 @@
 					}
 				}
 				xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
-				xhr.send("userId="+userId+"&password="+password);
+				xhr.send("userId="+userId+"&password="+encodeURIComponent(password));
 				
 			}else if(loginMsg.dataset.idFlag == "false"){
 				loginMsg.innerHTML = "<span style='color:red'> 아이디를 확인하세요.";

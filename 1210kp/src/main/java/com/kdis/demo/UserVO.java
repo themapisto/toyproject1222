@@ -15,6 +15,7 @@ public class UserVO {
 	private String userState;
 	private String salt;
 	private int loginFailCount;
+	private Date loginFailTime;
 	
 	public String getUserId() {
 		return userId;
@@ -81,6 +82,12 @@ public class UserVO {
 	}
 	public void setLoginFailCount(int loginFailCount) {
 		this.loginFailCount = loginFailCount;
+	}
+	public Date getLoginFailTime() {
+		return loginFailTime;
+	}
+	public void setLoginFailTime(Date lastLoginTime) {
+		this.loginFailTime = lastLoginTime;
 	}
 	
 	

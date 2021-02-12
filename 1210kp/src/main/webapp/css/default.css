@@ -227,6 +227,11 @@
   height:30px;
   font-size:18px;
 }
+
+#certificationContents{
+	display:none;	
+}
+
 #idSearchMsg{
   display:none;
   position: relative;

@@ -36,6 +36,11 @@ public class LoginService implements LoginDAO{
 	public Integer updateLoginFailCount(HashMap<String, Object> paramMap) throws Exception {
 		return LoginDAO.updateLoginFailCount(paramMap);
 	}
+
+	@Override
+	public Integer insertLoginHistory(Map<String, Object> paramMap) throws Exception {
+		return LoginDAO.insertLoginHistory(paramMap);
+	}
 	
 
 }

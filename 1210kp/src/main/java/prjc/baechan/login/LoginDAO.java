@@ -19,4 +19,6 @@ public interface LoginDAO{
 	public String getUserId(HashMap<String, Object> paramMap) throws Exception; 
 	
 	public Integer updateLoginFailCount(HashMap<String, Object> paramMap) throws Exception;
+	
+	public Integer insertLoginHistory(Map<String,Object> paramMap) throws Exception;
 }

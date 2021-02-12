@@ -21,4 +21,6 @@ public class commonController {
 	public String errorDefault() throws Exception{
 		return "/exception/errorDefault";
 	}
+	
+	
 }
