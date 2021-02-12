@@ -55,6 +55,7 @@ public class LoginController{
 		 return "/login/pwdSearchPopup";
 	 }
 	 
+	 // 로그인 기능 처리
 	 @RequestMapping(value = "/loginSubmit")
 	 @ResponseBody
 	 public Map<String, String> loginSubmit(ModelMap model,HttpServletRequest request,HttpServletResponse response) throws Exception {
@@ -64,6 +65,7 @@ public class LoginController{
 		 String userId = request.getParameter("userId");
 		 String password = request.getParameter("password");
 
+		 // 회원가입 할 때 등록된 salt를 가져옴
 		 String salt = LoginService.getUserSalt(userId);
 
 		 paramMap.put("userId", userId);
@@ -72,20 +74,26 @@ public class LoginController{
 		 int loginChk = 0;
 		 String result = "";
 		 
+		 // 로그인 계정 체크 후 회원정보 가져오기
 		 loginChk = LoginService.loginSubmit(paramMap);
 		 UserVO userVO = MemberService.selectMyInfo(paramMap);
 		 
+		 // 회원 로그인 실패 횟수 가져와서 로그인 할 수 있는 상태인지 판별
 		 Integer loginFailCount = userVO.getLoginFailCount();
 		 int updateLoginCntChk = 0;
 		 int updateUserStateChk = 0;
 		 
+		 // 로그인 계정 체크 성공 시
 		 if(loginChk == 1) {
 			 loginFailCount = 0;
 			 paramMap.put("loginFailCount", loginFailCount);
 			 paramMap.put("userState", "1");
+			 
+			 // 로그인 실패 횟수 초기화 및 회원 상태 초기화
 		 	 updateLoginCntChk = LoginService.updateLoginFailCount(paramMap);
 			 updateUserStateChk = MemberService.updateUserState(paramMap);
 
+			 // 위의 메서드들 처리 완료 확인 후 session 생성
 		 	 if(updateLoginCntChk == 1 && updateUserStateChk == 1) {
 		 		 HttpSession session = request.getSession(true);
 				 
@@ -98,12 +106,14 @@ public class LoginController{
 		 		 // 로그인실패횟수초기화 오류 에러페이지 호출
 				 result = "-1";
 		 	 }
-			 
+		 // 로그인 계정 체크 실패 시
 		 }else{
 			 String state = userVO.getUserState();
+			 // 회원 상태 1 : 일반 사용자이면 로그인 실패 횟수 증가
 			 if("1".equals(state)) {
 				 loginFailCount++;
-
+				 
+				 // 로그인 실패 횟수 5회 미만 시 로그인 실패 횟수 update
 				 if(loginFailCount < 5) {
 					 
 					 paramMap.put("loginFailCount", loginFailCount);
@@ -143,13 +153,11 @@ public class LoginController{
 				 result = "0";
 			 }
 		 }
-		 
-		 
-		
 		 resultMap.put("result", result);
 		 return resultMap;
 	 }
 	 
+	 // 로그아웃 처리
 	 @RequestMapping(value="/logout")
 	 public String logout(ModelMap model,HttpServletRequest request,HttpServletResponse response) throws Exception {
 
@@ -161,6 +169,7 @@ public class LoginController{
 		 return "/common/result";
 	 }
 	 
+	 // 아이디 중복 체크 ajax로 처리
 	 @ResponseBody
 	 @RequestMapping(value="/idCheckAjax")
 	 public Map<String,String> idCheckAjax(HttpServletRequest request,HttpServletResponse response) throws Exception {
@@ -181,7 +190,7 @@ public class LoginController{
 		 return resultMap;
 	 }
 	 
-
+	 // 회원가입 처리
 	 @RequestMapping(value = "/joinSubmit")
 	 public String joinSubmit(ModelMap model,HttpServletRequest request,HttpServletResponse response) throws Exception {
 		 HashMap<String,Object> paramMap = new HashMap<String,Object>();
@@ -219,6 +228,7 @@ public class LoginController{
 		 return "/common/result";
 	 }
 	 
+	 // 아이디 찾기 - 회원이름,핸드폰번호 비교하여 해당하는 계정 return
 	 @ResponseBody
 	 @RequestMapping("/idSearch")
 	 public Map<String,String> idSearch(ModelMap model,HttpServletRequest request,HttpServletResponse response) throws Exception {
@@ -234,6 +244,7 @@ public class LoginController{
 		 String userId = "";
 		 userId = LoginService.getUserId(paramMap);
 
+		 // id 가져올때 뒷 4 자리 별표 처리
 		 if(!"".equals(userId) && userId != null) {
 			 userId = userId.substring(0, userId.length()-4) + "****";
 			 
@@ -246,6 +257,7 @@ public class LoginController{
 		 return resultMap;
 	 }
 	 
+	 // 비밀번호 찾기 - 회원이름,핸드폰번호,이메일 비교하여 해당 계정 이메일로 임시비밀번호 발급
 	 @ResponseBody
 	 @RequestMapping("/pwdSearch")
 	 public Map<String,String> pwdSearch(ModelMap model,HttpServletRequest request,HttpServletResponse response) throws Exception {
@@ -301,6 +313,7 @@ public class LoginController{
 		 return resultMap;
 	 }
 	 
+	 // 임시비밀번호 생성
 	 public static String getRandomPassword() { 
 		 char[] charSet = new char[] { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
 				 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o',
@@ -311,6 +324,7 @@ public class LoginController{
 		 int idx = 0; 
 		 StringBuffer sb = new StringBuffer(); 
 		 
+		 // 4자리는 숫자,영문 소문자 나온 후 1자리는 특수문자 로 반복 하여 총 15자리
 		 for (int i = 0; i < 3; i++) { 
 			 for( int j = 0; j < 4; j ++) {
 				 idx = (int) (charSet.length * Math.random()); 
@@ -322,7 +336,7 @@ public class LoginController{
 		 return sb.toString(); 
 	 }
 
-	 
+	 // 비밀번호 찾기 시 메일발송 처리 
 	 public int mailSend(String password) throws Exception{
 		 	String subject = "MovieBox에서 회원님의 임시비밀번호를 보내드립니다.";
 	        String content = "MovieBox 임시비밀번호 : " + password;
