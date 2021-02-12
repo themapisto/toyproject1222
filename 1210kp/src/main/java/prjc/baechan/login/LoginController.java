@@ -1,5 +1,8 @@
 package prjc.baechan.login;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -64,6 +67,12 @@ public class LoginController{
 
 		 String userId = request.getParameter("userId");
 		 String password = request.getParameter("password");
+		 
+		 Calendar cal = Calendar.getInstance();
+		 SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		 
+		 String loginAvailableTime = "";
+		 Date loginFailTime = null;
 
 		 // 회원가입 할 때 등록된 salt를 가져옴
 		 String salt = LoginService.getUserSalt(userId);
@@ -82,6 +91,8 @@ public class LoginController{
 		 Integer loginFailCount = userVO.getLoginFailCount();
 		 int updateLoginCntChk = 0;
 		 int updateUserStateChk = 0;
+		 
+		 
 		 
 		 // 로그인 계정 체크 성공 시
 		 if(loginChk == 1) {
@@ -141,6 +152,16 @@ public class LoginController{
 					 updateUserStateChk = MemberService.updateUserState(paramMap);
 					 
 					 if(updateUserStateChk == 1 && updateLoginCntChk == 1 && updateLoginFailTimeResult == 1) {
+						 
+						 // 계정 잠금 시 로그인 실패 시간 가져와서 30분 후에 로그인 가능 시간 return 
+						 userVO = MemberService.selectMyInfo(paramMap);
+						 loginFailTime = dateFormat.parse(dateFormat.format(userVO.getLoginFailTime())); 
+						 cal.setTime(loginFailTime);
+						 cal.add(Calendar.MINUTE, 30);
+						 loginAvailableTime = dateFormat.format(cal.getTime());
+						 
+						 resultMap.put("loginFailTime",loginAvailableTime);
+
 						 result = "5";
 					 }else {
 						// 계정잠금오류 에러페이지 호출
@@ -150,6 +171,16 @@ public class LoginController{
 					 result = "0";
 				 }
 			 }else {
+				 
+				 // 계정 잠금 시 로그인 실패 시간 가져와서 30분 후에 로그인 가능 시간 return 
+				 userVO = MemberService.selectMyInfo(paramMap);
+				 loginFailTime = dateFormat.parse(dateFormat.format(userVO.getLoginFailTime())); 
+				 cal.setTime(loginFailTime);
+				 cal.add(Calendar.MINUTE, 30);
+				 loginAvailableTime = dateFormat.format(cal.getTime());
+				 
+				 resultMap.put("loginFailTime",loginAvailableTime);
+				 
 				 result = "0";
 			 }
 		 }
