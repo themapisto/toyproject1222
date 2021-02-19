@@ -1,6 +1,5 @@
 package com.kdis.demo;
 
-import com.kdis.demo.MovieVO;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
@@ -25,6 +24,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import com.kdis.demo.MovieVO;
 
 @Controller
 @RequestMapping("/board/*")
@@ -33,8 +33,7 @@ public class BoardController {
 	@Inject
 	private BoardService service;
 
-	
-    MovieVO vo = new MovieVO();;
+	MovieVO vo = new MovieVO();;
 
 	@Inject
 	private SqlSession sqlSession;
