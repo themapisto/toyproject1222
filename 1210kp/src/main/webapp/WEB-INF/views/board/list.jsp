@@ -2,11 +2,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+
+
 <head>
 <meta charset="UTF-8">
 <title>insert title here</title>
 </head>
-<body>
+
+<link rel="stylesheet" href="/resources/css/reset.css" type="text/css">
+<link rel="stylesheet" href="/resources/css/list.css" type="text/css">
+
+<body> 
 
 <!DOCTYPE html>
 
@@ -24,17 +33,13 @@
 
 
  <body>
- <table>
- <thead>
-  <tr>
-   <th>번호</th>
-   <th>제목</th>
-   <th>작성일</th>
-   <th>작성자</th>
-   <th>조회수</th>
-  </tr>
- </thead>
+ <img src="/resources/images/1.jpg.png" class="img-thumbnail" alt="국평">
+ <img src="/resources/images/1.jpg.png" class="img-thumbnail" alt="국평">
+ <img src="/resources/images/1.jpg.png" class="img-thumbnail" alt="국평">
+ <img src="/resources/images/1.jpg.png" class="img-thumbnail" alt="국평">
  
+ <table>
+
  <tbody>
   <c:forEach items="${list}" var="list">
  <tr>
