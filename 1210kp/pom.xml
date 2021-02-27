@@ -61,17 +61,19 @@
 		    <version>${org.springframework-version}</version>
 		</dependency>		
 						
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
+		<!-- httpclient -->
+		    <dependency>
+		        <groupId>org.apache.httpcomponents</groupId>
+		        <artifactId>httpclient</artifactId>
+		        <version>4.5.10</version>
+		    </dependency>		
+						
+		<dependency>
+			  <groupId>org.json</groupId>
+			  <artifactId>json</artifactId>
+			  <version>20180813</version>
+		</dependency>			
+						
 		<!-- AspectJ -->
 		<dependency>
 			<groupId>org.aspectj</groupId>
