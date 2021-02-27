@@ -16,7 +16,9 @@ const lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
 const reserveDate = document.querySelector(".reserve-date");
 const weekOfDay = ["일","월","화","수","목","금","토"];
 const year = date.getFullYear();
-const month = date.getMonth()+1;
+let month = date.getMonth()+1;
+// 날짜 선택할 수 있는 간격
+const date_len = 7;
 
 // 팝업
 const popUp = document.querySelector('.popup');
@@ -131,8 +133,9 @@ function theaterActive(){
 
 // 날짜 계산
 function getDay(){
+	let change_month = true;
 	reserveDate.append(year+'/'+month);
-	for(i=date.getDate(); i<=lastDay.getDate(); i++){
+	for(i=date.getDate(); i<=date.getDate()+date_len; i++){
 		const button = document.createElement("button");
 		const spanWeekOfDay = document.createElement("span");
 		const spanDay = document.createElement("span");
@@ -141,8 +144,21 @@ function getDay(){
 		spanWeekOfDay.classList.add("movie-week-of-day");
 		spanDay.classList.add("movie-day");
 		
+		let day = i;
+		// 그 달의 마지막 날보다 크다면
+		if(i>lastDay.getDate()){
+			day=i-lastDay.getDate();
+			if(day==1)
+				change_month = false;
+		}
+		if(!change_month){
+			month = month+1;
+			reserveDate.append(year+'/'+month);
+			change_month=true;
+		}
+		
 		// 해당 날짜의 요일 얻기
-		const dayOfWeek = weekOfDay[new Date(year+"-"+month+"-"+i).getDay()];
+		const dayOfWeek = weekOfDay[new Date(year+"-"+month+"-"+day).getDay()];
 		
 		// 요일 넣기
 		if(dayOfWeek === "토"){
@@ -156,7 +172,7 @@ function getDay(){
 		spanWeekOfDay.innerHTML = dayOfWeek;
 		button.append(spanWeekOfDay);
 		
-		spanDay.innerHTML = i;
+		spanDay.innerHTML = day;
 		button.append(spanDay);
 		
 		reserveDate.append(button);
