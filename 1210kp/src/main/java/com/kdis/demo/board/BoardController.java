@@ -18,10 +18,12 @@ import javax.inject.Inject;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.junit.Test;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
 
 
 
@@ -41,7 +43,10 @@ public class BoardController {
 	  list = service.list();
 	  model.addAttribute("list", list);
 	  
-	 }			
+	 }	
+	
+
+	
 	}
 			
 			

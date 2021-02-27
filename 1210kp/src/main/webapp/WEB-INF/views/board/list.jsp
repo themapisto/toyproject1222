@@ -33,10 +33,35 @@
 
 
  <body>
- <img src="/resources/images/1.jpg.png" class="img-thumbnail" alt="국평">
- <img src="/resources/images/1.jpg.png" class="img-thumbnail" alt="국평">
- <img src="/resources/images/1.jpg.png" class="img-thumbnail" alt="국평">
- <img src="/resources/images/1.jpg.png" class="img-thumbnail" alt="국평">
+ 
+<div class="img-thumbnail">
+<h3>1위</h3>
+ <img src="/resources/images/1.jpg" alt="국평" class="img-kp" >
+<h3>신세계</h3>
+<a href="/board/reservation">예매하기</a>
+ </div>
+
+ <div class="img-thumbnail">
+ <h3>2위</h3>
+ <img src="/resources/images/2.jpg" alt="국평" class="img-kp">
+<h3>신세계</h3>
+ 
+ </div>
+  <div class="img-thumbnail">
+  <h3>3위</h3>
+ <img src="/resources/images/3.jpg" alt="국평" class="img-kp">
+<h3>신세계</h3>
+ 
+ </div>
+  <div class="img-thumbnail">
+  <h3>4위</h3>
+ <img src="/resources/images/4.jpg" alt="국평"class="img-kp">
+<h3>신세계</h3>
+ 
+ </div>
+
+ 
+
  
  <table>
 
