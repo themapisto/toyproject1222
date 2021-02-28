@@ -1,7 +1,0 @@
-INDEX VERSION 1.131
-C:\Users\gksck\Desktop\Movie\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1727397063.index
-\1210kp\src\main\java
-C:\Users\gksck\Desktop\Movie\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3528578125.index
-\1210kp\src\main\java
-C:\Users\gksck\Desktop\Movie\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2809822850.index
-\1210kp\src\main\java
