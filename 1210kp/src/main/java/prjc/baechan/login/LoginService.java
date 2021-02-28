@@ -29,10 +29,14 @@ public class LoginService implements LoginDAO{
 		return LoginDAO.getUserSalt(userId);
 	}
 
-	public String getUserId(HashMap<String, Object> paramMap) throws Exception{
-		return LoginDAO.getUserId(paramMap);
+	public String searchIdChk(HashMap<String, Object> paramMap) throws Exception{
+		return LoginDAO.searchIdChk(paramMap);
 	}
-
+	
+	public String searchPwdChk(HashMap<String, Object> paramMap) throws Exception{
+		return LoginDAO.searchPwdChk(paramMap);
+	}
+	
 	public Integer updateLoginFailCount(HashMap<String, Object> paramMap) throws Exception {
 		return LoginDAO.updateLoginFailCount(paramMap);
 	}
@@ -40,6 +44,10 @@ public class LoginService implements LoginDAO{
 	@Override
 	public Integer insertLoginHistory(Map<String, Object> paramMap) throws Exception {
 		return LoginDAO.insertLoginHistory(paramMap);
+	}
+
+	public Integer adminLoginSubmit(HashMap<String, Object> paramMap) throws Exception {
+		return LoginDAO.adminLoginSubmit(paramMap);
 	}
 	
 

@@ -6,7 +6,7 @@
 		<div class="gnb">
 			<div class="right">
 				<c:choose>
-					<c:when test="${sessionLoginChk eq 'Y'}">
+					<c:when test="${sessionLoginChk eq 'user'}">
 						<div class="afterLogin">
 							<span title="회원이름">${sessionUserNm}</span>
 							|

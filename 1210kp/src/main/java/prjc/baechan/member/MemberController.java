@@ -1,4 +1,4 @@
-package com.kdis.demo;
+package prjc.baechan.member;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -13,6 +13,8 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import prjc.baechan.common.SHA256Util;
+import prjc.baechan.common.UserVO;
 import prjc.baechan.login.LoginService;
 
 @Controller
@@ -47,6 +49,16 @@ public class MemberController{
 		 
 		 UserVO userVO = MemberService.selectMyInfo(paramMap);
 		 
+		 String grade = userVO.getGrade();
+	
+		 if("1".equals(grade)) {
+			 userVO.setGrade("일반사용자");
+		 }else if("5".equals(grade)) {
+			 userVO.setGrade("관리자");
+		 }else {
+			 userVO.setGrade("임시계정");
+		 }
+		 
 		 model.addAttribute("userVO",userVO);
 		 return "/member/myInfo";
 	 }
@@ -61,6 +73,16 @@ public class MemberController{
 		 paramMap.put("userId", userId);
 		 
 		 UserVO userVO = MemberService.selectMyInfo(paramMap);
+				 
+		 String grade = userVO.getGrade();
+	
+		 if("1".equals(grade)) {
+			 userVO.setGrade("일반사용자");
+		 }else if("5".equals(grade)) {
+			 userVO.setGrade("관리자");
+		 }else {
+			 userVO.setGrade("임시계정");
+		 }
 		 
 		 if("-".equals(userVO.getEmail())) {
 			 userVO.setEmail("");

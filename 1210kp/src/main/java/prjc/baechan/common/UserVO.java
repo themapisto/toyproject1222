@@ -1,4 +1,4 @@
-package com.kdis.demo;
+package prjc.baechan.common;
 
 import java.util.Date;
 

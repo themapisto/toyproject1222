@@ -3,7 +3,7 @@
 
 <html>
 <head>
-	<title>결과처리</title>
+	<title>세션만료처리</title>
 	<%@include file="/WEB-INF/views/common/common.jsp" %>
 </head>
 <body>

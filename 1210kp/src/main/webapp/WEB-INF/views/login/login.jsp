@@ -94,14 +94,17 @@
 							if(data.result == "success"){
 								alert("로그인에 성공하셨습니다. 홈페이지로 이동합니다." );
 								location.href="/";
-							}else if(data.result == "0"){
+							}else if(data.result == "locked"){
 								alert("계정이 잠겼습니다. 관리자에게 문의하시거나 \n"+ data.loginFailTime + "에 다시 시도해주시기 바랍니다.");
 								return false;
-							}else if(data.result == "-1"){
+							}else if(data.result == "error"){
 								//로그인실패횟수증감오류 에러페이지 호출
 								return false;
-							}else if(data.result == "5"){
+							}else if(data.result == "loginFailLocked"){
 								alert("로그인 실패 횟수가 5회가 되어 계정이 잠겼습니다.\n" + data.loginFailTime + "에 다시 시도해주시기 바랍니다.");
+								return false;
+							}else if(data.result == "userWithdrawal"){
+								alert("탈퇴한 회원입니다.");
 								return false;
 							}else{
 								alert("로그인을 "+data.result+"회 실패하였습니다. 로그인 5회 실패 시 계정이 잠깁니다.");

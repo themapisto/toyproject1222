@@ -1,9 +1,11 @@
-package com.kdis.demo;
+package prjc.baechan.member;
 
 import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.stereotype.Repository;
+
+import prjc.baechan.common.UserVO;
 
 @Repository
 public interface MemberDAO {

@@ -1,4 +1,4 @@
-package com.kdis.demo;
+package prjc.baechan.member;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -6,6 +6,8 @@ import java.util.Map;
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
+
+import prjc.baechan.common.UserVO;
 
 @Service
 public class MemberService implements MemberDAO{

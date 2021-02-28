@@ -1,4 +1,4 @@
-package com.kdis.demo;
+package prjc.baechan.common;
 
 import java.io.IOException;
 import javax.servlet.Filter;
@@ -11,11 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-public class sessionLoginFilter implements Filter{
-	public sessionLoginFilter() {
-        // TODO Auto-generated constructor stub
-    }
-
+public class SessionLoginFilter implements Filter{
 	/**
 	 * @see Filter#destroy()
 	 */
@@ -32,7 +28,7 @@ public class sessionLoginFilter implements Filter{
 				
 		HttpSession session = ((HttpServletRequest)request).getSession();
 
-		if(session.getAttribute("sessionLoginChk")!="Y")
+		if(session.getAttribute("sessionLoginChk")!="user")
 		{	
 			((HttpServletResponse)response).sendRedirect("/common/sessionExpire");
 		}

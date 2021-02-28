@@ -1,11 +1,11 @@
-package com.kdis.demo;
+package prjc.baechan.common;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/common/*")
-public class commonController {
+public class CommonController {
 	
 	@RequestMapping(value = "/result")
 	public String result() throws Exception {

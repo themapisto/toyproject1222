@@ -21,9 +21,9 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.kdis.demo.MemberService;
-import com.kdis.demo.SHA256Util;
-import com.kdis.demo.UserVO;
+import prjc.baechan.common.SHA256Util;
+import prjc.baechan.common.UserVO;
+import prjc.baechan.member.MemberService;
 
 @Controller
 @RequestMapping("/login/*")
@@ -92,12 +92,11 @@ public class LoginController{
 		 int updateLoginCntChk = 0;
 		 int updateUserStateChk = 0;
 		 
-		 
-		 
 		 // 로그인 계정 체크 성공 시
 		 if(loginChk == 1) {
 			 loginFailCount = 0;
 			 paramMap.put("loginFailCount", loginFailCount);
+			 paramMap.put("grade", "1");
 			 paramMap.put("userState", "1");
 			 
 			 // 로그인 실패 횟수 초기화 및 회원 상태 초기화
@@ -110,17 +109,17 @@ public class LoginController{
 				 
 				 session.setAttribute("sessionId", userVO.getUserId());
 				 session.setAttribute("sessionUserNm", userVO.getUserNm());
-				 session.setAttribute("sessionLoginChk", "Y");
+				 session.setAttribute("sessionLoginChk", "user");
 				 
 				 result = "success";
 		 	 }else {
 		 		 // 로그인실패횟수초기화 오류 에러페이지 호출
-				 result = "-1";
+				 result = "error";
 		 	 }
 		 // 로그인 계정 체크 실패 시
 		 }else{
 			 String state = userVO.getUserState();
-			 // 회원 상태 1 : 일반 사용자이면 로그인 실패 횟수 증가
+			 // 회원 등급 1 : 일반 사용자이면 로그인 실패 횟수 증가
 			 if("1".equals(state)) {
 				 loginFailCount++;
 				 
@@ -134,7 +133,7 @@ public class LoginController{
 						 result = loginFailCount.toString();
 					 }else {
 						 // 로그인실패횟수증감오류 에러페이지 호출
-						 result = "-1";
+						 result = "error";
 					 }
 				 }else if(loginFailCount == 5){
 					 
@@ -162,14 +161,25 @@ public class LoginController{
 						 
 						 resultMap.put("loginFailTime",loginAvailableTime);
 
-						 result = "5";
+						 result = "loginFailLocked";
 					 }else {
 						// 계정잠금오류 에러페이지 호출
-						 result = "-1";
+						 result = "error";
 					 }
 				 }else {
-					 result = "0";
+					// 계정 잠금 시 로그인 실패 시간 가져와서 30분 후에 로그인 가능 시간 return 
+						userVO = MemberService.selectMyInfo(paramMap);
+						loginFailTime = dateFormat.parse(dateFormat.format(userVO.getLoginFailTime())); 
+						cal.setTime(loginFailTime);
+						cal.add(Calendar.MINUTE, 30);
+						loginAvailableTime = dateFormat.format(cal.getTime());
+						 
+						resultMap.put("loginFailTime",loginAvailableTime);
+						 
+						result = "locked";
 				 }
+			 }else if("9".equals(state)){
+				 result = "userWithdrawal";
 			 }else {
 				 
 				 // 계정 잠금 시 로그인 실패 시간 가져와서 30분 후에 로그인 가능 시간 return 
@@ -181,7 +191,7 @@ public class LoginController{
 				 
 				 resultMap.put("loginFailTime",loginAvailableTime);
 				 
-				 result = "0";
+				 result = "locked";
 			 }
 		 }
 		 resultMap.put("result", result);
@@ -273,7 +283,7 @@ public class LoginController{
 		 paramMap.put("phoneNumber", phoneNumber);
 		 
 		 String userId = "";
-		 userId = LoginService.getUserId(paramMap);
+		 userId = LoginService.searchIdChk(paramMap);
 
 		 // id 가져올때 뒷 4 자리 별표 처리
 		 if(!"".equals(userId) && userId != null) {
@@ -307,7 +317,7 @@ public class LoginController{
 		 String password = "";
 		 String userSalt = "";
 		 
-		 userId = LoginService.getUserId(paramMap);
+		 userId = LoginService.searchPwdChk(paramMap);
 		 userSalt = LoginService.getUserSalt(userId);
 		 
 		 paramMap.put("userId", userId);
