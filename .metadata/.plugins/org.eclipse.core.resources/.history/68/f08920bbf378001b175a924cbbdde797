@@ -1,0 +1,405 @@
+@charset "UTF-8";
+
+* {
+    font-size: 11px;
+}
+
+body {
+    background-color: #FDFCF0;
+}
+
+.blind{
+	position: absolute;
+	width:1px;
+	height:1px;
+	clip: rect(0,0,0,0);
+	margin: -1px;
+    overflow: hidden
+}
+
+/* header */
+
+.header-nav-wrapper {
+    background-image: url(https://img.cgv.co.kr/R2014/images/common/bg/bg_header.gif);
+    height: 153px;
+    padding: 0;
+    z-index: 0;
+}
+
+.header-nav-container {
+    position: fixed;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 40px;
+    padding-right: 150px;
+}
+
+.header-inner {
+    display: flex;
+}
+.util {
+	float:left;
+}
+.util:after{
+	content:'';
+	clear:both;
+	display:block;
+}
+.util li {
+	display: inline-block;
+	float:left;
+	border-right: 1px solid #ddd; 
+}
+.util li > a {
+	display: block;
+	height: 30px;
+	line-height: 30px;
+	padding: 0 10px;
+	white-space: nowrap;
+	text-decoration: none;
+}
+.logo{
+	background-image: url(https://img.cgv.co.kr/R2014/images/sprite/common_sprite_area_v4_2016.png);
+	background-repeat: no-repeat;
+}
+
+.apps{
+	width: 74px;
+    background-position: 10px -714px;
+}
+.facebook{
+	width: 44px;
+    background-position: -85px -714px;
+    margin-right: 3px
+}
+.instagram{
+	width: 60px;
+    background-position: -263px -714px;
+}
+
+.header-inner>div {
+    border-right: 1px solid #DDDDDD;
+    margin-left: 8px;
+    padding-right: 4px;
+}
+
+/* nav */
+
+.nav-line {
+    background-color: red;
+    border-radius: 50px;
+    height: 5px;
+    /* background-image: linear-gradient(to right, white 33%, rgba(255, 255, 255, 0) 0%);
+  background-position: bottom;
+  background-size: 15px 1px;
+  background-repeat: repeat-x; */
+}
+
+.nav-wrapper {
+    /* background: url(https://img.cgv.co.kr/R2014/images/common/bg/bg_header.gif) repeat-x 0 0; */
+    /* width: 100%;*/
+    height: 86px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav-content {
+    padding-top: 15px;
+}
+
+.movieLogo-wrapper {
+    text-align: center;
+}
+
+.cgvLogo {
+    width: 120px;
+    margin-left: 150px;
+    /* margin-right: -40px; */
+}
+
+.cgvMovie {
+    width: auto;
+    height: 28px;
+    margin-top: 28px;
+}
+
+.nav-inner {
+    display: flex;
+    /* margin-left: -250px; */
+    margin-left: 150px;
+    margin-right: auto;
+    align-items: center;
+    padding-bottom: 15px;
+}
+
+.nav-inner>div>button {
+    padding-top: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    margin-left: 15px;
+}
+
+.search-wrapper {
+    margin-left: 70px;
+    height: 20px;
+}
+
+.search-wrapper>input {
+    width: 100px;
+    height: 20px;
+}
+
+.searchButton {
+    margin: 0 !important;
+    padding: 2px !important;
+    background-color: red;
+    color: white;
+    width: 30px;
+    height: 100%;
+    font-size: 10px !important;
+}
+
+/* container */
+
+.select-container{
+	margin-top: 90px;
+}
+.select-wrapper{
+	width: 900px;
+	height: 100%;
+	margin: 0 auto;
+	border: 1px solid #000;
+	background-color: #F2F0E5;
+}
+.select-title{
+	height: 33px;
+    line-height: 33px;
+    text-align: center;
+	background-color: #444444;
+	color: #dddddd;
+	font-size: 16px;
+}
+.select-seat-container{
+	display: flex;
+	border-bottom: 2px solid #dddddd;
+	margin-bottom: 10px;
+}
+.select-seat-number-container{
+	flex-grow: 1;
+	border-right: 1px solid #dddddd;
+	display: flex;
+}
+.select-seat-number-wrapper{
+	padding: 15px 0 20px 20px;
+	flex-grow: 1;
+}
+.select-seat{
+	display: flex;
+	font-size: 12px;
+}
+.select-seat:not(:first-child){
+	margin-top: 12px;
+}
+.select-seat-age{
+	width: 40px;
+}
+.select-seat-number{
+	margin-left: 15px;
+}
+.coupon{
+	float:right;
+	margin-right: 5px;
+}
+.coupon::after{
+	content:'';
+	clear:both;
+}
+.coupon_btn{
+	display: block;
+    width: auto;
+    height: 18px;
+    line-height: 18px;
+    text-align: center;
+    border: 1px solid #745447;
+    background-color: #926f60;
+    border-radius: 3px;
+    color: #fff;
+    padding: 0 5px;
+}
+.select-seat-ul{
+	display: flex;
+}
+.select-seat-ul>li{
+	width: 20px;
+	height: 20px;
+	border: 1px solid #dddddd;
+	text-align: center;
+	font-weight: bold;
+	padding: 2px;
+}
+.select-seat-ul>li:not(:first-child){
+	margin-left: 5px;
+}
+.select-seat-ul>li:hover{
+	color: #fff;
+	background-color: #222222;
+	cursor: pointer;
+}
+.select-seat-ul-active{
+	color: #fff;
+	background-color: #222222;
+}
+.select-seat-information{
+	flex-grow:1;
+	padding: 15px 0 20px 20px;
+}
+.selected-movie{
+	font-size: 20px;
+	margin-bottom: 5px;
+	font-weight: bold;
+}
+.select-seat-information-wrapper{
+	display: flex;
+}
+.select-theater-place{
+	font-size: 12px;
+}
+.select-theater-place:not(:last-child){
+	width: 55px;
+	border-right: 1px solid #dddddd;
+}
+.select-theater-place:not(:first-child){
+	margin-left: 12px;
+}
+.remain-seats{
+	margin-left: 12px;
+	color: rgba(255,0,0,0.6);
+	font-weight: bold;
+}
+.select-theater-date{
+	display:flex;
+}
+.select-theater-date>div{
+	font-size: 18px;
+	margin-top: 8px;
+	font-weight: bold;
+}
+.theater-time{
+	margin-left: 5px;
+}
+.selected-seats-wrapper{
+	margin-top: 5px;
+}
+.selected-seats-title{
+	color: #000;
+	font-size: 13px;
+	font-weight: bold;
+}
+.selected-seats{
+	font-size: 13px;
+	word-spacing: 2px;
+	margin-left: 20px;
+}
+.ticket-price-wrapper{
+	margin-top: 5px;
+	display: flex;
+	align-items: center;
+}
+.ticket-price-wrapper>div{
+	font-weight: bold;
+}
+.ticket-price-title{
+	font-size: 13px;
+}
+.ticket-price{
+	margin-left: 47px;
+	font-size: 20px;
+}
+.payment-wrapper{
+	display: flex;
+}
+.payment-title{
+	margin-top: 5px;
+	font-weight: bold;
+	font-size: 13px;
+	padding: 0;
+}
+
+.reserve-btn {
+    margin-left: 20px;
+    width: 60px;
+}
+
+.seat-container {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+.seat-wrapper {
+    background-color: #222222;
+    width: 700px;
+    height: 460px;
+}
+.screen-view {
+    width: 140px;
+    color: #777777;
+    padding-top: 30px;
+    font-size: 30px;
+    text-align: center;
+    margin: 0 auto 30px auto;
+    border-bottom: 1px solid #666666;
+    letter-spacing: 4px;
+}
+
+.seat {
+    width: 30px;
+    height: 30px;
+}
+
+.seat {
+    font-size: 13px;
+    background-color: #555555;
+    color: white;
+    border: 1px solid rgba(255, 0, 0, 0.6);
+}
+
+.seat:hover {
+    background-color: red;
+    color: white;
+    cursor: pointer;
+}
+
+.seat:active {
+    background-color: red;
+    color: white;
+}
+
+.clicked {
+    background-color: red;
+    color: white;
+}
+
+.seatButtonWrapper {
+    text-align: center;
+}
+
+.seatButtonWrapper>input {
+    width: 30px;
+    height: 30px;
+}
+
+.left-margin {
+    margin-left: 30px;
+}
+
+.right-margin {
+    margin-right: 30px;
+}
+
+.top-margin {
+    margin-top: 30px;
+}
