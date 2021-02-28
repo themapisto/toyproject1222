@@ -166,11 +166,11 @@ body {
 /* container */
 
 .select-container{
-	margin-top: 90px;
+	margin: 90px 0;
 }
 .select-wrapper{
 	width: 900px;
-	height: 780px;
+	height: 100%;
 	margin: 0 auto;
 	border: 1px solid #000;
 	background-color: #F2F0E5;
@@ -208,6 +208,26 @@ body {
 }
 .select-seat-number{
 	margin-left: 15px;
+}
+.coupon{
+	float:right;
+	margin-right: 5px;
+}
+.coupon::after{
+	content:'';
+	clear:both;
+}
+.coupon_btn{
+	display: block;
+    width: auto;
+    height: 18px;
+    line-height: 18px;
+    text-align: center;
+    border: 1px solid #745447;
+    background-color: #926f60;
+    border-radius: 3px;
+    color: #fff;
+    padding: 0 5px;
 }
 .select-seat-ul{
 	display: flex;
@@ -300,6 +320,7 @@ body {
 }
 .payment-wrapper{
 	display: flex;
+	margin-top: 10px;
 }
 .payment-title{
 	margin-top: 5px;
@@ -308,13 +329,13 @@ body {
 	padding: 0;
 }
 
-.reserve-btn img {
+.reserve-btn {
     margin-left: 20px;
     width: 60px;
 }
 
 .seat-container {
-    margin-top: 20px;
+    margin: 20px 0;
     display: flex;
     justify-content: center;
 }
@@ -381,4 +402,7 @@ body {
 
 .top-margin {
     margin-top: 30px;
+}
+.popup_layer{
+	min-height: 150px;
 }

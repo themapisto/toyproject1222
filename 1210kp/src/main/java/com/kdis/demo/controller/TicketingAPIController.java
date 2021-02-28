@@ -12,15 +12,22 @@ import java.util.HashMap;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.kdis.demo.service.ReserveService;
 
 @RestController
 public class TicketingAPIController {
 
 	private final String serviceKey = "03068a0e0575c2e33d020ec2dd65f2f9";
-
+	
+	@Autowired
+	private ReserveService reserveService;
+	
 	// 일별 박스오피스 조회
 	
 	  @GetMapping(value = "/api/getDailyBoxOffice", produces = "application/text; charset=utf-8") 
@@ -154,5 +161,17 @@ public class TicketingAPIController {
 		rd.close();
 		conn.disconnect();
 		return sb.toString();
+	}
+	
+	// 쿠폰 정보 조회
+	@PostMapping(value = "/api/getCoupon", produces = "application/json; charset=utf-8")
+	public HashMap<String, Long> getCoupon(@RequestParam("couponName")String couponName) {
+		HashMap<String, Long> res = new HashMap<String, Long>();
+		
+		Long discount = reserveService.getCoupon(couponName);
+		if(discount == null) discount=0L;
+		res.put("discount", discount);
+		
+		return res;
 	}
 }

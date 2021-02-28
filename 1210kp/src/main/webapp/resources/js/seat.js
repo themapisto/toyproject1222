@@ -34,7 +34,17 @@ const runningTime = document.querySelector('.runningTime');
 const selectedSeat = document.querySelector('.selectedSeat');
 const payMoney = document.querySelector('.payMoney');
 const ticketPrice = document.querySelector('.ticket-price');
+const reserveBtn = document.querySelector('.reserve-btn');
+const reserveBtnWrapper = document.querySelector('#reserve-btn-wrapper');
+// 할인
+const couponBtn = document.querySelector('.coupon_btn');
+const popUp = document.querySelector('.popup');
+const closeBtn = document.querySelector('.close-btn');
+const couponFind = document.querySelector('.coupon-find');
+const couponName = document.querySelector('.coupon-number');
+let discount = 1;
 
+// 경고창 옵션
 toastr.options = {
     positionClass: 'toast-top-right',
     progressBar: true,
@@ -75,7 +85,7 @@ function selectListUi(li){
 			alarm = true;
 			normalNumber = normalMoney = 0;
 		}
-		ticketPrice.innerHTML = allMoney + '원';
+		ticketPrice.innerHTML = allMoney*discount + '원';
 	}
 	else if(li.parentNode.classList.contains('select-seat-ul-teen')){
 		teenNumber = Number(li.innerHTML);
@@ -90,7 +100,7 @@ function selectListUi(li){
 			alarm = true;
 			teenNumber = teenMoney = 0;
 		}
-		ticketPrice.innerHTML = allMoney + '원';
+		ticketPrice.innerHTML = allMoney*discount + '원';
 	}
 	else if(li.parentNode.classList.contains('select-seat-ul-old')){
 		oldNumber = Number(li.innerHTML);
@@ -105,7 +115,7 @@ function selectListUi(li){
 			alarm = true;
 			oldNumber = oldMoney = 0;
 		}
-		ticketPrice.innerHTML = allMoney + '원';
+		ticketPrice.innerHTML = allMoney*discount + '원';
 	}
 	
 	if(alarm){
@@ -124,8 +134,9 @@ function selectListUi(li){
 		li.classList.remove('clicked');
 	});
 	selectedSeats.innerHTML = "선택된 좌석이 없습니다.";
+	remainSeats.innerHTML = seat.length;
 	
-	payMoney.value = allMoney;
+	payMoney.value = allMoney*discount;
 }
 
 // 화면에 좌석 그리기
@@ -188,11 +199,6 @@ function inputClickEvent(input){
 			// 선택한 번호의 갯수를 넘기면 동작 못하게
 			if(clicked.length > allNumber){
 				input.classList.remove('clicked');
-				toastr.options = {
-		            positionClass: 'toast-top-full-width',
-		            progressBar: true,
-		            timeOut: 1000,
-		        };
 		        toastr.error(
 		            '<div style="color:white">지정된 인원수를 넘었습니다</div>',
 		            '<div style="color:white">인원수 확인</div>', {
@@ -247,12 +253,115 @@ function mapping(input,i,j){
 	}
 }
 
+// 결제하기 버튼
+function payMent(){
+		paypal.Buttons({
+		    createOrder: function(data, actions) {
+		      // This function sets up the details of the transaction, including the amount and line item details.
+		      return actions.order.create({
+		        purchase_units: [{
+		          amount: {
+		            value: payMoney.value
+		          }
+		        }]
+		      });
+		    }
+		  }).render('#reserve-btn-wrapper');
+}
+
+// 할인 버튼 클릭 이벤트
+function couponClick(){
+	couponBtn.addEventListener('click',function(){
+		// 예매 개수 선택했는지 확인
+		if(allNumber === 0){
+			toastr.error(
+	            '<div style="color:white">수량을 선택해주세요</div>',
+	            '<div style="color:white">경고</div>', {
+	                timeOut: 3000,
+	            }
+	        );
+			return;
+		}
+		
+		// 이미 할인 받은 경우
+		if(discount !== 1){
+			toastr.warning(
+	            '<div style="color:white">이미 쿠폰이 적용되었습니다.</div>',
+	            '<div style="color:white">경고</div>', {
+	                timeOut: 3000,
+	            }
+	        );
+			return;
+		}
+		
+		popUp.style.display = 'block';
+		reserveBtnWrapper.firstChild.style.zIndex = '-1';
+		// 닫기 버튼 클릭시
+		closeBtn.addEventListener('click',function(){
+			popUp.style.display = 'none';
+			reserveBtnWrapper.firstChild.style.zIndex = '0';
+		});
+		couponFind.addEventListener('click',function(){
+			var coupon_name = couponName.value;
+			if(coupon_name.length !== 8){
+				toastr.error(
+		            '<div style="color:white">쿠폰 번호는 8글자입니다.</div>',
+		            '<div style="color:white">경고</div>', {
+		                timeOut: 3000,
+		            }
+		        );
+				return;
+			}
+		
+			$.post('/api/getCoupon?couponName='+coupon_name,function(result){
+				// 쿠폰 번호 조회
+				if(result.discount === 0){
+					toastr.error(
+			            '<div style="color:white">존재하지 않는 쿠폰번호입니다.</div>',
+			            '<div style="color:white">경고</div>', {
+			                timeOut: 3000,
+			            }
+			        );
+				}
+				else{
+					toastr.success(
+			            '<div style="color:white">할인이 적용되었습니다.</div>',
+			            '<div style="color:white">성공</div>', {
+			                timeOut: 3000,
+			            }
+			        );
+					discount = Number(result.discount) / 100;
+					// 팝업창 닫기
+					popUp.style.display = 'none';
+					reserveBtnWrapper.firstChild.style.zIndex = '0';
+					
+					// 가격에 할인 적용
+					allMoney *= (1-discount);
+					ticketPrice.innerHTML = allMoney + '원';
+					payMoney.value = allMoney;
+				}
+			});
+		});
+	})
+}
+
+// 쿠폰 번호 입력시 자동 대문자로 변환
+$(document).ready(function(){
+	$('#coupon-number').bind("keyup",function(){
+		$(this).val($(this).val().toUpperCase());
+		couponName.value = couponName.value.replace(/[^A-Z0-9]/,'');
+	});
+});
+
+
 function init(){
 	selectSeatList(selectSeatListNormal);
 	selectSeatList(selectSeatListTeen);
 	selectSeatList(selectSeatListOld);
 	makingSeats();
 	seatInterval();
+	payMent();
+	couponClick();
 }
 
 init();

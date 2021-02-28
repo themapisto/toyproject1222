@@ -29,12 +29,14 @@
 }
 
 .text_area {
+	position: relative;
 	padding: 50px 30px 30px;
 	text-align: center
 }
 
 .title{
 	font-size: 27px;
+	display: block;
 }
 
 .text{
@@ -73,4 +75,29 @@
 	left: 0;
 	background: #000;
 	opacity: 0.3;
+}
+
+.close-btn{
+	position: absolute;
+	top: 0;
+	right: 0;
+	padding: 11px;
+    background-color: #000;
+    color: #fff;
+}
+.coupon-number{
+	display: inline-block;
+    margin-top: 30px;
+    font-size: 20px;
+}
+.coupon-find{
+    width: auto;
+    height: 18px;
+    line-height: 18px;
+    text-align: center;
+    border: 1px solid #745447;
+    background-color: #926f60;
+    border-radius: 3px;
+    color: #fff;
+    padding: 0 5px;
 }

@@ -15,10 +15,12 @@ MemberDto login = (MemberDto)session.getAttribute("login");
  
     <link rel="stylesheet" href="resources/css/reset.css">
     <link rel="stylesheet" href="resources/css/header.css">
+    <link rel="stylesheet" href="resources/css/layer_popup.css">
     <link rel="stylesheet" href="resources/css/seat.css">
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
     <link rel='stylesheet' href='//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css' />
     <script src='//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js'></script>
+    <script src="https://www.paypal.com/sdk/js?client-id=AQPrrIuemnOd2qvQmtxdrRwxteZcdhs3o-0y5hZxVAdr5NqGarbDmeY0jExpXYGIVXDVK7oRpRqJ6yhz"></script>
 </head>
 
 <body>
@@ -123,6 +125,9 @@ MemberDto login = (MemberDto)session.getAttribute("login");
 								</ul>
 							</div>
 						</div>
+						<div class="coupon">
+							<button type="button" class="coupon_btn">관람 할인</button>
+						</div>
 					</div>
 				</div>
 				<div class="select-seat-information">
@@ -159,7 +164,7 @@ MemberDto login = (MemberDto)session.getAttribute("login");
 				            <input type="hidden" class="selectedSeat" name="selectedSeat">
 				            <input type="hidden" class="payMoney" name="payMoney">
 							<button type="button" class="reserve-btn">
-								<img src="">	
+								<div id="reserve-btn-wrapper"></div>
 							</button>
 						</form>
 					</div>
@@ -174,6 +179,18 @@ MemberDto login = (MemberDto)session.getAttribute("login");
 			</div>
 		</div>
 	</div>
+	<!-- 팝업창 -->
+       <div class="popup" style="display:none;">
+       	<div class="popup_layer">
+       		<div class="text_area">
+       			<button type="button" class="close-btn">x</button>
+       			<strong class="title">쿠폰 번호 입력</strong>
+       			<input type="text" id="coupon-number" class="coupon-number" name="coupon-number" maxlength="8" placeholder="쿠폰번호를 입력해주세요">
+       			<button type="button" class="coupon-find">확인</button>
+       		</div>
+       	</div>
+       	<div class="popup_dimmed"></div>
+       </div>
 </body>
 <script src="resources/js/seat.js"></script>
 </html>
