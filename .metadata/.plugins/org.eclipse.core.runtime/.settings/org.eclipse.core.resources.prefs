@@ -1,3 +1,9 @@
+<<<<<<< HEAD:.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.core.resources.prefs
 eclipse.preferences.version=1
 encoding=UTF-8
 version=1
+=======
+eclipse.preferences.version=1
+encoding//src/main/resources/config/config.properties=UTF-8
+encoding//src/main/webapp/WEB-INF/views/admin/userList.jsp=UTF-8
+>>>>>>> Bchan:1210kp/.settings/org.eclipse.core.resources.prefs

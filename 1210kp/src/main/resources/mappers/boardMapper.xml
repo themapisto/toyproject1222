@@ -6,8 +6,13 @@
 
 
 <!-- 게시물 목록 -->
+<<<<<<< HEAD
 <select id="list" resultType="com.kdis.demo.board.BoardVO">
  select * from movie
+=======
+<select id="list" resultType="com.kdis.demo.BoardVO">
+ select * from tbl_board
+>>>>>>> Bchan
 </select>
 
 </mapper>

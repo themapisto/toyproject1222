@@ -1,0 +1,13 @@
+p{
+    font-size:100px;
+}
+button{
+    width:80px;
+    height:40px;
+    background-color: white;
+}
+body{
+	background-color: black;
+	text-align:center;
+	color:white;
+}

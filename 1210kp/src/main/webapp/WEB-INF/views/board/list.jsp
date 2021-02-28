@@ -1,4 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page session="false" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -8,9 +9,10 @@
 
 
 <head>
-<meta charset="UTF-8">
-<title>insert title here</title>
+	<link href="/css/default.css" rel="stylesheet" type="text/css">
+	<title>insert title here</title>
 </head>
+<<<<<<< HEAD
 
 <link rel="stylesheet" href="/resources/css/reset.css" type="text/css">
 <link rel="stylesheet" href="/resources/css/list.css" type="text/css">
@@ -45,6 +47,21 @@
  <h3>2위</h3>
  <img src="/resources/images/2.jpg" alt="국평" class="img-kp">
 <h3>신세계</h3>
+=======
+<body>
+<%@include file="/WEB-INF/views/common/header.jsp" %>
+
+<table>
+ <thead>
+  <tr>
+   <th>번호</th>
+   <th>제목</th>
+   <th>작성일</th>
+   <th>작성자</th>
+   <th>조회수</th>
+  </tr>
+ </thead>
+>>>>>>> Bchan
  
  </div>
   <div class="img-thumbnail">
@@ -68,9 +85,17 @@
  <tbody>
   <c:forEach items="${list}" var="list">
  <tr>
+<<<<<<< HEAD
   <td>${list.movieCd}</td>
   <td>${list.movieNm}</td>
 
+=======
+  <td>${list.bno}</td>
+  <td>${list.title}</td>
+  <td>${list.regDate}</td>
+  <td>${list.writer}</td>
+  <td>${list.viewCnt}</td>
+>>>>>>> Bchan
  </tr>
 </c:forEach>
  </tbody>
