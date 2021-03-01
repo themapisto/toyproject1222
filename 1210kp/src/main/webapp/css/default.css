@@ -131,6 +131,7 @@ html, body{
 .joinContents .inputBox > input {
 	width:370px;
 	height:30px;
+	border:solid 1px;	/* input 박스 테두리 유지하기 */
 }
 .joinContents .loginSrch{
 	color:gray;
@@ -408,11 +409,13 @@ aside > ul > li , .menu > ul > li{
     transform: translate(-50%);
     height:500px;
 }
-#userTable table, tr, td, th{
+
+/*  다른 테이블도 깨짐*/
+/* #userTable > table, tr, td, th{
     text-align: center;
     border:2px solid black;
     border-collapse: collapse;
-}
+} */
 
 /* 테이블 색상 구분 - col로 묶으려했더니 font 컬러가 적용이 안됌 */
 #userTable th:nth-child(odd), #userTable td:nth-child(odd){
@@ -442,7 +445,7 @@ aside > ul > li , .menu > ul > li{
     height: 34px;
 }
 
-button{
+#filter button{
     all:unset;
     width:60px;
     height:34px;
