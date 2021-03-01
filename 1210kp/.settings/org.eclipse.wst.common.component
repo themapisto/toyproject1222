@@ -1,53 +1,4 @@
-<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
-                	
-    
-    
-    
-    <wb-module deploy-name="demo-1.0.0-BUILD-SNAPSHOT">
-                                        
-        
-        
-        
-        <wb-resource deploy-path="/" source-path="/target/m2e-wtp/web-resources"/>
-                                		
-        
-        
-        
-        <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
-                                		
-        
-        
-        
-        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
-                                		
-        
-        
-        
-        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
-                                		
-        
-        
-        
-        <property name="java-output-path" value="target/classes"/>
-                                        
-        
-        
-        
-        <property name="context-root" value="demo"/>
-                                	
-    
-    
-    
-    </wb-module>
-                
-
-
-
-</project-modules>
-=======
-<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
-<<<<<<< HEAD
                     	
     
     
@@ -78,7 +29,6 @@
         
         
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
-        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/test/resources"/>
                                         		
         
         
@@ -102,16 +52,4 @@
 
 
 
-=======
-	<wb-module deploy-name="demo-1.0.0-BUILD-SNAPSHOT">
-        <wb-resource deploy-path="/" source-path="/target/m2e-wtp/web-resources"/>
-		<wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
-		<wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
-        <wb-resource deploy-path="/" source-path="/src/main/webapp/webapp"/>
-        <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
-		<property name="java-output-path" value="target/classes"/>
-        <property name="context-root" value="demo"/>
-	</wb-module>
->>>>>>> Bchan
 </project-modules>
->>>>>>> bbb8a0d797cc0aa3dacce885f6fc9a4142ecca00

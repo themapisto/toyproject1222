@@ -1,4 +1,4 @@
-package prjc.baechan.member;
+package com.kdis.demo.controller;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -13,9 +13,11 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.kdis.demo.service.LoginService;
+import com.kdis.demo.service.MemberService;
+import com.kdis.demo.vo.UserVo;
+
 import prjc.baechan.common.SHA256Util;
-import prjc.baechan.common.UserVO;
-import prjc.baechan.login.LoginService;
 
 @Controller
 @RequestMapping("/member/*")
@@ -47,7 +49,7 @@ public class MemberController{
 		 HashMap<String,Object> paramMap = new HashMap<String,Object>();
 		 paramMap.put("userId", userId);
 		 
-		 UserVO userVO = MemberService.selectMyInfo(paramMap);
+		 UserVo userVO = MemberService.selectMyInfo(paramMap);
 		 
 		 String grade = userVO.getGrade();
 	
@@ -72,7 +74,7 @@ public class MemberController{
 		 HashMap<String,Object> paramMap = new HashMap<String,Object>();
 		 paramMap.put("userId", userId);
 		 
-		 UserVO userVO = MemberService.selectMyInfo(paramMap);
+		 UserVo userVO = MemberService.selectMyInfo(paramMap);
 				 
 		 String grade = userVO.getGrade();
 	

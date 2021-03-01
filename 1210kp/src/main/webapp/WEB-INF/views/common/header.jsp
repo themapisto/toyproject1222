@@ -27,14 +27,14 @@
 		</div>
 		<div class="img">
 			<a href="/">
-				<img src="/image/logo.png" alt="로고">
+				<img src="/resources/images/logo.png" alt="로고">
 			</a>
 		</div>
 		<br>
 		<div class="nav">
 			<div class="navList">
 				<button>
-					<img src="/image/menu.png" alt="사이트맵">
+					<img src="/resources/images/menu.png" alt="사이트맵">
 				</button>
 				<ul>
 					<li>

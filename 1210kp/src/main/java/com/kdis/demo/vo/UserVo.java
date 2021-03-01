@@ -1,8 +1,8 @@
-package prjc.baechan.common;
+package com.kdis.demo.vo;
 
 import java.util.Date;
 
-public class UserVO {
+public class UserVo {
 
 	private String userId;
 	private String userNm;

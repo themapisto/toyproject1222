@@ -1,4 +1,4 @@
-package prjc.baechan.login;
+package com.kdis.demo.controller;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
@@ -21,9 +22,11 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.kdis.demo.service.LoginService;
+import com.kdis.demo.service.MemberService;
+import com.kdis.demo.vo.UserVo;
+
 import prjc.baechan.common.SHA256Util;
-import prjc.baechan.common.UserVO;
-import prjc.baechan.member.MemberService;
 
 @Controller
 @RequestMapping("/login/*")
@@ -35,7 +38,7 @@ public class LoginController{
 	 @Inject
 	 private MemberService MemberService;
 	 
-	 @Resource(name="mailSender")
+	 @Autowired
 	 private JavaMailSender mailSender; 
 	 
 	 @RequestMapping(value = "/login")
@@ -85,7 +88,7 @@ public class LoginController{
 		 
 		 // 로그인 계정 체크 후 회원정보 가져오기
 		 loginChk = LoginService.loginSubmit(paramMap);
-		 UserVO userVO = MemberService.selectMyInfo(paramMap);
+		 UserVo userVO = MemberService.selectMyInfo(paramMap);
 		 
 		 // 회원 로그인 실패 횟수 가져와서 로그인 할 수 있는 상태인지 판별
 		 Integer loginFailCount = userVO.getLoginFailCount();

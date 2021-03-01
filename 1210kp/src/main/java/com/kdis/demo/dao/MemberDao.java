@@ -1,16 +1,16 @@
-package prjc.baechan.member;
+package com.kdis.demo.dao;
 
 import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.stereotype.Repository;
 
-import prjc.baechan.common.UserVO;
+import com.kdis.demo.vo.UserVo;
 
 @Repository
-public interface MemberDAO {
+public interface MemberDao {
 
-	public UserVO selectMyInfo(Map<String, Object> paramMap) throws Exception;
+	public UserVo selectMyInfo(Map<String, Object> paramMap) throws Exception;
 
 	public int updateMyInfo(HashMap<String, Object> paramMap) throws Exception;
 

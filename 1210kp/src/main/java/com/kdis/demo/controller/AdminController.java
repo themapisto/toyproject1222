@@ -1,4 +1,4 @@
-package prjc.baechan.admin;
+package com.kdis.demo.controller;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -16,10 +16,11 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.kdis.demo.service.LoginService;
+import com.kdis.demo.service.MemberService;
+import com.kdis.demo.vo.UserVo;
+
 import prjc.baechan.common.SHA256Util;
-import prjc.baechan.common.UserVO;
-import prjc.baechan.login.LoginService;
-import prjc.baechan.member.MemberService;
 
 @Controller
 @RequestMapping("/admin/*")
@@ -70,7 +71,7 @@ public class AdminController {
 		 
 		// 로그인 계정 체크 후 회원정보 가져오기
 		loginChk = LoginService.adminLoginSubmit(paramMap);
-		UserVO userVO = MemberService.selectMyInfo(paramMap);
+		UserVo userVO = MemberService.selectMyInfo(paramMap);
 		 
 		// 회원 로그인 실패 횟수 가져와서 로그인 할 수 있는 상태인지 판별
 		Integer loginFailCount = userVO.getLoginFailCount();

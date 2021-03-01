@@ -1,4 +1,4 @@
-package prjc.baechan.login;
+package com.kdis.demo.dao;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -6,7 +6,7 @@ import java.util.Map;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface LoginDAO{
+public interface LoginDao{
 	
 	public Integer userJoin(Map<String, Object> paramMap) throws Exception;
 

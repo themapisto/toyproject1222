@@ -11,44 +11,21 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
-
-import javax.inject.Inject;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
-import com.kdis.demo.service.BoardService;
-import com.kdis.demo.vo.BoardVO;
 
 
 
 @Controller
 @RequestMapping("/board/*")
 public class BoardController {
-
-	@Inject
-	 private BoardService service;
-
-
-	@RequestMapping(value = "/list", method = RequestMethod.GET)
-	 public void getList(Model model) throws Exception {
-		
-		 
-	  List<BoardVO> list = null;
-	  list = service.list();
-	  model.addAttribute("list", list);
-	  
-	 }
-
 	
-	
-	
+	// 일일 박스 오피스 목록 조회
 	@RequestMapping(value ="/api", method= RequestMethod.GET)
 	public void getApi() throws Exception {
 		 

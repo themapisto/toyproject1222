@@ -1,4 +1,4 @@
-package prjc.baechan.login;
+package com.kdis.demo.service;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -7,11 +7,13 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
+import com.kdis.demo.dao.LoginDao;
+
 @Service
-public class LoginService implements LoginDAO{
+public class LoginService implements LoginDao{
 
 	@Inject
-	private LoginDAO LoginDAO;
+	private LoginDao LoginDAO;
 	 
 	public Integer userJoin(Map<String, Object> paramMap) throws Exception{
 		return LoginDAO.userJoin(paramMap);

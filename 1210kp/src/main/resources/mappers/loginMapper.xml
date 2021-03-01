@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="prjc.baechan.login.LoginDAO">
+<mapper namespace="com.kdis.demo.dao.LoginDao">
 
 	<!-- 회원가입 -->
 	<insert id="userJoin" parameterType="Map">
