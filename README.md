@@ -39,3 +39,4 @@ mariaDB - port : 13306 , (root/1111) 입니다.
 
 localhost:8080/reserve로 들어가면 예매 진행할 수 있습니다.
 좌석 선택 페이지로 들어가시면 `관람 할인` 버튼 누르실 때 위쪽의 db table에서 `coupon` 테이블 생성하시고 진행하시면 됩니다. dml도 추가해두었습니다.
+server.xml 맨 아래부분에서 <Context> 에서 path="/" 로 해주셔야 합니다.
