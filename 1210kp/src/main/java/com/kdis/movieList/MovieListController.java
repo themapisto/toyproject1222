@@ -1,6 +1,6 @@
-package com.kdis.demo;
+package com.kdis.movieList;
 
-import com.kdis.demo.MovieVO;
+import com.kdis.movieList.MovieVO;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
@@ -19,6 +19,7 @@ import org.apache.ibatis.session.SqlSession;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.mariadb.jdbc.internal.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Repository;
@@ -27,29 +28,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-@RequestMapping("/board/*")
-public class BoardController {
+@RequestMapping("/movie/*")
+public class MovieListController {
 
 	@Inject
-	private BoardService service;
+	private MovieListService service;
 
 	
-    MovieVO vo = new MovieVO();;
+    MovieVO vo = new MovieVO();
 
 	@Inject
 	private SqlSession sqlSession;
 
-	@RequestMapping(value = "/list", method = RequestMethod.GET)
-	public void getList(Model model) throws Exception {
 
-		List<BoardVO> list = null;
-		list = service.list();
-		model.addAttribute("list", list);
-
-	}
-
-	@RequestMapping(value = "/api", method = RequestMethod.GET)
-	public void getApi() throws Exception {
+	@RequestMapping(value = "/movieMain", method = RequestMethod.GET)
+	public String getApi() throws Exception {
 
 		String REQUEST_URL = "http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json";
 		String AUTH_KEY = "0a49df840ef75532829c0570cee0b18b";
@@ -102,6 +95,10 @@ public class BoardController {
 			Iterator<Object> iter = dailyBoxOfficeList.iterator();
 			System.out.println(dailyBoxOfficeList);
 			while (iter.hasNext()) {
+				
+				//기존 데이터와 비교해서 중복되지 않도록 처리 
+				
+				
 				JSONObject boxOffice = (JSONObject) iter.next();
 				System.out.print("??" + boxOffice.get("movieNm"));
 
@@ -118,12 +115,29 @@ public class BoardController {
 				System.out.printf("{순위:%s, 제목:%s, 개봉일:%s, 누적관객수:%s}\n", boxOffice.get("rank"), boxOffice.get("movieNm"),
 						boxOffice.get("openDt"), boxOffice.get("audiAcc"));
 
+
 			}
 
 		} catch (Exception e) {
 
 			e.printStackTrace();
 		}
+		 return "/movie/movieMain";
 	}
+	
+	@RequestMapping(value = "/dailyBoxOf", method = RequestMethod.GET)
+	public String list(Model model) throws Exception {
+		
+		model.addAttribute("list", service.list());
+		System.out.println("dddd"+service.list());
+		return "/movie/dailyBoxOf";
+	 }
+	 
+    
+	 @RequestMapping(value = "/weeklyBoxOf")
+	 public String weeklyBoxOf() throws Exception {
+		 return "/movie/weeklyBoxOf";
+	 }
+	 
 
 }

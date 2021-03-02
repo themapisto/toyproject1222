@@ -1,4 +1,4 @@
-package com.kdis.demo;
+package com.kdis.movieList;
 
 import java.text.DateFormat;
 import java.util.Date;
