@@ -13,10 +13,10 @@ MemberDto login = (MemberDto)session.getAttribute("login");
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
  
-    <link rel="stylesheet" href="resources/css/reset.css">
-    <link rel="stylesheet" href="resources/css/header.css">
-    <link rel="stylesheet" href="resources/css/layer_popup.css">
-    <link rel="stylesheet" href="resources/css/seat.css">
+    <link rel="stylesheet" href="/resources/css/reset.css">
+    <link rel="stylesheet" href="/resources/css/header.css">
+    <link rel="stylesheet" href="/resources/css/layer_popup.css">
+    <link rel="stylesheet" href="/resources/css/seat.css">
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
     <link rel='stylesheet' href='//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css' />
     <script src='//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js'></script>

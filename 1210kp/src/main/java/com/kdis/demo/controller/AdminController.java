@@ -28,7 +28,7 @@ public class AdminController {
 	
 	@Inject
 	private LoginService LoginService;
-	 
+	
 	@Inject
 	private MemberService MemberService;
 	
