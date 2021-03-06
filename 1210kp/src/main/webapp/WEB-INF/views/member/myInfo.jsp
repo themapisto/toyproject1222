@@ -7,9 +7,10 @@
 </head>
 <body>
 	<%@include file="/WEB-INF/views/common/header.jsp"%>
-	<h2>MOVIE BOX 마이페이지</h2>
-	<hr>
+	<%@include file="/WEB-INF/views/common/sidebar.jsp" %>
+	
 	<div class="myInfoContents">
+		<h1>회원정보</h1>
 		<table>
 			<colgroup>
 				<col style="width: 20%">

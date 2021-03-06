@@ -53,7 +53,7 @@
 		
 		<!-- 세션 타임아웃 시작 -->
 		<session-config>
-			<session-timeout>1</session-timeout>
+			<session-timeout>30</session-timeout>
 		</session-config>
 		<!-- 세션 타임아웃 끝 -->
 		

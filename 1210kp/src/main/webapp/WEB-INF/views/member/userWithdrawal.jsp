@@ -7,8 +7,8 @@
 </head>
 <body>
 	<%@include file="/WEB-INF/views/common/header.jsp"%>
-	<h2>MOVIE BOX 회원탈퇴</h2>
-	<hr>
+	<%@include file="/WEB-INF/views/common/sidebar.jsp" %>
+	
 	<div class="myInfoModifyContents">
 		<h1>회원탈퇴</h1>
 	   	<h2>회원 탈퇴를 하시기 전에 다음의 내용을 꼭 확인해주시기 바랍니다.</h2>

@@ -9,9 +9,11 @@
 </head>
 <body>
 	<%@include file="/WEB-INF/views/common/header.jsp"%>
-	<h2>MOVIE BOX 마이페이지 수정화면</h2>
-	<hr>
+	<%@include file="/WEB-INF/views/common/sidebar.jsp" %>
+	
+
 	<div class="myInfoModifyContents">
+		<h1>비밀번호변경</h1>
 	    <form id="pwChangeForm" name="pwChangeForm" onsubmit="return false;">
 	      	<table>
 		        <colgroup>

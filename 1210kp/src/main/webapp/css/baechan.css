@@ -84,14 +84,18 @@ html, body{
 }
 
 .myInfoContents{
+  margin-left: 190px;
   width:1048px;
   height:200px;
-  position: relative;
-  left:50%;
   padding:30px;
-  transform:translate(-50%);
+
+}
+
+.myInfoContents h1{
+  text-align:center;
 }
 .myInfoContents table{
+  margin: 5px 0px 0px 90px;  
   border-collapse : collapse;
   border : solid 0.1px #d7d7d7;
   font-size: 18px;
@@ -128,16 +132,20 @@ html, body{
   cursor: pointer;
 }
 .myInfoModifyContents{
-  padding:30px;
+	margin-left: 370px;
+	width:700px;
+    padding: 30px;
+    text-align: center;
+}
+
+.myInfoModifyContents h1{
   text-align:center;
 }
+
 .myInfoModifyContents table{
-  position: relative;
-  left:50%;
-  transform:translate(-50%);
   border-collapse : collapse;
   border : solid 0.1px #d7d7d7;
-  margin-top:5px;
+  margin: 5px 0px 0px 90px;  
   font-size: 18px;
 }
 .myInfoModifyContents th{
@@ -296,6 +304,7 @@ aside{
     height:100%;
     background-color: #132a3d;
     color:white;
+    float:left;
 }
 #lnbNav, #lnbNav ul{
     list-style : none;
@@ -311,7 +320,9 @@ aside > ul > li , .menu > ul > li{
     padding-left: 20px;
     cursor: pointer;
 }
+
 .menu li > a{
+	all:unset;
     width:200px;
     font-size:18px;
     padding-left:20px;
