@@ -26,6 +26,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class BoardController {
 	
 	// 일일 박스 오피스 목록 조회
+	//hi
 	@RequestMapping(value ="/api", method= RequestMethod.GET)
 	public void getApi() throws Exception {
 		 
