@@ -8,68 +8,10 @@ html, body{
     height: 100%;
 }
     
-.button{
-	all:"unset";
-	width:80px;
-	height:40px;
-	border:1px solid;
-	border-radius:12px;
-	background-color:#7aa5d2; 
-	color:white;
-	font-weight:bold;
-	font-size:12px;
-}
 .req:before {
   content: '*';
   color: red;
   font-size: 16px;
-}
-
-.header li, .header a, .header ul, .header button{
-	all:unset;
-	cursor:pointer;
-}
-
-.header{
-	background-color:#7aa5d2; 
-	color:white;
-}
-.header a:visited, .adminHeader a:visited{
-	color:white;
-}
-.header .img{
-	text-align:center;
-	height:106.5px;
-}
-.header .img > a > img{
-	width:300px; 
-	height:106.5px;
-}
-.header .gnb {
-    position:relative;
-    height:30px;
-    margin:0 auto;
-    padding-top:5px;
-    padding-right:20px;
-}
-.header .nav{
-	font-size:30px;
-}
-.header .nav .navList{
-	padding-bottom:5px;
-	text-align:center;
-}
-.header .nav .navList > ul > li > a{
-	position:relative;
-	left:-28px;
-	margin:10px;
-}
-.header .nav .navList > button{
-	float:left; 
-}
-.header .nav .navList > button > img{
-	width:20px;
-	padding:15px;
 }
 
 
