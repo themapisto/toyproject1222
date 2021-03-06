@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link href="resources/css/error.css" rel="stylesheet" type="text/css">
+<link href="/resources/css/error.css" rel="stylesheet" type="text/css">
 <title>Error</title>
 </head>
 <body>
