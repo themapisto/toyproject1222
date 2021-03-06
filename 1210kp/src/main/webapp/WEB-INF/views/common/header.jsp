@@ -38,7 +38,7 @@
 				</button>
 				<ul>
 					<li>
-						<a href="#" title="예매">예매</a>
+						<a href="/reserve" title="예매">예매</a>
 						<div style="display:none;">
 							<ul style="opacity:0;">
 								<li>
