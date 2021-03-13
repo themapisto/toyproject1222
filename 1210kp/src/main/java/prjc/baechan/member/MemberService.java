@@ -1,12 +1,15 @@
 package prjc.baechan.member;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
+import prjc.baechan.common.CouponVO;
+import prjc.baechan.common.UserCouponVO;
 import prjc.baechan.common.UserVO;
 
 @Service
@@ -32,6 +35,18 @@ public class MemberService implements MemberDAO{
 	
 	public int updateUserState(HashMap<String,Object> paramMap) throws Exception{
 		return MemberDAO.updateUserState(paramMap);
+	}
+
+	public CouponVO selectCouponInfo(String couponId) throws Exception{
+		return MemberDAO.selectCouponInfo(couponId);
+	}
+
+	public int insertCouponRegister(HashMap<String, Object> paramMap) throws Exception {
+		return MemberDAO.insertCouponRegister(paramMap);
+	}
+
+	public List<HashMap<String,Object>> selectMyCoupon(HashMap<String, Object> paramMap) throws Exception {
+		return MemberDAO.selectMyCoupon(paramMap);
 	}
 
 }

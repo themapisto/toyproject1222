@@ -17,8 +17,8 @@
 	        <li class="menu" id="menu2">
 	            <div>쿠폰정보</div>
 	            <ul>
-	                <li><a>내 쿠폰</a></li>
-	                <li><a>쿠폰등록하기</a></li> 
+	                <li><a href="/member/myCoupon">쿠폰내역조회</a></li>
+	                <li><a href="/member/couponRegister">쿠폰등록하기</a></li> 
 	            </ul>
 	        </li>
 	    </ul>
