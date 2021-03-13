@@ -183,6 +183,57 @@ html, body{
   font-size:18px;
 }
 
+.searchContents{
+	margin-left: 80px;
+	width:700px;
+    padding: 30px;
+    text-align: center;
+}
+
+.searchContents h1{
+  text-align:center;
+}
+
+.searchContents table{
+  border-collapse : collapse;
+  border : solid 0.1px #d7d7d7;
+  margin: 5px 0px 0px 90px;  
+  font-size: 18px;
+}
+.searchContents th{
+  width:200px;
+  height: 50px;
+  color: white;
+  background-color: #7aa5d2;
+  border-collapse : collapse;
+  border : solid 0.1px #d7d7d7;
+}
+.myInfoModifyContents td{
+  max-width : 300px;
+  height: 50px;
+  border-collapse : collapse;
+  border : solid 0.1px #d7d7d7;
+  padding-left : 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.searchContents button{
+  all:unset;
+  width:130px;
+  height: 30px;
+  background-color: #7aa5d2;
+  color:white;
+  margin: 20px 5px 20px 5px;
+  padding :4px;
+  cursor: pointer;
+}
+.searchContents input{
+  margin : 5px;
+  width:260px;
+  height:30px;
+  font-size:18px;
+}
 #certificationContents{
 	display:none;	
 }

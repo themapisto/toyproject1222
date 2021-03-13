@@ -6,7 +6,7 @@
 	<%@include file="/WEB-INF/views/common/common.jsp"%>
 </head>
 <body>	
- 	<div class="myInfoModifyContents">
+ 	<div class="searchContents">
 	    <h1>아이디 찾기</h1>
 	    <form id="idSearchForm" name="idSearchForm" onsubmit="return false;">
 	      <table>
