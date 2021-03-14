@@ -12,8 +12,8 @@ public class MovieListService {
 	@Inject
 	private MovieListDAO dao;
 
-	public List<MovieVO> list() throws Exception {
-		return dao.list();
+	public List<MovieVO> list(String movieVal, String insertDt) throws Exception {
+		return dao.list(movieVal, insertDt);
 	}
 
 }

@@ -43,8 +43,8 @@ public class MovieListController {
 	public String list(Model model) throws Exception {
 
 		String REQUEST_URL = "http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json";
-		String AUTH_KEY = "0a49df840ef75532829c0570cee0b18b";
-		SimpleDateFormat DATE_FMT = new SimpleDateFormat("yyyyMMdd");
+		String AUTH_KEY = "92be55421c9d9393f92251cbcb6fea1a";
+		SimpleDateFormat DATE_FMT = new SimpleDateFormat("20210311");
 		Calendar cal = Calendar.getInstance();
 		cal.setTime(new Date());
 		cal.add(Calendar.DATE, -1);
@@ -56,6 +56,8 @@ public class MovieListController {
 		paramMap.put("itemPerPage", "0");
 		paramMap.put("multiMovieYn", "N");
 		paramMap.put("repNationCd", "K");
+	
+		System.out.println(vo.getInsertDt()+"문제없어");
 
 		StringBuilder sb = new StringBuilder();
 
@@ -84,6 +86,8 @@ public class MovieListController {
 				response.append(readline);
 			}
 
+		
+			
 			System.out.println(response);
 			JSONObject responseBody = new JSONObject(response.toString());
 			System.out.println(responseBody);
@@ -94,18 +98,18 @@ public class MovieListController {
 			Iterator<Object> iter = dailyBoxOfficeList.iterator();
 			System.out.println(dailyBoxOfficeList);
 			while (iter.hasNext()) {
-
+				System.out.println("asd");
 				// 기존 데이터와 비교해서 중복되지 않도록 처리
 
 				JSONObject boxOffice = (JSONObject) iter.next();
-				System.out.print("??" + boxOffice.get("movieNm"));
-			
+				vo.setMovieVal("daily");
 				vo.setMovieCd(boxOffice.get("movieCd").toString());
 				vo.setMovieNm(boxOffice.get("movieNm").toString());
 				vo.setRank(boxOffice.get("rank").toString());
 				vo.setOpenDt(boxOffice.get("openDt").toString());
 				vo.setAudiAcc(boxOffice.get("audiAcc").toString());
 				vo.setSalesAmt(boxOffice.get("salesAmt").toString());
+				vo.setInsertDt(DATE_FMT.format(cal.getTime()));
 				// System.out.println(DATE_FMT);
 
 				System.out.print("??" + vo.getAudiAcc() + "???" + vo.getMovieNm() + "sddd" + vo.getMovieCd() + "???"
@@ -122,8 +126,7 @@ public class MovieListController {
 			e.printStackTrace();
 		}
 
-		model.addAttribute("list", service.list());
-		System.out.println("dddd" + service.list());
+	//	model.addAttribute("list", service.list(vo.getMovieVal(), vo.getInsertDt()));
 
 		return "/movie/dailyBoxOf";
 	}
@@ -132,7 +135,7 @@ public class MovieListController {
 	public String weeklyList(Model model) throws Exception {
 
 		String REQUEST_URL = "http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchWeeklyBoxOfficeList.json";
-		String AUTH_KEY = "0a49df840ef75532829c0570cee0b18b";
+		String AUTH_KEY = "92be55421c9d9393f92251cbcb6fea1a";
 		SimpleDateFormat DATE_FMT = new SimpleDateFormat("yyyyMMdd");
 		Calendar cal = Calendar.getInstance();
 		cal.setTime(new Date());
@@ -146,7 +149,7 @@ public class MovieListController {
 		paramMap.put("itemPerPage", "10");
 		paramMap.put("multiMovieYn", "N");
 		paramMap.put("repNationCd", "K");
-
+	
 		StringBuilder sb = new StringBuilder();
 
 		for (String mapkey : paramMap.keySet()) {
@@ -188,13 +191,15 @@ public class MovieListController {
 				// 기존 데이터와 비교해서 중복되지 않도록 처리
 
 				JSONObject boxOffice = (JSONObject) iter.next();
-				System.out.print("??" + boxOffice.get("movieNm"));			
+				System.out.print("??" + boxOffice.get("movieNm"));	
+				vo.setMovieVal("weekly");
 				vo.setMovieCd(boxOffice.get("movieCd").toString());
 				vo.setMovieNm(boxOffice.get("movieNm").toString());
 				vo.setRank(boxOffice.get("rank").toString());
 				vo.setOpenDt(boxOffice.get("openDt").toString());
 				vo.setAudiAcc(boxOffice.get("audiAcc").toString());
 				vo.setSalesAmt(boxOffice.get("salesAmt").toString());
+				vo.setInsertDt(DATE_FMT.format(cal.getTime()));
 				// System.out.println(DATE_FMT);
 
 				System.out.print("??" + vo.getAudiAcc() + "???" + vo.getMovieNm() + "sddd" + vo.getMovieCd() + "???"
@@ -211,8 +216,10 @@ public class MovieListController {
 			e.printStackTrace();
 		}
 
-		model.addAttribute("list", service.list());
-		System.out.println("dddd" + service.list());
+	
+		
+		model.addAttribute("list", service.list(vo.getMovieVal(), vo.getInsertDt()));
+
 		return "/movie/weeklyBoxOf";
 	}
 

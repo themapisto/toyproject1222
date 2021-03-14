@@ -4,7 +4,7 @@ import java.util.List;
 
 public interface MovieListDAO {
 
-	public List<MovieVO> list() throws Exception; 
+	public List<MovieVO> list(String movieVal, String insertDt) throws Exception; 
 		
  }
 

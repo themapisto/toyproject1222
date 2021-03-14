@@ -5,15 +5,19 @@
 <mapper namespace="com.kdis.movieList.MovieListDAO">
 
 
-<!-- 게시물 목록 -->
+	<!-- 게시물 목록 -->
 
-<insert id="movieInsert">
- Insert into movie (movieCd, movieNm, rank, openDt, audiAcc, salesAmt)
-       values (#{movieCd},#{movieNm},#{rank},#{openDt},#{audiAcc},#{salesAmt})
-</insert>
-<select id="list" resultType="com.kdis.movieList.MovieVO">
-select movieCd, movieNm, rank, openDt, audiAcc, salesAmt from movie
-</select>
+	<insert id="movieInsert">
+		Insert into movie (movieVal, movieCd, movieNm, rank, openDt, audiAcc,salesAmt, insertDt)
+		values (#{movieVal},#{movieCd},#{movieNm},#{rank},#{openDt},#{audiAcc},#{salesAmt},#{insertDt})
+	</insert>
+
+	<select id="list" resultType="com.kdis.movieList.MovieVO">
+		select movieCd, movieNm, rank,
+		openDt, audiAcc, salesAmt from movie
+		where movieVal = #{movieVal} and
+		insertDt =#{insertDt}
+	</select>
 </mapper>
 
  
