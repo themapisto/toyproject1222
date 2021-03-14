@@ -88,7 +88,6 @@ html, body{
   width:1048px;
   height:200px;
   padding:30px;
-
 }
 
 .myInfoContents h1{
@@ -131,6 +130,7 @@ html, body{
   text-align:center;
   cursor: pointer;
 }
+
 .myInfoModifyContents{
 	margin-left: 370px;
 	width:700px;
@@ -183,6 +183,57 @@ html, body{
   font-size:18px;
 }
 
+.searchContents{
+	margin-left: 80px;
+	width:700px;
+    padding: 30px;
+    text-align: center;
+}
+
+.searchContents h1{
+  text-align:center;
+}
+
+.searchContents table{
+  border-collapse : collapse;
+  border : solid 0.1px #d7d7d7;
+  margin: 5px 0px 0px 90px;  
+  font-size: 18px;
+}
+.searchContents th{
+  width:200px;
+  height: 50px;
+  color: white;
+  background-color: #7aa5d2;
+  border-collapse : collapse;
+  border : solid 0.1px #d7d7d7;
+}
+.myInfoModifyContents td{
+  max-width : 300px;
+  height: 50px;
+  border-collapse : collapse;
+  border : solid 0.1px #d7d7d7;
+  padding-left : 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.searchContents button{
+  all:unset;
+  width:130px;
+  height: 30px;
+  background-color: #7aa5d2;
+  color:white;
+  margin: 20px 5px 20px 5px;
+  padding :4px;
+  cursor: pointer;
+}
+.searchContents input{
+  margin : 5px;
+  width:260px;
+  height:30px;
+  font-size:18px;
+}
 #certificationContents{
 	display:none;	
 }
@@ -355,36 +406,33 @@ aside > ul > li , .menu > ul > li{
     color:white;
 }
 
-#userTable{
-    position: absolute;
-    left:50%;
-    top:20%;
-    transform: translate(-50%);
-    height:500px;
+/* 쿠폰 사용여부에 따른 테이블 변경용 */
+.couponUseViewBtn{
+  all:unset;
+  position: relative;
+  left:35%;
+  transform:translate(-50%);
+  width:400px;
+  height:50px;
+  background-color:#7aa5d2;
+  color:white;
+  text-align:center;
+  cursor: pointer;
+  margin: 0px -3px 20px -3px; 
 }
 
-/*  다른 테이블도 깨짐*/
-/* #userTable > table, tr, td, th{
+.userTable {
     text-align: center;
-    border:2px solid black;
     border-collapse: collapse;
+} 
+
+/* 테이블 색상 구분 - col로 묶으려했더니 font 컬러가 적용이 안됌
+.userTable th:nth-child(odd), #userTable td:nth-child(odd){
+    background-color: #7aa5d2;
 } */
 
-/* 테이블 색상 구분 - col로 묶으려했더니 font 컬러가 적용이 안됌 */
-#userTable th:nth-child(odd), #userTable td:nth-child(odd){
-    background-color: #00f3be;
-}
-
 #filter{
-    position:absolute;
-    left:50%;
-    top:10%;
-    transform: translate(-50%);
-
-    width:1143px;
-    height: 50px;
-    border:1px solid black;
-
+	border:2px solid black;	
 }
 
 #filter > input{
@@ -402,7 +450,7 @@ aside > ul > li , .menu > ul > li{
     all:unset;
     width:60px;
     height:34px;
-    background-color: #00f3be;
+    background-color: #7aa5d2;
     text-align: center;
     float:right;
     margin:10px;

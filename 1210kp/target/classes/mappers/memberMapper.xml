@@ -39,5 +39,34 @@
 		set userState = #{userState}
 		where userId = #{userId}
 	</update>
-
+	
+	<!-- 쿠폰정보가져오기 -->
+	<select id="selectCouponInfo" parameterType="String" resultType="com.kdis.demo.vo.CouponVO">
+		select *
+		from COUPON
+		where couponId = #{couponId}
+	</select>
+	
+	<!-- 쿠폰등록하기 -->
+	<insert id="insertCouponRegister" parameterType="Map">
+		INSERT INTO usercoupon(couponId,userId,registDt,expireDt,useChk) 
+		VALUES (#{couponId},#{userId},NOW(),DATE_ADD(NOW(), INTERVAL #{usePeriod} DAY),"1");
+	</insert>
+	
+	<!-- my쿠폰불러오기 -->
+	<select id="selectMyCoupon" parameterType="Map" resultType="com.kdis.demo.vo.UserCouponVO">
+		SELECT uc.userId as userId
+			, uc.couponId as couponId
+			, uc.registDt as registDt
+			, uc.expireDt as expireDt
+			, uc.useChk as useChk
+			, uc.useDt as useDt
+			, c.couponNm as couponNm
+			, c.dscntRate as dscntRate
+		FROM usercoupon uc
+		LEFT JOIN coupon c
+		ON uc.couponId = c.couponId
+		WHERE uc.userId = #{userId}
+		ORDER BY registDt DESC, expireDt DESC;
+	</select>
 </mapper>

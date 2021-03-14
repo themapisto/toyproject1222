@@ -1,14 +1,12 @@
-
-<!DOCTYPE html>
-<html lang="ko">
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<html>
 <head>
-<meta charset="UTF-8" />
+
 <title>회원관리 리스트</title>
 
 <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>    
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
 </head>
 <body>
@@ -38,7 +36,7 @@
     
     <button type="button">검색</button>
 </form>    
-<table id="userTable">
+<table class="userTable">
     <colgroup>
         <col style="width:10%;">
         <col style="width:10%;">
