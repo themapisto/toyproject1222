@@ -1,6 +1,7 @@
 package com.kdis.demo.dao;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.stereotype.Repository;
@@ -19,4 +20,6 @@ public interface MemberDao {
 	public int userWithdrawal(HashMap<String,Object> paramMap) throws Exception;
 	
 	public int updateUserState(HashMap<String,Object> paramMap) throws Exception;
+
+	public List<UserVo> showAllUser(String grade) throws Exception;
 }

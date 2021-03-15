@@ -39,5 +39,13 @@
 		set userState = #{userState}
 		where userId = #{userId}
 	</update>
+	
+	<!-- 전체 회원목록(등록일자 순)-->
+	<select id="showAllUser" parameterType="String" resultType="com.kdis.demo.vo.UserVo">
+		select *
+		from USER
+		where grade = #{grade}
+		order by regDt desc
+	</select>
 
 </mapper>

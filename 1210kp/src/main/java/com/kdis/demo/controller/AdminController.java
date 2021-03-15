@@ -4,6 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.inject.Inject;
@@ -184,5 +185,20 @@ public class AdminController {
 		}
 		resultMap.put("result", result);
 		return resultMap;
+	}
+	
+	@RequestMapping(value = "/userList")
+	public String userList(ModelMap model, HttpServletRequest request,HttpServletResponse response) throws Exception {
+		
+		HttpSession session = request.getSession(true);
+		String userId = (String) session.getAttribute("sessionId");
+		
+		String grade = request.getParameter("grade");
+		List<UserVo> userList = MemberService.showAllUser(grade);
+		
+	
+		model.addAttribute("userList",userList);
+		return "/admin/userList";
+		
 	}
 }

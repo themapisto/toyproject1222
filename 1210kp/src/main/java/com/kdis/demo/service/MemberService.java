@@ -1,6 +1,7 @@
 package com.kdis.demo.service;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.inject.Inject;
@@ -33,6 +34,10 @@ public class MemberService implements MemberDao{
 	
 	public int updateUserState(HashMap<String,Object> paramMap) throws Exception{
 		return MemberDAO.updateUserState(paramMap);
+	}
+
+	public List<UserVo> showAllUser(String grade) throws Exception{	
+		return MemberDAO.showAllUser(grade);
 	}
 
 }
