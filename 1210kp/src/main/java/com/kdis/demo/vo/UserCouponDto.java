@@ -3,30 +3,30 @@ package com.kdis.demo.vo;
 import java.util.Date;
 
 public class UserCouponDto {
-	private String couponId; // 쿠폰 번호
-	private String couponNm; // 쿠폰 이름
-	private int dscntRate; // 할인율
-	private Date cupnRgstDt; // user의 쿠폰 등록 일자
-	private Date cupnExpryDt; // user의 쿠폰 종료 일자
-	private String cupnUseChk; // user의 쿠폰 사용 여부(미사용: 0, 사용: 1)
-	private Date cupnUseDt; // user의 쿠폰 사용 일자
-	private String cupnRgstChk; // 쿠폰 등록 진행 여부(진행 : 1, 종료 : 0)
+	private String couponId; // 荑좏룿 踰덊샇
+	private String couponNm; // 荑좏룿 �씠由�
+	private int dscntRate; // �븷�씤�쑉
+	private Date registDt; // user�쓽 荑좏룿 �벑濡� �씪�옄
+	private Date expireDt; // user�쓽 荑좏룿 醫낅즺 �씪�옄
+	private String useChk; // user�쓽 荑좏룿 �궗�슜 �뿬遺�(誘몄궗�슜: 0, �궗�슜: 1)
+	private Date useDt; // user�쓽 荑좏룿 �궗�슜 �씪�옄
+	private String registChk; // 荑좏룿 �벑濡� 吏꾪뻾 �뿬遺�(吏꾪뻾 : 1, 醫낅즺 : 0)
 	
 	public UserCouponDto() {
 		
 	}
 	
 	public UserCouponDto(String couponId, String couponNm, int dscntRate,
-			Date cupnRgstDt, Date cupnExpryDt, String cupnUseChk, Date cupnUseDt, String cupnRgstChk) {
+			Date registDt, Date expireDt, String useChk, Date useDt, String registChk) {
 		super();
 		this.couponId = couponId;
 		this.couponNm = couponNm;
 		this.dscntRate = dscntRate;
-		this.cupnRgstDt = cupnRgstDt;
-		this.cupnExpryDt = cupnExpryDt;
-		this.cupnUseChk = cupnUseChk;
-		this.cupnUseDt = cupnUseDt;
-		this.cupnRgstChk = cupnRgstChk;
+		this.registDt = registDt;
+		this.expireDt = expireDt;
+		this.useChk = useChk;
+		this.useDt = useDt;
+		this.registChk = registChk;
 	}
 
 	public String getCouponId() {
@@ -53,50 +53,50 @@ public class UserCouponDto {
 		this.dscntRate = dscntRate;
 	}
 
-	public Date getCupnRgstDt() {
-		return cupnRgstDt;
+	public Date getRegistDt() {
+		return registDt;
 	}
 
-	public void setCupnRgstDt(Date cupnRgstDt) {
-		this.cupnRgstDt = cupnRgstDt;
+	public void setRegistDt(Date registDt) {
+		this.registDt = registDt;
 	}
 
-	public Date getCupnExpryDt() {
-		return cupnExpryDt;
+	public Date getExpireDt() {
+		return expireDt;
 	}
 
-	public void setCupnExpryDt(Date cupnExpryDt) {
-		this.cupnExpryDt = cupnExpryDt;
+	public void setExpireDt(Date expireDt) {
+		this.expireDt = expireDt;
 	}
 
-	public String getCupnUseChk() {
-		return cupnUseChk;
+	public String getUseChk() {
+		return useChk;
 	}
 
-	public void setCupnUseChk(String cupnUseChk) {
-		this.cupnUseChk = cupnUseChk;
+	public void setUseChk(String useChk) {
+		this.useChk = useChk;
 	}
 
-	public Date getCupnUseDt() {
-		return cupnUseDt;
+	public Date getUseDt() {
+		return useDt;
 	}
 
-	public void setCupnUseDt(Date cupnUseDt) {
-		this.cupnUseDt = cupnUseDt;
+	public void setUseDt(Date useDt) {
+		this.useDt = useDt;
 	}
 
-	public String getCupnRgstChk() {
-		return cupnRgstChk;
+	public String getRegistChk() {
+		return registChk;
 	}
 
-	public void setCupnRgstChk(String cupnRgstChk) {
-		this.cupnRgstChk = cupnRgstChk;
+	public void setRegistChk(String registChk) {
+		this.registChk = registChk;
 	}
 
 	@Override
 	public String toString() {
 		return "UserCouponDto [couponId=" + couponId + ", couponNm=" + couponNm + ", dscntRate=" + dscntRate
-				+ ", cupnRgstDt=" + cupnRgstDt + ", cupnExpryDt=" + cupnExpryDt + ", cupnUseChk=" + cupnUseChk
-				+ ", cupnUseDt=" + cupnUseDt + ", cupnRgstChk=" + cupnRgstChk + "]";
+				+ ", registDt=" + registDt + ", expireDt=" + expireDt + ", useChk=" + useChk
+				+ ", useDt=" + useDt + ", registChk=" + registChk + "]";
 	}
 }
