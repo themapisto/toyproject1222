@@ -16,7 +16,7 @@ public class SessionLoginInterceptor implements HandlerInterceptor {
             throws Exception {
 		HttpSession session = request.getSession();
 
-		if(session.getAttribute("sessionLoginChk")!="user"){
+		if(session.getAttribute("sessionLoginChk")!="user" && session.getAttribute("sessionLoginChk")!="admin"){	
 			response.sendRedirect("/common/sessionExpire");
 			return false;
 		}else{
