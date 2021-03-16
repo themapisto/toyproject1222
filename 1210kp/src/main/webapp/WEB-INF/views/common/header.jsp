@@ -44,7 +44,7 @@
 						<div style="display:none;">
 							<ul style="opacity:0;">
 								<li>
-									<a href="#" title="예매하기">예매하기</a>
+									<a href="/reserve" title="예매하기">예매하기</a>
 								</li>
 								<li>
 									<a href="#" title="상영시간표">상영시간표</a>
