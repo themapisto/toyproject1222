@@ -224,7 +224,7 @@ public class MemberController{
 
 	 }
 	 
-	 // 쿠폰 등록하기
+	 // 나의 쿠폰 내역 가져오기
 	 @ResponseBody
 	 @RequestMapping("/getCoupon")
 	 public Map<String,String> getCoupon(ModelMap model,HttpServletRequest request,HttpServletResponse response) throws Exception {
