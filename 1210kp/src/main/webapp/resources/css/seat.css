@@ -1,8 +1,6 @@
 @charset "UTF-8";
 
-* {
-    font-size: 11px;
-}
+
 
 body {
     background-color: #FDFCF0;
@@ -19,7 +17,7 @@ body {
 
 /* header */
 
-.header-nav-wrapper {
+/* .header-nav-wrapper {
     background-image: url(https://img.cgv.co.kr/R2014/images/common/bg/bg_header.gif);
     height: 153px;
     padding: 0;
@@ -84,7 +82,7 @@ body {
     border-right: 1px solid #DDDDDD;
     margin-left: 8px;
     padding-right: 4px;
-}
+} */
 
 /* nav */
 

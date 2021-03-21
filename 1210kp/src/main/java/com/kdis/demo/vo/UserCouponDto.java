@@ -3,14 +3,14 @@ package com.kdis.demo.vo;
 import java.util.Date;
 
 public class UserCouponDto {
-	private String couponId; // 荑좏룿 踰덊샇
-	private String couponNm; // 荑좏룿 �씠由�
-	private int dscntRate; // �븷�씤�쑉
-	private Date registDt; // user�쓽 荑좏룿 �벑濡� �씪�옄
-	private Date expireDt; // user�쓽 荑좏룿 醫낅즺 �씪�옄
-	private String useChk; // user�쓽 荑좏룿 �궗�슜 �뿬遺�(誘몄궗�슜: 0, �궗�슜: 1)
-	private Date useDt; // user�쓽 荑좏룿 �궗�슜 �씪�옄
-	private String registChk; // 荑좏룿 �벑濡� 吏꾪뻾 �뿬遺�(吏꾪뻾 : 1, 醫낅즺 : 0)
+	private String couponId; // 쿠폰번호
+	private String couponNm; // 쿠폰이름
+	private int dscntRate; // 할인율
+	private Date registDt; // user의 쿠폰 등록일
+	private Date expireDt; // user의 쿠폰 만료일
+	private String useChk; // user의 쿠폰 사용 여부
+	private Date useDt; // user의 쿠폰 사용일
+	private String registChk; // 관리자가 쿠폰 사용 등록했는지 확인
 	
 	public UserCouponDto() {
 		

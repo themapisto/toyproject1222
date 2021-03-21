@@ -4,9 +4,6 @@
 .left{float:left;}
 .red{color:red;}
 
-html, body{
-    height: 100%;
-}
     
 .req:before {
   content: '*';
@@ -73,7 +70,7 @@ html, body{
 .joinContents .inputBox > input {
 	width:370px;
 	height:30px;
-	border:solid 1px;	/* input 박스 테두리 유지하기 */
+	border:solid 1px;	/* input 諛뺤뒪 �뀒�몢由� �쑀吏��븯湲� */
 }
 .joinContents .loginSrch{
 	color:gray;
@@ -391,7 +388,7 @@ aside > ul > li , .menu > ul > li{
     padding-left:20px;
 }
 
-/* 메인메뉴 hover 인식 */
+/* 硫붿씤硫붾돱 hover �씤�떇 */
 .menu:hover > div{
     background-color: gray;
     color:black;
@@ -401,12 +398,12 @@ aside > ul > li , .menu > ul > li{
     display: none;
 }
 
-/* 서브메뉴 hover 인식 */
+/* �꽌釉뚮찓�돱 hover �씤�떇 */
 .menu > ul > li:hover > a{
     color:white;
 }
 
-/* 쿠폰 사용여부에 따른 테이블 변경용 */
+/* 荑좏룿 �궗�슜�뿬遺��뿉 �뵲瑜� �뀒�씠釉� 蹂�寃쎌슜 */
 .couponUseViewBtn{
   all:unset;
   position: relative;
@@ -426,7 +423,7 @@ aside > ul > li , .menu > ul > li{
     border-collapse: collapse;
 } 
 
-/* 테이블 색상 구분 - col로 묶으려했더니 font 컬러가 적용이 안됌
+/* �뀒�씠釉� �깋�긽 援щ텇 - col濡� 臾띠쑝�젮�뻽�뜑�땲 font 而щ윭媛� �쟻�슜�씠 �븞�릪
 .userTable th:nth-child(odd), #userTable td:nth-child(odd){
     background-color: #7aa5d2;
 } */

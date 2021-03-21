@@ -46,7 +46,7 @@ public class CGVCrwalingController {
 			
 			InfoDto dto = new InfoDto(seq, rank, img, movieAge, movieTitle, movieRate, movieOpenDate);
 			
-			logger.info(dto.toString());
+			//logger.info(dto.toString());
 			list.add(dto);
 		}
 		

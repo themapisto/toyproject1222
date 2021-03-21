@@ -12,24 +12,18 @@ MemberDto login = (MemberDto)session.getAttribute("login");
     <title>Document</title>
  
     <link rel="stylesheet" href="/resources/css/reset.css">
-    <link rel="stylesheet" href="/resources/css/header.css">
+    <!-- <link rel="stylesheet" href="/resources/css/header.css"> -->
     <link rel="stylesheet" href="/resources/css/reserve.css">
     <link rel="stylesheet" href="/resources/css/layer_popup.css">
+    <%@include file="/WEB-INF/views/common/common.jsp" %>
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
     <link rel='stylesheet' href='//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css' />
     <script src='//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js'></script>
 </head>
 
 <body>
-<%--  <%if(login == null){
-	%>
-	<script>
-	alert("로그인이 필요한 작업입니다 로그인을 진행해 주세요!");
-	location.href="";
-	</script>
-	<%
-}%> --%> 
-    <div class="header-nav-wrapper">
+	<%@include file="/WEB-INF/views/common/header.jsp" %>
+    <%-- <div class="header-nav-wrapper">
         <header class="header">
             <div class="header-inner">
 	            <ul class="util">
@@ -49,7 +43,7 @@ MemberDto login = (MemberDto)session.getAttribute("login");
             </div>
             <div class="header-inner">
                 
-                 <%-- <% if(login != null){
+                 <% if(login != null){
                 	%>
                 	<div><button><%=login.getName()%>님 환영합니다</button></div>
                 	<div><a href="#"><button>마이페이지</button></a></div>
@@ -61,7 +55,7 @@ MemberDto login = (MemberDto)session.getAttribute("login");
                 	<div><a href="#"><button>회원가입</button></a></div>
                 	<%
                 }
-                %>  --%>
+                %> 
             </div>
         </header>
         <nav class="nav-wrapper">
@@ -79,7 +73,7 @@ MemberDto login = (MemberDto)session.getAttribute("login");
             <div></div>
             <div></div>
         </nav>
-    </div>
+    </div> --%>
     <div class="reserve-container">
         <div class="movie-part">
             <div class="reserve-title">영화</div>
