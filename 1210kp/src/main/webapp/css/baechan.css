@@ -430,6 +430,43 @@ aside > ul > li , .menu > ul > li{
 .userTable th:nth-child(odd), #userTable td:nth-child(odd){
     background-color: #7aa5d2;
 } */
+#pagination{
+	margin:auto;
+	text-align:center;
+	position:relative;
+	left:50%; 
+	transform:translate(-50%); 
+}
+#pagination li{
+	all:unset;
+	min-width:30px;
+	heigth:28px;
+	display:inline-block;
+	line-height:28px;
+	background-color:white;
+	color:black;
+	font-size:14px;
+	border:1px solid black;
+	border-collapse : collapse;
+	cursor:pointer;
+}
+#pagination button{
+	all:unset;
+}
+
+#pagination button :disabled{
+	opacity : .3;
+}
+.nowPage {
+	background-color:gray;
+	color:white;
+}
+#listPerPage{
+	border:1px solid;
+	width:130px;
+	height : 24px;
+}
+
 
 #filter{
 	border:2px solid black;	

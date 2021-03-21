@@ -5,7 +5,7 @@
 	<title>마이페이지</title>
 	<%@include file="/WEB-INF/views/common/common.jsp"%>
 </head>
-<body>
+<body style="overflow-y:hidden;overflow-x:hidden;">
 	<div class="searchContents">
 		<h1>비밀번호 찾기</h1>
     <span>입력하신 정보가 회원정보와 일치하면 이메일주소로 임시비밀번호를 발송합니다.</span>

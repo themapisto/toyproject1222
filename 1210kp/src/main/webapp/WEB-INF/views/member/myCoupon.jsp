@@ -10,13 +10,12 @@
 	<%@include file="/WEB-INF/views/common/header.jsp"%>
 	<%@include file="/WEB-INF/views/common/sidebar.jsp" %>
 	
-	<fmt:formatDate var="today" value="${now}" pattern="yyyy-MM-dd"/>
-	
 	<div class="myInfoContents">
 		<div>
 			<button type="button" class="couponUseViewBtn" id="able">사용가능한 쿠폰</button>
 			<button type="button" class="couponUseViewBtn" id="unable">종료된 쿠폰</button>
 		</div>
+		<span style="position:relative;left:90px;">*1년 이내의 정보만 제공합니다.</span>
 		
 		<table id="ableList" class="userTable on">
 		    <thead>
@@ -68,8 +67,10 @@
 		    	<c:forEach items="${list}" var="coupon" varStatus="status">
 		    		<fmt:formatDate var="registDt" value="${coupon.registDt}" pattern="yyyy-MM-dd"/>
 		    		<fmt:formatDate var="expireDt" value="${coupon.expireDt}" pattern="yyyy-MM-dd"/>
-		    	
-		    		<c:if test="${coupon.useChk ne 1}">
+		    		<fmt:formatDate var="useDt" value="${coupon.useDt}" pattern="yyyy-MM-dd"/>
+		    		
+		    		<c:if test="${(coupon.useChk eq 2 && useDt gt todayMinusOneYear)
+		    						|| (coupon.useChk eq 3 && expireDt gt todayMinusOneYear)}">
 				        <tr>
 				            <td>${coupon.couponId}</td>
 				            <td>${coupon.couponNm}</td>
@@ -77,12 +78,12 @@
 				            <td>${registDt}~${expireDt}</td>
 				        	<td>
 				        		<c:choose>
-				        			<c:when test="${empty coupon.useDt && today gt expireDt}">기간만료</c:when>
-				        			<c:when test="${empty coupon.useDt}">사용가능</c:when>
-				        			<c:when test="${!empty coupon.useDt}">사용완료</c:when>
+				        			<c:when test="${empty useDt && today gt expireDt}">기간만료</c:when>
+				        			<c:when test="${empty useDt}">사용가능</c:when>
+				        			<c:when test="${!empty useDt}">사용완료</c:when>
 			        			</c:choose>
 							</td>
-				            <td><fmt:formatDate value="${coupon.useDt}" pattern="yyyy-MM-dd"/></td>
+				            <td>${useDt}</td>
 				        </tr>
 			        </c:if>
 		        </c:forEach>
@@ -92,6 +93,7 @@
 
 	<script type="text/javascript">
 		window.onload = function(){
+ 			
 			var able = document.getElementById('able');
 			var unable = document.getElementById('unable');
 			var ableList = document.getElementById('ableList');
@@ -112,11 +114,7 @@
 			able.style.backgroundColor = '#034f84';
 			unableList.className = 'userTable off';
 			ableList.className = 'userTable on';
-		})
-		
-			
-		
-	   	
+		})   	
 	</script>
 </body>
 </html>

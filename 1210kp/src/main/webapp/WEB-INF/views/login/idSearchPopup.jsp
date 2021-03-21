@@ -5,7 +5,7 @@
 	<title>마이페이지</title>
 	<%@include file="/WEB-INF/views/common/common.jsp"%>
 </head>
-<body>	
+<body style="overflow-y:hidden;overflow-x:hidden;">
  	<div class="searchContents">
 	    <h1>아이디 찾기</h1>
 	    <form id="idSearchForm" name="idSearchForm" onsubmit="return false;">

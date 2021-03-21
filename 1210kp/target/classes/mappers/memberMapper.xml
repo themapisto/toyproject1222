@@ -67,6 +67,14 @@
 		LEFT JOIN coupon c
 		ON uc.couponId = c.couponId
 		WHERE uc.userId = #{userId}
-		ORDER BY registDt DESC, expireDt DESC;
+		ORDER BY registDt DESC, expireDt DESC
+	</select>
+	
+	<!-- 아직 사용 안함 -->
+	<!-- 리스트 항목 전체 호출 -->
+	<select  id="countTotal" resultType="int" parameterType="prjc.baechan.common.paginationDTO">
+		select count(*)
+		from usercoupon
+		where userId = #{userId} 
 	</select>
 </mapper>

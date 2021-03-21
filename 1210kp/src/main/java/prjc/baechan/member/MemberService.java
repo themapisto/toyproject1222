@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import prjc.baechan.common.CouponVO;
 import prjc.baechan.common.UserCouponVO;
 import prjc.baechan.common.UserVO;
+import prjc.baechan.common.paginationDTO;
 
 @Service
 public class MemberService implements MemberDAO{
@@ -47,6 +48,10 @@ public class MemberService implements MemberDAO{
 
 	public List<HashMap<String,Object>> selectMyCoupon(HashMap<String, Object> paramMap) throws Exception {
 		return MemberDAO.selectMyCoupon(paramMap);
+	}
+
+	public int countTotal(HashMap<String, Object> paramMap) throws Exception{
+		return MemberDAO.countTotal(paramMap);
 	}
 
 }

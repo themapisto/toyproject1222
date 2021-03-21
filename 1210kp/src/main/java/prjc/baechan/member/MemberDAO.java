@@ -28,4 +28,7 @@ public interface MemberDAO {
 	public int insertCouponRegister(HashMap<String, Object> paramMap) throws Exception;
 
 	public List<HashMap<String, Object>> selectMyCoupon(HashMap<String, Object> paramMap) throws Exception;
+	
+	public int countTotal(HashMap<String, Object> paramMap) throws Exception;
+
 }
