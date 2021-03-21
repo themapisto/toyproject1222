@@ -1,8 +1,14 @@
 /.metadata/
+<<<<<<< HEAD
 /1210kp/.classpath
 /1210kp/.project
 <<<<<<< HEAD
 /1210kp/.settings/
 =======
 /1210kp/.settings
+>>>>>>> branch 'master' of https://github.com/themapisto/toyproject1222.git
+=======
+.classpath
+.project
+.settings
 >>>>>>> branch 'master' of https://github.com/themapisto/toyproject1222.git
