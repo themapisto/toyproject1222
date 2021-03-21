@@ -82,7 +82,6 @@ public class AdminController {
 		if(loginChk == 1) {
 			loginFailCount = 0;
 			paramMap.put("loginFailCount", loginFailCount);
-			paramMap.put("grade", "5");
 			paramMap.put("userState", "1");
 		 
 			// 로그인 실패 횟수 초기화 및 회원 상태 초기화
