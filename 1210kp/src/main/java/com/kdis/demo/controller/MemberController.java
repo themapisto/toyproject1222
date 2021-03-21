@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.kdis.demo.service.LoginService;
 import com.kdis.demo.service.MemberService;
 import com.kdis.demo.vo.CouponVO;
-import com.kdis.demo.vo.UserVo;
+import com.kdis.demo.vo.UserVO;
 
 import prjc.baechan.common.SHA256Util;
 
@@ -59,7 +59,7 @@ public class MemberController{
 		 HashMap<String,Object> paramMap = new HashMap<String,Object>();
 		 paramMap.put("userId", userId);
 		 
-		 UserVo userVO = MemberService.selectMyInfo(paramMap);
+		 UserVO userVO = MemberService.selectMyInfo(paramMap);
 		 
 		 String grade = userVO.getGrade();
 	
@@ -84,7 +84,7 @@ public class MemberController{
 		 HashMap<String,Object> paramMap = new HashMap<String,Object>();
 		 paramMap.put("userId", userId);
 		 
-		 UserVo userVO = MemberService.selectMyInfo(paramMap);
+		 UserVO userVO = MemberService.selectMyInfo(paramMap);
 				 
 		 String grade = userVO.getGrade();
 	

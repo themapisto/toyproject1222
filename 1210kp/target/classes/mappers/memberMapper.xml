@@ -5,7 +5,7 @@
 <mapper namespace="com.kdis.demo.dao.MemberDao">
 	
 	<!-- 마이페이지 회원정보 가져오기 -->
-	<select id="selectMyInfo" parameterType="Map" resultType="com.kdis.demo.vo.UserVo">
+	<select id="selectMyInfo" parameterType="Map" resultType="com.kdis.demo.vo.UserVO">
 		select userId, userNm, DATE_FORMAT(birthday,'%Y-%m-%d') as birthday, phoneNumber,
 		email,grade,userState,loginFailCount,loginFailTime
 		from USER

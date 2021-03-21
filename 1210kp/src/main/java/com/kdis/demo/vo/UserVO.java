@@ -2,7 +2,7 @@ package com.kdis.demo.vo;
 
 import java.util.Date;
 
-public class UserVo {
+public class UserVO {
 
 	private String userId;
 	private String userNm;
