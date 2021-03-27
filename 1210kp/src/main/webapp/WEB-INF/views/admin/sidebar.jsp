@@ -8,7 +8,7 @@
 	        <li class="menu" id="menu1">
 	            <div><a>통합회원관리</a></div>
 	            <ul>
-	                <li><a>회원관리</a></li>
+	                <li><a href="/manage/userList">회원관리</a></li>
 	                <li><a>관리자관리</a></li>
 	            </ul>
 	        </li>

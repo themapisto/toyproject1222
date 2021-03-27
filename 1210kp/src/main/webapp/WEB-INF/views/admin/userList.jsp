@@ -1,3 +1,5 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <html>
 <head>
@@ -57,86 +59,27 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td>1</td>
+    	<c:forEach items="${userList}" var="user" varStatus="status">
+        <tr align: "center">
+            <td>${status.count}</td>
             <td>일반회원</td>
-            <td>배찬</td>
-            <td>baechan</td>
-            <td>가입</td>
-            <td>2017-03-15</td>
+            <td>${user.userNm}</td>
+            <td>${user.userId}</td>
+            <td>
+            	<c:choose>
+					<c:when test="${user.userState eq 1}">가입</c:when>
+					<c:when test="${user.userState eq 8}">잠금</c:when>
+					<c:when test="${user.userState eq 9}">탈퇴</c:when>
+					<c:otherwise>휴면</c:otherwise>
+				</c:choose>
+            </td>
+            <td>
+            	<fmt:formatDate value="${user.regDt}" pattern="yyyy-MM-dd"/>
+            </td>
         </tr>
-        <tr>
-            <td>2</td>
-            <td>일반회원</td>
-            <td>배찬</td>
-            <td>baechan</td>
-            <td>가입</td>
-            <td>2017-03-15</td>
-        </tr>
-        <tr>
-            <td>3</td>
-            <td>일반회원</td>
-            <td>배찬</td>
-            <td>baechan</td>
-            <td>가입</td>
-            <td>2017-03-15</td>
-        </tr>
-        <tr>
-            <td>4</td>
-            <td>일반회원</td>
-            <td>배찬</td>
-            <td>baechan</td>
-            <td>가입</td>
-            <td>2017-03-15</td>
-        </tr>
-        <tr>
-            <td>5</td>
-            <td>일반회원</td>
-            <td>배찬</td>
-            <td>baechan</td>
-            <td>가입</td>
-            <td>2017-03-15</td>
-        </tr>
-        <tr>
-            <td>6</td>
-            <td>일반회원</td>
-            <td>배찬</td>
-            <td>baechan</td>
-            <td>가입</td>
-            <td>2017-03-15</td>
-        </tr>
-        <tr>
-            <td>7</td>
-            <td>일반회원</td>
-            <td>배찬</td>
-            <td>baechan</td>
-            <td>가입</td>
-            <td>2017-03-15</td>
-        </tr>
-        <tr>
-            <td>8</td>
-            <td>일반회원</td>
-            <td>배찬</td>
-            <td>baechan</td>
-            <td>가입</td>
-            <td>2017-03-15</td>
-        </tr>
-        <tr>
-            <td>9</td>
-            <td>일반회원</td>
-            <td>배찬</td>
-            <td>baechan</td>
-            <td>가입</td>
-            <td>2017-03-15</td>
-        </tr>
-        <tr>
-            <td>10</td>
-            <td>일반회원</td>
-            <td>배찬</td>
-            <td>baechan</td>
-            <td>가입</td>
-            <td>2017-03-15</td>
-        </tr>
+        </c:forEach>
+        
+        
     </tbody>
 </table>
 

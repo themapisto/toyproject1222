@@ -24,7 +24,9 @@ public class AdminManageController {
 		@RequestMapping(value = "userList")
 		public String adminLogin(ModelMap model,HttpServletRequest request,HttpServletResponse response) throws Exception {
 			List<UserVo> userList = adminManageService.showAllUser();
-			 model.addAttribute("userList",userList);
+			int page = 0;
+			model.addAttribute("page", page);
+			model.addAttribute("userList",userList);
 			return "/admin/userList";
 		}
 		
