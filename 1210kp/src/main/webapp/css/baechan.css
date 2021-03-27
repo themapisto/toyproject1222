@@ -3,6 +3,24 @@
 .right{float:right;}
 .left{float:left;}
 .red{color:red;}
+.blue{color:blue;}
+
+.navi li{
+	float:right;
+    display:inline;
+    list-style: none;
+    margin : 3px 5px;
+}
+.navi li > a{
+    all:unset;
+    cursor:pointer;
+}
+.navi li > a:hover{
+	font-weight:bold;
+}
+.navi li:not(:first-child)::after{content:">"; margin-left:15px; cursor:default;}
+
+
 
 html, body{
     height: 100%;

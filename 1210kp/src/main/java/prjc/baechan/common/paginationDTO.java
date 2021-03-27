@@ -3,7 +3,6 @@ package prjc.baechan.common;
 
 public class paginationDTO{
 	
-	
 	private int page;			// 현재 페이지
 	private int cntPerPage;		// 페이지당 보여줄 리스트 개수
 	private int cntPage;		// 보여지는 페이지목록의 개수
@@ -17,10 +16,15 @@ public class paginationDTO{
 	private boolean prev;		// 이전 페이지 버튼
 	private boolean next;		// 다음 페이지 버튼
 	
+	private String keyword="";
+	private String option="";
+	
+	
 	public paginationDTO() {
 		this.page = 1;
 		this.cntPerPage = 10;
 		this.cntPage = 5;
+		
 	}
 	
 	@Override
@@ -78,7 +82,7 @@ public class paginationDTO{
 
 	public void setTotal(int total) {
 		this.total = total;
-		
+				
 		totalPage = (int) Math.ceil((double)total / cntPerPage);
 		
 		if(page <= cntPage) {
@@ -108,10 +112,9 @@ public class paginationDTO{
 		setEndPage(endPage);
 		setStartPage(startPage);
 		setTotalPage(totalPage);
+		
 		setPrev(prev);
 		setNext(next);
-		
-		
 	}
 
 	public int getTotalPage() {	
@@ -127,7 +130,7 @@ public class paginationDTO{
 	}
 
 	public void setCntPage(int cntPage) {
-		this.cntPage = (int) Math.ceil((double)totalPage / this.cntPerPage);
+		this.cntPage = cntPage;
 	}
 
 	public int getStartIdx() {
@@ -149,6 +152,22 @@ public class paginationDTO{
 
 	public void setNext(boolean next) {
 		this.next = next;
+	}
+
+	public String getKeyword() {
+		return keyword;
+	}
+
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
+	}
+
+	public String getOption() {
+		return option;
+	}
+
+	public void setOption(String option) {
+		this.option = option;
 	}
 
 	

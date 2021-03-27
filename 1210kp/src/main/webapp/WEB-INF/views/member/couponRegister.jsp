@@ -9,6 +9,13 @@
 	<%@include file="/WEB-INF/views/common/header.jsp"%>
 	<%@include file="/WEB-INF/views/common/sidebar.jsp" %>
 	
+	<div class="navi">
+		<li class='blue'>쿠폰등록하기</li>
+		<li><a href="/member/myCoupon">쿠폰정보</a></li>
+	    <li><a href="/">home</a></li>
+	</div>
+	<br><hr>
+	
 	<div class="myInfoModifyContents">
 		<h1>쿠폰등록하기</h1>
 		<form id="myInfoForm" name="myInfoForm" method="POST">

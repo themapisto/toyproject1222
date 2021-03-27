@@ -70,11 +70,28 @@
 		ORDER BY registDt DESC, expireDt DESC
 	</select>
 	
-	<!-- 아직 사용 안함 -->
-	<!-- 리스트 항목 전체 호출 -->
+	<!-- 아직 사용 안함 ( 페이지네이션 ) -->
+	
+	<!-- 리스트 호출 나중에 resultType 맞춰서 설정해주어야함 -->
+	<select id="listView" parameterType="prjc.baechan.common.paginationDTO" >
+		select *
+		from user
+		
+		<if test="keyword != ''">
+			where ${option} like CONCAT('%', #{keyword}, '%')
+		</if>
+		
+		order by ntt_sn asc
+		limit #{startIdx},#{cntPerPage}
+	</select>
+	
+	<!-- 리스트 항목 건수 호출 -->
 	<select  id="countTotal" resultType="int" parameterType="prjc.baechan.common.paginationDTO">
 		select count(*)
-		from usercoupon
-		where userId = #{userId} 
+		from user
+		
+		<if test="keyword != ''">
+			where ${option} like CONCAT('%', #{keyword}, '%')
+		</if>
 	</select>
 </mapper>

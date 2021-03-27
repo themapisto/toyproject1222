@@ -10,6 +10,13 @@
 	<%@include file="/WEB-INF/views/common/header.jsp"%>
 	<%@include file="/WEB-INF/views/common/sidebar.jsp" %>
 	
+	<div class="navi">
+		<li class='blue'>쿠폰내역조회</li>
+		<li><a href="/member/myCoupon">쿠폰정보</a></li>
+	    <li><a href="/">home</a></li>
+	</div>
+	<br><hr>
+	
 	<div class="myInfoContents">
 		<div>
 			<button type="button" class="couponUseViewBtn" id="able">사용가능한 쿠폰</button>

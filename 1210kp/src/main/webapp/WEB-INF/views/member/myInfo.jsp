@@ -9,6 +9,13 @@
 	<%@include file="/WEB-INF/views/common/header.jsp"%>
 	<%@include file="/WEB-INF/views/common/sidebar.jsp" %>
 	
+	<div class="navi">
+		<li class='blue'>회원정보</li>
+		<li><a href="/member/myInfo">회원정보</a></li>
+	    <li><a href="/">home</a></li>
+	</div>
+	<br><hr>
+	
 	<div class="myInfoContents">
 		<h1>회원정보</h1>
 		<table>

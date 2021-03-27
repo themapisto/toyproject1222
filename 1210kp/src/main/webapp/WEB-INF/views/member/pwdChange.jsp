@@ -11,6 +11,12 @@
 	<%@include file="/WEB-INF/views/common/header.jsp"%>
 	<%@include file="/WEB-INF/views/common/sidebar.jsp" %>
 	
+	<div class="navi">
+		<li class='blue'>비밀번호변경</li>
+		<li><a href="/member/myInfo">회원정보</a></li>
+	    <li><a href="/">home</a></li>
+	</div>
+	<br><hr>
 
 	<div class="myInfoModifyContents">
 		<h1>비밀번호변경</h1>

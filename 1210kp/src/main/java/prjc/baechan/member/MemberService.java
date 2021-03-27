@@ -1,5 +1,6 @@
 package prjc.baechan.member;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -46,7 +47,7 @@ public class MemberService implements MemberDAO{
 		return MemberDAO.insertCouponRegister(paramMap);
 	}
 
-	public List<HashMap<String,Object>> selectMyCoupon(HashMap<String, Object> paramMap) throws Exception {
+	public ArrayList<HashMap<String,Object>> selectMyCoupon(HashMap<String, Object> paramMap) throws Exception {
 		return MemberDAO.selectMyCoupon(paramMap);
 	}
 
