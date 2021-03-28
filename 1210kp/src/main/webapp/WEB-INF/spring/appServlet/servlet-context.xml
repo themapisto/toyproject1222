@@ -46,6 +46,7 @@
 			<mvc:mapping path="/admin/*"/>
 			<mvc:mapping path="/movie/*"/>
 			<mvc:exclude-mapping path="/admin/login"/>
+			<mvc:exclude-mapping path="/movie/*"/>
 			<beans:ref bean="SessionLoginInterceptor"/>
 		</mvc:interceptor>
 	</mvc:interceptors>
