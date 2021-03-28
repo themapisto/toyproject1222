@@ -27,8 +27,8 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
-	<context:component-scan base-package="com.kdis.demo,prjc.baechan" use-default-filters="false">
-		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+	<context:component-scan base-package="com.kdis.demo,prjc.baechan,com.kdis.movieList" use-default-filters="false">
+		
 	</context:component-scan>
 	
 	<!-- 프로퍼티스 파일 설정 -->
@@ -37,8 +37,7 @@
         <beans:property name="fileEncoding" value="UTF-8"/>
     </beans:bean>
     
-    <context:component-scan base-package="com.kdis.movieList" />
-    
+
     <!-- 로그인 세션 인터셉터 -->
 	<beans:bean id="SessionLoginInterceptor" class="prjc.baechan.common.SessionLoginInterceptor"> </beans:bean> 
 	<mvc:interceptors>
