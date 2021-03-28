@@ -71,6 +71,8 @@
     <mybatis-spring:scan base-package="com.kdis.demo , prjc.baechan" /> 
 
     <mybatis-spring:scan base-package="com.kdis.movieList"/> 
+    
+    <context:component-scan base-package="com.kdis.demo , prjc.baechan , com.kdis.movieList" />
 
 
 
