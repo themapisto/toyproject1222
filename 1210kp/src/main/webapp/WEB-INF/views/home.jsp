@@ -3,15 +3,16 @@
 <html>
 <head>
 	<title>Home</title>
-	<%@include file="/WEB-INF/views/common/common.jsp" %>
+	
+<%@include file="/WEB-INF/views/common/common.jsp" %>
 </head>
 <body>
 <%@include file="/WEB-INF/views/common/header.jsp" %>
 
+
 <h1>
 	Hello 
 </h1>
-<p><a href="/board/list">게시물 목록</a></p>
-<P>  The time on the server is ${serverTime}. </P>
+<p><a href="/movie/movieMain">영화 목록</a></p>
 </body>
 </html>

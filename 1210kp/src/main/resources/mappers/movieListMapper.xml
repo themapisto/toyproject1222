@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kdis.movieList.MovieListDAO">
+
+
+	<!-- 게시물 목록 -->
+
+	<insert id="movieInsert">
+		Insert into movie (movieVal, movieCd, movieNm, rank, openDt, audiAcc,salesAmt, insertDt)
+		values (#{movieVal},#{movieCd},#{movieNm},#{rank},#{openDt},#{audiAcc},#{salesAmt},#{insertDt})
+	</insert>
+
+	<select id="list" resultType="com.kdis.movieList.MovieVO">
+		select movieCd, movieNm, rank,
+		openDt, audiAcc, salesAmt from movie
+		where movieVal = #{movieVal} and
+		insertDt =#{insertDt}
+	</select>
+</mapper>
+
+ 

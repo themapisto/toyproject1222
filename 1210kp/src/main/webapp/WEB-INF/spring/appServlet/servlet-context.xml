@@ -37,6 +37,8 @@
         <beans:property name="fileEncoding" value="UTF-8"/>
     </beans:bean>
     
+    <context:component-scan base-package="com.kdis.movieList" />
+    
     <!-- 로그인 세션 인터셉터 -->
 	<beans:bean id="SessionLoginInterceptor" class="prjc.baechan.common.SessionLoginInterceptor"> </beans:bean> 
 	<mvc:interceptors>
@@ -49,3 +51,5 @@
 	</mvc:interceptors>
 	
 </beans:beans>
+
+
