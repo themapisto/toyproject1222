@@ -114,7 +114,7 @@ public class MovieListController {
 
 				System.out.print("??" + vo.getAudiAcc() + "???" + vo.getMovieNm() + "sddd" + vo.getMovieCd() + "???"
 						+ vo.getRank());
-				sqlSession.insert("movieInsert", vo);
+				//sqlSession.insert("movieInsert", vo);
 
 				System.out.printf("{순위:%s, 제목:%s, 개봉일:%s, 누적관객수:%s}\n", boxOffice.get("rank"), boxOffice.get("movieNm"),
 						boxOffice.get("openDt"), boxOffice.get("audiAcc"));
@@ -125,8 +125,8 @@ public class MovieListController {
 
 			e.printStackTrace();
 		}
-
-	//	model.addAttribute("list", service.list(vo.getMovieVal(), vo.getInsertDt()));
+		
+		//model.addAttribute("list", service.list(vo.getMovieVal(), vo.getInsertDt()));
 
 		return "/movie/dailyBoxOf";
 	}
@@ -202,12 +202,12 @@ public class MovieListController {
 				vo.setInsertDt(DATE_FMT.format(cal.getTime()));
 				// System.out.println(DATE_FMT);
 
-				System.out.print("??" + vo.getAudiAcc() + "???" + vo.getMovieNm() + "sddd" + vo.getMovieCd() + "???"
-						+ vo.getRank());
+				//System.out.print("??" + vo.getAudiAcc() + "???" + vo.getMovieNm() + "sddd" + vo.getMovieCd() + "???"
+				//		+ vo.getRank());
 				sqlSession.insert("movieInsert", vo);
 
-				System.out.printf("{순위:%s, 제목:%s, 개봉일:%s, 누적관객수:%s}\n", boxOffice.get("rank"), boxOffice.get("movieNm"),
-						boxOffice.get("openDt"), boxOffice.get("audiAcc"));
+				//System.out.printf("{순위:%s, 제목:%s, 개봉일:%s, 누적관객수:%s}\n", boxOffice.get("rank"), boxOffice.get("movieNm"),
+						//boxOffice.get("openDt"), boxOffice.get("audiAcc"));
 
 			}
 
@@ -223,9 +223,9 @@ public class MovieListController {
 		return "/movie/weeklyBoxOf";
 	}
 	
-	@RequestMapping(value = "/moviepeople")
-	public String getmoviepeople(String movieCd) throws Exception {
-		
+	@RequestMapping(value = "/movieList")
+	public String getmoviepeople() throws Exception {
+		System.out.println("ajax 요청이 왔습니다.");
 		
 	return "";	
 	}
