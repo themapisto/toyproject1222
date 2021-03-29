@@ -53,7 +53,7 @@ public class MovieListController {
 
 		paramMap.put("key", AUTH_KEY);
 		paramMap.put("targetDt", DATE_FMT.format(cal.getTime()));
-		paramMap.put("itemPerPage", "0");
+		paramMap.put("itemPerPage", "10");
 		paramMap.put("multiMovieYn", "N");
 		paramMap.put("repNationCd", "K");
 	
@@ -222,7 +222,14 @@ public class MovieListController {
 
 		return "/movie/weeklyBoxOf";
 	}
-
+	
+	@RequestMapping(value = "/moviepeople")
+	public String getmoviepeople(String movieCd) throws Exception {
+		
+		
+	return "";	
+	}
+	
 	@RequestMapping(value = "/movieMain")
 	public String movieMain() throws Exception {
 		return "/movie/movieMain";
