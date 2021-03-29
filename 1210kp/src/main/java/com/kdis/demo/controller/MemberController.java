@@ -1,6 +1,10 @@
 package com.kdis.demo.controller;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.inject.Inject;
@@ -15,7 +19,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kdis.demo.service.LoginService;
 import com.kdis.demo.service.MemberService;
-import com.kdis.demo.vo.UserVo;
+import com.kdis.demo.vo.CouponVO;
+import com.kdis.demo.vo.UserVO;
 
 import prjc.baechan.common.SHA256Util;
 
@@ -39,6 +44,11 @@ public class MemberController{
 		 return "/member/userWithdrawal";
 	 }
 	 
+	 @RequestMapping(value = "/couponRegister")
+	 public String couponRegister() throws Exception {
+		 return "/member/couponRegister";
+	 }
+	 
 	 // 회원 마이페이지
 	 @RequestMapping(value = "/myInfo")
 	 public String myInfo(ModelMap model,HttpServletRequest request,HttpServletResponse response) throws Exception {
@@ -49,7 +59,7 @@ public class MemberController{
 		 HashMap<String,Object> paramMap = new HashMap<String,Object>();
 		 paramMap.put("userId", userId);
 		 
-		 UserVo userVO = MemberService.selectMyInfo(paramMap);
+		 UserVO userVO = MemberService.selectMyInfo(paramMap);
 		 
 		 String grade = userVO.getGrade();
 	
@@ -74,7 +84,7 @@ public class MemberController{
 		 HashMap<String,Object> paramMap = new HashMap<String,Object>();
 		 paramMap.put("userId", userId);
 		 
-		 UserVo userVO = MemberService.selectMyInfo(paramMap);
+		 UserVO userVO = MemberService.selectMyInfo(paramMap);
 				 
 		 String grade = userVO.getGrade();
 	
@@ -214,5 +224,66 @@ public class MemberController{
 		 return "/common/result";
 
 	 }
-	
+	 // 나의 쿠폰 내역 가져오기
+	 @ResponseBody
+	 @RequestMapping("/getCoupon")
+	 public Map<String,String> getCoupon(ModelMap model,HttpServletRequest request,HttpServletResponse response) throws Exception {
+		 HashMap<String,Object> paramMap = new HashMap<String,Object>();
+		 Map<String,String> resultMap = new HashMap<String,String>();
+
+		 String couponId = request.getParameter("couponId");
+		 String result = "";
+
+		 // 입력한 쿠폰id가 쿠폰테이블에 있는지 확인
+		 CouponVO couponVO = MemberService.selectCouponInfo(couponId);
+		 
+		 // 쿠폰을 등록 할 수 있는 기간인지 확인
+		 Calendar cal = Calendar.getInstance(); 
+		 SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh-mm-ss 24");
+
+		 Date now = dateFormat.parse(dateFormat.format(cal.getTime()));
+		 Date startDate = dateFormat.parse(dateFormat.format(couponVO.getRegistStartDt()));
+		 Date endDate = dateFormat.parse(dateFormat.format(couponVO.getRegistEndDt()));
+		 
+		 System.out.println(startDate);
+		 System.out.println(now);
+		 System.out.println(endDate);
+		 
+		 // 1) 쿠폰등록시작일자 < 현재시간 < 쿠폰등록만료일자 2) 쿠폰등록진행여부 진행:Y, 종료:N 
+		 if(now.after(startDate) && now.before(endDate) && "Y".equals(couponVO.getRegistChk())) {
+			 
+			 paramMap.put("couponId", couponId);
+			 paramMap.put("usePeriod", couponVO.getUsePeriod());	// 쿠폰사용가능기간 설정
+			 
+			 HttpSession session = request.getSession(true);
+			 String userId = (String) session.getAttribute("sessionId");
+			 paramMap.put("userId",userId);
+			 
+			 int registerChk = MemberService.insertCouponRegister(paramMap);	// 회원 쿠폰 등록
+			 if(registerChk == 1) {
+				 result = "success";
+			 }else {
+				 // TODO:에러처리
+			 }
+		 } else {
+			 result = "fail";
+		 }
+		 resultMap.put("result", result);
+		 return resultMap;
+	 }
+	 
+	 // 쿠폰 등록하기
+	 @RequestMapping("/myCoupon")
+	 public String myCoupon(ModelMap model,HttpServletRequest request,HttpServletResponse response) throws Exception {
+		 
+		 HttpSession session = request.getSession(true);
+		 String userId = (String) session.getAttribute("sessionId");
+		 
+		 HashMap<String,Object> paramMap = new HashMap<String,Object>();
+		 paramMap.put("userId", userId);
+		 
+		 List<HashMap<String,Object>> resultMapList = MemberService.selectMyCoupon(paramMap);
+		 model.addAttribute("list",resultMapList);
+		 return "/member/myCoupon";
+	 }
 }

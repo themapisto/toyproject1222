@@ -7,9 +7,10 @@
 </head>
 <body>
 	<%@include file="/WEB-INF/views/common/header.jsp"%>
-	<h2>MOVIE BOX 마이페이지 수정화면</h2>
-	<hr>
+	<%@include file="/WEB-INF/views/common/sidebar.jsp" %>
+	
 	<div class="myInfoModifyContents">
+		<h1>회원정보수정</h1>
 		<form id="myInfoForm" name="myInfoForm" method="POST" action="myInfoModifySubmit">
 			<table>
 				<colgroup>
@@ -194,7 +195,7 @@
 			}else if(object == email){
 			 	regType = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z^<>]{2,3}$/i;
 			}else if(object == phoneNumber){
-				regType= /^01([0|1|6|7|8|9]?)-?([0-9]{3,4})-?([0-9]{4})$/
+				regType= /^01([0|1|6|7|8|9]?)-?([0-9]{3,4})-?([0-9]{4})$/;
 			}else{
 				// TODO : 에러페이지
 			}

@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
+<link href="/resources/css/header.css" rel="stylesheet" type="text/css">
+
 <!-- header -->
 	<header class="header">
 		<div class="gnb">
@@ -38,11 +40,11 @@
 				</button>
 				<ul>
 					<li>
-						<a href="#" title="예매">예매</a>
+						<a href="/reserve" title="예매">예매</a>
 						<div style="display:none;">
 							<ul style="opacity:0;">
 								<li>
-									<a href="#" title="예매하기">예매하기</a>
+									<a href="/reserve" title="예매하기">예매하기</a>
 								</li>
 								<li>
 									<a href="#" title="상영시간표">상영시간표</a>
