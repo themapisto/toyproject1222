@@ -16,17 +16,17 @@
 		<div>
 			<a href="javascript:window.open('/movie/dailyBoxOf','_blank','width=1000px,height=500px');" title="일별 박스오피스">일별 박스오피스</a>
 			&nbsp;|&nbsp;
-			<a href="javascript:window.open('/movie/dailyBoxOf','_blank','width=1000px,height=500px');" title="주간 박스오피스">주간 박스오피스</a>
+			<a href="javascript:window.open('/movie/weeklyBoxOf','_blank','width=1000px,height=500px');" title="주간 박스오피스">주간 박스오피스</a>
 			&nbsp;|&nbsp;
 		</div>
 	</div> 
 	<!-- thumnail -->
 	<div>
 		<ol class="list" id="movieList">
-			<img src="/resources/images/1.jpg"  class="img-thumbnail">
-			<img src="/resources/images/2.jpg"  class="img-thumbnail">
-			<img src="/resources/images/1.jpg"  class="img-thumbnail">
-			<img src="/resources/images/2.jpg"  class="img-thumbnail">
+		    <c:forEach items="${list}" var="list">
+			<img src="${list.image}"  class="img-thumbnail">
+			</c:forEach>
+			
 		</ol>
 	</div>
 </body>
@@ -35,7 +35,10 @@
 
 
 <script type="text/javascript">
-    $(document).ready(function(){
+
+
+// ajax 기본
+ /*    $(document).ready(function(){
     	getMovieList();
     })
     
@@ -49,8 +52,10 @@
 		  }
 		})
 		
-	}
+	} */
 
+	
+	
 </script>
 
 

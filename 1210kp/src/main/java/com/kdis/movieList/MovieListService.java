@@ -15,5 +15,12 @@ public class MovieListService {
 	public List<MovieVO> list(String movieVal, String insertDt) throws Exception {
 		return dao.list(movieVal, insertDt);
 	}
+	
+	public MovieVO listOne(String rank) {
+		return dao.listOne(rank);
+		
+	}
+
+	
 
 }

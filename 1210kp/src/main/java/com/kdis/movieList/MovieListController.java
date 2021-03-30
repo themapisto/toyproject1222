@@ -44,7 +44,7 @@ public class MovieListController {
 
 		String REQUEST_URL = "http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json";
 		String AUTH_KEY = "92be55421c9d9393f92251cbcb6fea1a";
-		SimpleDateFormat DATE_FMT = new SimpleDateFormat("20210311");
+		SimpleDateFormat DATE_FMT = new SimpleDateFormat("20210329");
 		Calendar cal = Calendar.getInstance();
 		cal.setTime(new Date());
 		cal.add(Calendar.DATE, -1);
@@ -53,11 +53,9 @@ public class MovieListController {
 
 		paramMap.put("key", AUTH_KEY);
 		paramMap.put("targetDt", DATE_FMT.format(cal.getTime()));
-		paramMap.put("itemPerPage", "10");
+		paramMap.put("itemPerPage", "7");
 		paramMap.put("multiMovieYn", "N");
 		paramMap.put("repNationCd", "K");
-	
-		System.out.println(vo.getInsertDt()+"문제없어");
 
 		StringBuilder sb = new StringBuilder();
 
@@ -114,7 +112,7 @@ public class MovieListController {
 
 				System.out.print("??" + vo.getAudiAcc() + "???" + vo.getMovieNm() + "sddd" + vo.getMovieCd() + "???"
 						+ vo.getRank());
-				//sqlSession.insert("movieInsert", vo);
+				sqlSession.insert("movieInsert", vo);
 
 				System.out.printf("{순위:%s, 제목:%s, 개봉일:%s, 누적관객수:%s}\n", boxOffice.get("rank"), boxOffice.get("movieNm"),
 						boxOffice.get("openDt"), boxOffice.get("audiAcc"));
@@ -136,7 +134,7 @@ public class MovieListController {
 
 		String REQUEST_URL = "http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchWeeklyBoxOfficeList.json";
 		String AUTH_KEY = "92be55421c9d9393f92251cbcb6fea1a";
-		SimpleDateFormat DATE_FMT = new SimpleDateFormat("yyyyMMdd");
+		SimpleDateFormat DATE_FMT = new SimpleDateFormat("20210322");
 		Calendar cal = Calendar.getInstance();
 		cal.setTime(new Date());
 		cal.add(Calendar.DATE, -1);
@@ -144,11 +142,11 @@ public class MovieListController {
 		Map<String, String> paramMap = new HashMap<String, String>();
 
 		paramMap.put("key", AUTH_KEY);
-		paramMap.put("targetDt", DATE_FMT.format(cal.getTime()));
-		paramMap.put("itemPerPage", "0");
-		paramMap.put("itemPerPage", "10");
-		paramMap.put("multiMovieYn", "N");
-		paramMap.put("repNationCd", "K");
+		paramMap.put("targetDt", "20210322");
+//		paramMap.put("itemPerPage", "0");
+		paramMap.put("itemPerPage", "7");
+//		paramMap.put("multiMovieYn", "N");
+//		paramMap.put("repNationCd", "K");
 	
 		StringBuilder sb = new StringBuilder();
 
@@ -183,9 +181,9 @@ public class MovieListController {
 			JSONObject boxOfficeResult = responseBody.getJSONObject("boxOfficeResult");
 			String boxofficeType = boxOfficeResult.getString("boxofficeType");
 			System.out.println(boxofficeType);
-			JSONArray dailyBoxOfficeList = boxOfficeResult.getJSONArray("dailyBoxOfficeList");
-			Iterator<Object> iter = dailyBoxOfficeList.iterator();
-			System.out.println(dailyBoxOfficeList);
+			JSONArray weeklyBoxOfficeList = boxOfficeResult.getJSONArray("weeklyBoxOfficeList");
+			Iterator<Object> iter = weeklyBoxOfficeList.iterator();
+			System.out.println(weeklyBoxOfficeList);
 			while (iter.hasNext()) {
 
 				// 기존 데이터와 비교해서 중복되지 않도록 처리
@@ -223,17 +221,35 @@ public class MovieListController {
 		return "/movie/weeklyBoxOf";
 	}
 	
-	@RequestMapping(value = "/movieList")
-	public String getmoviepeople() throws Exception {
-		System.out.println("ajax 요청이 왔습니다.");
-		
-	return "";	
-	}
+
 	
 	@RequestMapping(value = "/movieMain")
-	public String movieMain() throws Exception {
+	public String movieMain(Model model,String rank) throws Exception {
+	System.out.println("ajax 요청이 왔습니다.");
+			
+		rank="1";
+		MovieVO vo=new MovieVO();
+		
+		vo=service.listOne(rank);
+		List<MovieVO> vos=service.list("weekly","20210322");
+	    System.out.println(vos.toString());
+	    movieListCommon common=new movieListCommon();
+	    common.sortListVO(vos, rank, "ASC");
+		
+		model.addAttribute("list", vos);
 		return "/movie/movieMain";
 
 	}
+	
+	public void Crwaling(String image,String rank) {
+		System.out.println("hi crallwing 좀 쓸게");
+		MovieVO vo=new MovieVO();
+		vo.setImage(image);
+		vo.setRank(rank);
+		System.out.println(vo.toString());
+		sqlSession.update("movieInsertImage",vo);
+		
+	}
+	
 
 }

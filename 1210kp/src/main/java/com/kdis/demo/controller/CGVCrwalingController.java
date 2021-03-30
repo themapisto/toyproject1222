@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.inject.Inject;
+
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
@@ -14,9 +16,15 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.google.gson.Gson;
 import com.kdis.demo.vo.InfoDto;
+import com.kdis.movieList.MovieListController;
+import com.kdis.movieList.MovieListService;
 
 @RestController
 public class CGVCrwalingController {
+	
+	@Inject
+	private MovieListController movieList;
+	
 	
 	private static Logger logger = LoggerFactory.getLogger(CGVCrwalingController.class);
 	
@@ -39,6 +47,12 @@ public class CGVCrwalingController {
 			int seq = i;
 			String rank = ranks.get(i).text();
 			String img = imgs.get(i).attr("src");
+			//kpkim 
+		    rank=rank.substring(3);
+	
+			movieList.Crwaling(img,rank);
+			
+			
 			String movieAge = movieAges.get(i).text();
 			String movieTitle = movieTitles.get(i).text();
 			String movieRate = movieRates.get(i).text();
