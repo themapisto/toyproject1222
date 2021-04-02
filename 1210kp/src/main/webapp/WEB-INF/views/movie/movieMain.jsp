@@ -3,16 +3,24 @@
 <html>
 <head>
 	<title>마이페이지</title>
+	
+	
+	<link rel="stylesheet" href="/resources/css/list.css" type="text/css">
 	<%@include file="/WEB-INF/views/common/common.jsp"%>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 </head>
 <body>
 	<%@include file="/WEB-INF/views/common/header.jsp"%>
-	<%@include file="/WEB-INF/views/common/sidebar.jsp" %>
-	<link rel="stylesheet" href="/resources/css/list.css" type="text/css">
+
+	
 
 
 	<h2>MOVIE LIST 검색 </h2>
-	<div class=header">
+	<div class="header">
 		<div>
 			<a href="javascript:window.open('/movie/dailyBoxOf','_blank','width=1000px,height=500px');" title="일별 박스오피스">일별 박스오피스</a>
 			&nbsp;|&nbsp;
@@ -22,12 +30,23 @@
 	</div> 
 	<!-- thumnail -->
 	<div>
-		<ol class="list" id="movieList">
+
+			
+			
 		    <c:forEach items="${list}" var="list">
+		    
+		    <ol id="list" style="display:inline-block; width:15%">
+		    
 			<img src="${list.image}"  class="img-thumbnail">
+			<button type="button" class="btn btn-light" style= "position:static; width:100%">예매</button>
+			
+			</ol>
+			
 			</c:forEach>
 			
-		</ol>
+
+			
+		
 	</div>
 </body>
 

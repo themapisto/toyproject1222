@@ -26,7 +26,7 @@ public class movieListCommon {
                     Method secondDeclaredMethod = secondObject.getClass().getDeclaredMethod(getterMethodText);
                     secondData = (String) secondDeclaredMethod.invoke(secondObject, new Object[] {});
                 } catch (NoSuchMethodException | SecurityException e) {
-                    e.printStackTrace();
+                    //e.printStackTrace();
                 } catch (IllegalAccessException e) {
                     e.printStackTrace();
                 } catch (IllegalArgumentException e) {
