@@ -112,7 +112,7 @@ public class MovieListController {
 
 				System.out.print("??" + vo.getAudiAcc() + "???" + vo.getMovieNm() + "sddd" + vo.getMovieCd() + "???"
 						+ vo.getRank());
-				//sqlSession.insert("movieInsert", vo);
+				sqlSession.insert("movieInsert", vo);
 
 				System.out.printf("{순위:%s, 제목:%s, 개봉일:%s, 누적관객수:%s}\n", boxOffice.get("rank"), boxOffice.get("movieNm"),
 						boxOffice.get("openDt"), boxOffice.get("audiAcc"));
