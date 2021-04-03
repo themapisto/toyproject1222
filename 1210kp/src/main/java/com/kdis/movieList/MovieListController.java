@@ -44,7 +44,7 @@ public class MovieListController {
 
 		String REQUEST_URL = "http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json";
 		String AUTH_KEY = "92be55421c9d9393f92251cbcb6fea1a";
-		SimpleDateFormat DATE_FMT = new SimpleDateFormat("20210311");
+		SimpleDateFormat DATE_FMT = new SimpleDateFormat("20210329");
 		Calendar cal = Calendar.getInstance();
 		cal.setTime(new Date());
 		cal.add(Calendar.DATE, -1);
@@ -53,11 +53,9 @@ public class MovieListController {
 
 		paramMap.put("key", AUTH_KEY);
 		paramMap.put("targetDt", DATE_FMT.format(cal.getTime()));
-		paramMap.put("itemPerPage", "10");
+		paramMap.put("itemPerPage", "7");
 		paramMap.put("multiMovieYn", "N");
 		paramMap.put("repNationCd", "K");
-	
-		System.out.println(vo.getInsertDt()+"문제없어");
 
 		StringBuilder sb = new StringBuilder();
 
@@ -98,7 +96,7 @@ public class MovieListController {
 			Iterator<Object> iter = dailyBoxOfficeList.iterator();
 			System.out.println(dailyBoxOfficeList);
 			while (iter.hasNext()) {
-				System.out.println("asd");
+				
 				// 기존 데이터와 비교해서 중복되지 않도록 처리
 
 				JSONObject boxOffice = (JSONObject) iter.next();
@@ -114,7 +112,7 @@ public class MovieListController {
 
 				System.out.print("??" + vo.getAudiAcc() + "???" + vo.getMovieNm() + "sddd" + vo.getMovieCd() + "???"
 						+ vo.getRank());
-				sqlSession.insert("movieInsert", vo);
+				//sqlSession.insert("movieInsert", vo);
 
 				System.out.printf("{순위:%s, 제목:%s, 개봉일:%s, 누적관객수:%s}\n", boxOffice.get("rank"), boxOffice.get("movieNm"),
 						boxOffice.get("openDt"), boxOffice.get("audiAcc"));
@@ -125,8 +123,8 @@ public class MovieListController {
 
 			e.printStackTrace();
 		}
-
-	//	model.addAttribute("list", service.list(vo.getMovieVal(), vo.getInsertDt()));
+		
+		//model.addAttribute("list", service.list(vo.getMovieVal(), vo.getInsertDt()));
 
 		return "/movie/dailyBoxOf";
 	}
@@ -136,7 +134,7 @@ public class MovieListController {
 
 		String REQUEST_URL = "http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchWeeklyBoxOfficeList.json";
 		String AUTH_KEY = "92be55421c9d9393f92251cbcb6fea1a";
-		SimpleDateFormat DATE_FMT = new SimpleDateFormat("yyyyMMdd");
+		SimpleDateFormat DATE_FMT = new SimpleDateFormat("20210322");
 		Calendar cal = Calendar.getInstance();
 		cal.setTime(new Date());
 		cal.add(Calendar.DATE, -1);
@@ -144,11 +142,9 @@ public class MovieListController {
 		Map<String, String> paramMap = new HashMap<String, String>();
 
 		paramMap.put("key", AUTH_KEY);
-		paramMap.put("targetDt", DATE_FMT.format(cal.getTime()));
-		paramMap.put("itemPerPage", "0");
-		paramMap.put("itemPerPage", "10");
-		paramMap.put("multiMovieYn", "N");
-		paramMap.put("repNationCd", "K");
+		paramMap.put("targetDt", "20210322");
+		paramMap.put("itemPerPage", "7");
+
 	
 		StringBuilder sb = new StringBuilder();
 
@@ -183,9 +179,9 @@ public class MovieListController {
 			JSONObject boxOfficeResult = responseBody.getJSONObject("boxOfficeResult");
 			String boxofficeType = boxOfficeResult.getString("boxofficeType");
 			System.out.println(boxofficeType);
-			JSONArray dailyBoxOfficeList = boxOfficeResult.getJSONArray("dailyBoxOfficeList");
-			Iterator<Object> iter = dailyBoxOfficeList.iterator();
-			System.out.println(dailyBoxOfficeList);
+			JSONArray weeklyBoxOfficeList = boxOfficeResult.getJSONArray("weeklyBoxOfficeList");
+			Iterator<Object> iter = weeklyBoxOfficeList.iterator();
+			System.out.println(weeklyBoxOfficeList);
 			while (iter.hasNext()) {
 
 				// 기존 데이터와 비교해서 중복되지 않도록 처리
@@ -200,14 +196,12 @@ public class MovieListController {
 				vo.setAudiAcc(boxOffice.get("audiAcc").toString());
 				vo.setSalesAmt(boxOffice.get("salesAmt").toString());
 				vo.setInsertDt(DATE_FMT.format(cal.getTime()));
-				// System.out.println(DATE_FMT);
 
-				System.out.print("??" + vo.getAudiAcc() + "???" + vo.getMovieNm() + "sddd" + vo.getMovieCd() + "???"
-						+ vo.getRank());
+				//TODO 기본키와 index를 입력하여, insert가 되진 않지만, 1주일에 한번만 insert가 되도록 수정해야함.
+		
+				
 				sqlSession.insert("movieInsert", vo);
 
-				System.out.printf("{순위:%s, 제목:%s, 개봉일:%s, 누적관객수:%s}\n", boxOffice.get("rank"), boxOffice.get("movieNm"),
-						boxOffice.get("openDt"), boxOffice.get("audiAcc"));
 
 			}
 
@@ -223,17 +217,36 @@ public class MovieListController {
 		return "/movie/weeklyBoxOf";
 	}
 	
-	@RequestMapping(value = "/moviepeople")
-	public String getmoviepeople(String movieCd) throws Exception {
-		
-		
-	return "";	
-	}
+
 	
 	@RequestMapping(value = "/movieMain")
-	public String movieMain() throws Exception {
+	public String movieMain(Model model) throws Exception {
+		
+		
+	    
+		//TODO 현재날짜-7day 로 바꿔야함  
+		List<MovieVO> vos=service.list("weekly","20210322");
+		
+	    
+	    movieListCommon common=new movieListCommon();
+	    common.sortListVO(vos, "1", "ASC");
+		model.addAttribute("list", vos);
+		
 		return "/movie/movieMain";
 
 	}
+	
+	public void Crwaling(String image,String rank) {
+		
+		MovieVO vo=new MovieVO();
+		vo.setImage(image);
+		vo.setRank(rank);
+		
+		//TODO 영화 진흥원api를 통해 받아온 rank와 영화제목을 비교하여, 정확한 이미지 크롤링 주소를 입력하여야함.
+		
+		sqlSession.update("movieInsertImage",vo);
+		
+	}
+	
 
 }
