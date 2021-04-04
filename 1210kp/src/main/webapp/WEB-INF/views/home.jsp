@@ -4,7 +4,6 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<<<<<<< HEAD
     <meta charset="UTF-8">
     <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -22,11 +21,9 @@
     
     <!-- 웹 폰트 -->
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:100,300,400,500,700,900&amp;subset=korean" rel="stylesheet">
-=======
 	<title>Home</title>
 	
-<%@include file="/WEB-INF/views/common/common.jsp" %>
->>>>>>> c8209a855fce1c37808bd6b9fa9f58d18b9f8bee
+	<%@include file="/WEB-INF/views/common/common.jsp" %>
 </head>
 <body>
     <%@include file="/WEB-INF/views/common/header.jsp" %>
@@ -759,7 +756,6 @@
     <!-- //help -->
     
 
-<<<<<<< HEAD
     <!-- 트레일러 -->
     <aside role="complementary" id="blackout" class="overlay">
         <div id="trailerModal" class="modal">
@@ -777,12 +773,5 @@
     <script src="/resources/js/iframe_api.js"></script>
     <script src="/resources/js/movie.js"></script>
     <script src="/resources/js/home.js"></script>
-=======
-
-<h1>
-	Hello 
-</h1>
-<p><a href="/movie/movieMain">영화 목록</a></p>
->>>>>>> c8209a855fce1c37808bd6b9fa9f58d18b9f8bee
 </body>
 </html>
