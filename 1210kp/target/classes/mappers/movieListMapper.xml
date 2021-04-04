@@ -15,7 +15,8 @@
 	</insert>
 	
 	<update id="movieInsertImage">
-		Update movie set image= #{image} where rank= #{rank}
+		Update movie set image= #{image} where rank= #{rank} and movieVal="weekly"
+		
 	</update>
 	
 
