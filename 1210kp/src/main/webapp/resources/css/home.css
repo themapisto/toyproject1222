@@ -1,0 +1,34 @@
+@charset "UTF-8";
+
+/* 트레일러 */
+
+.overlay{
+	background: rgba(0,0,0,92);
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top:0;
+	left:0;
+	z-index:10000;
+}
+.modal{
+	position: absolute;
+}
+.mocal_close{
+	background: url(../images/close.svg) no-repeat;
+	background-size: 32px 32px;
+	border: 0;
+	color: transparent;
+	display: block;
+	width : 32px;
+	height : 32px;
+	overflow: hidden;
+	position: absolute;
+	top: 24px;
+	right: 24px;
+	text-indent: 100%;
+}
+
+body.modal_on {
+	overflow: hidden;
+}
