@@ -5,11 +5,25 @@
 <mapper namespace="com.kdis.demo.dao.AdminManageDao">
 	
 	<!-- 모든 회원 -->
-	<select id="showAllUser" resultType="com.kdis.demo.vo.UserVo">
+	<select id="showAllUser" resultType="com.kdis.demo.vo.UserVo" parameterType="com.kdis.demo.vo.PaginationDto">
 		select *
-		from USER
+		from user
 		where grade=1
+		<if test="keyword != ''">
+			and ${option} like CONCAT('%', #{keyword}, '%')
+		</if>	
 		order by regDt desc
+		limit #{startIdx},#{cntPerPage}
+	</select>
+	
+	<!-- 페이지  -->
+	<select  id="countTotal" resultType="int" parameterType="com.kdis.demo.vo.PaginationDto">
+		select count(*)
+		from user
+		where grade=1
+		<if test="keyword != ''">
+			and ${option} like CONCAT('%', #{keyword}, '%')
+		</if>
 	</select>
 	
 

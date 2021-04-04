@@ -5,47 +5,31 @@
 <head>
 
 <title>회원관리 리스트</title>
-
+<link href="/resources/css/default.css?h" rel="stylesheet" type="text/css">
+	<script src="https://code.jquery.com/jquery-3.5.1.js" type="text/javascript"></script>
 <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>    
-
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 </head>
 <body>
-<form id="filter" name="filter">
-    &nbsp;&nbsp;회원등급 :
-    <select id="grade">
-        <option value="all">전체</option>
-        <option value="1">일반회원</option>
-        <option value="2">관리자</option>
-    </select>
-    이름 :<input type="text" id="userName" name="userName">
-    아이디 :<input type="text" id="userId" name="userId">
-    회원상태 :
-    <select id="state" name="state">
-        <option value="all">전체</option>
-        <option value="1">가입</option>
-        <option value="2">탈퇴</option>
-        <option value="3">잠김</option>
-    </select>
-    가입일자 :
-    <span>
-        <input type="text" id="datepickerStart" readonly >
-        ~
-        <input type="text" id="datepickerEnd" readonly >
-    </span>
-    
-    
-    <button type="button">검색</button>
-</form>    
-<table class="userTable">
+<%@include file="/WEB-INF/views/admin/header.jsp" %>
+<%@include file="/WEB-INF/views/admin/sidebar.jsp" %>
+<form id="filter" name="filter" method="get" action="/manage/userList">
+		&nbsp;&nbsp;<select id="option" name="option">
+			<option value="userNm" ${pageDto.option eq userNm? selected:"" }>이름</option>
+			<option value="userId" ${pageDto.option eq userId? selected:"" }>아이디</option>
+		</select>
+		<input type="text" id="keyword" name="keyword" value="${pageDto.keyword}">
+    <button type="button" onclick="searchChk()">검색</button>
+</form>
+<table id="userTable">
     <colgroup>
         <col style="width:10%;">
         <col style="width:10%;">
         <col style="width:15%;">
-        <col style="width:30%;">
         <col style="width:20%;">
-        <col style="width:15%;">
+        <col style="width:20%;">
+        <col style="width:25%;">
     </colgroup>
 
     <thead>
@@ -60,7 +44,7 @@
     </thead>
     <tbody>
     	<c:forEach items="${userList}" var="user" varStatus="status">
-        <tr align: "center">
+        <tr>
             <td>${status.count}</td>
             <td>일반회원</td>
             <td>${user.userNm}</td>
@@ -77,19 +61,38 @@
             	<fmt:formatDate value="${user.regDt}" pattern="yyyy-MM-dd"/>
             </td>
         </tr>
-        </c:forEach>
-        
-        
+        </c:forEach>   
     </tbody>
 </table>
-
+<div style="display: block; text-align: center;">		
+		<c:if test="${pageDto.prev == true }">
+			<a href="/manage/userList?keyword=${pageDto.keyword}&option=${pageDto.option}&page=${pageDto.startPage - 1 }">&lt;</a>
+		</c:if>
+		<c:forEach begin="${pageDto.startPage}" end="${pageDto.endPage}" var="p">
+			<c:choose>
+				<c:when test="${p == pageDto.page}">
+					<b>${p }</b>
+				</c:when>
+				<c:when test="${p != pageDto.page}">
+					<a href="/manage/userList?keyword=${pageDto.keyword}&option=${pageDto.option}&page=${p }">${p }</a>
+				</c:when>
+			</c:choose>
+		</c:forEach>
+		<c:if test="${pageDto.next == true}">
+			<a href="/manage/userList?keyword=${pageDto.keyword}&option=${pageDto.option}&page=${pageDto.endPage+1 }">&gt;</a>
+		</c:if>
+	</div>
 
 <script type="text/javascript">
-    $("#datepickerStart, #datepickerEnd").datepicker({
-        dateFormat:'yy-mm-dd',
-        changeYear:true,
-        changeMonth:true
-    });
+    
+    function searchChk(){
+		var option = document.getElementById("option").value;
+		if(option!=""){
+			filter.submit();
+		}else{
+			alert("검색어를 입력해주세요" );
+		}	
+    }
 </script>
 </body>
 </html>

@@ -406,7 +406,7 @@ aside > ul > li , .menu > ul > li{
 
 #userTable{
     position: absolute;
-    left:50%;
+    left:54%;
     top:20%;
     transform: translate(-50%);
     height:500px;
@@ -416,10 +416,13 @@ aside > ul > li , .menu > ul > li{
 #userTable th:nth-child(odd), #userTable td:nth-child(odd){
     background-color: #00f3be;
 }
+tbody tr td{
+	text-align: center;
+}
 
 #filter{
     position:absolute;
-    left:50%;
+    left:58%;
     top:10%;
     transform: translate(-50%);
 
@@ -432,7 +435,7 @@ aside > ul > li , .menu > ul > li{
 #filter > input{
     margin:10px;
     width:110px;
-    height: 20px;
+    height: 40px;
 }
 #filter > select{
     font-size:14px;
