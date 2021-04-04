@@ -41,7 +41,9 @@
 	<beans:bean id="SessionLoginInterceptor" class="prjc.baechan.common.SessionLoginInterceptor"> </beans:bean> 
 	<mvc:interceptors>
 		<mvc:interceptor> 
-			<mvc:mapping path="/member/*"/> 
+			<mvc:mapping path="/member/*"/>
+			<mvc:mapping path="/admin/*"/>
+			<mvc:exclude-mapping path="/admin/login"/>
 			<beans:ref bean="SessionLoginInterceptor"/>
 		</mvc:interceptor>
 	</mvc:interceptors>
