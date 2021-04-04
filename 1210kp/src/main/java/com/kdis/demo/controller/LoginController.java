@@ -6,7 +6,6 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.annotation.Resource;
 import javax.inject.Inject;
 import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
@@ -14,9 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.mail.javamail.MimeMessageHelper;
+//import org.springframework.mail.javamail.JavaMailSender;
+//import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,7 +22,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kdis.demo.service.LoginService;
 import com.kdis.demo.service.MemberService;
-import com.kdis.demo.vo.UserVo;
+import com.kdis.demo.vo.UserVO;
 
 import prjc.baechan.common.SHA256Util;
 
@@ -38,9 +36,9 @@ public class LoginController{
 	 @Inject
 	 private MemberService MemberService;
 	 
-	 @Autowired
-	 private JavaMailSender mailSender; 
-	 
+//	 @Autowired
+//	 private JavaMailSender mailSender; 
+//	 
 	 @RequestMapping(value = "/login")
 	 public String login() throws Exception {
 		 return "/login/login";
@@ -88,7 +86,7 @@ public class LoginController{
 		 
 		 // 로그인 계정 체크 후 회원정보 가져오기
 		 loginChk = LoginService.loginSubmit(paramMap);
-		 UserVo userVO = MemberService.selectMyInfo(paramMap);
+		 UserVO userVO = MemberService.selectMyInfo(paramMap);
 		 
 		 // 회원 로그인 실패 횟수 가져와서 로그인 할 수 있는 상태인지 판별
 		 Integer loginFailCount = userVO.getLoginFailCount();
@@ -301,61 +299,61 @@ public class LoginController{
 	 }
 	 
 	 // 비밀번호 찾기 - 회원이름,핸드폰번호,이메일 비교하여 해당 계정 이메일로 임시비밀번호 발급
-	 @ResponseBody
-	 @RequestMapping("/pwdSearch")
-	 public Map<String,String> pwdSearch(ModelMap model,HttpServletRequest request,HttpServletResponse response) throws Exception {
-		 HashMap<String,Object> paramMap = new HashMap<String,Object>();
-		 Map<String,String> resultMap = new HashMap<String,String>();
-		 
-		 String userNm = request.getParameter("userNm");
-		 String phoneNumber = request.getParameter("phoneNumber");
-		 String email = request.getParameter("email");
-
-		 paramMap.put("userNm",userNm);
-		 paramMap.put("phoneNumber", phoneNumber);
-		 paramMap.put("email", email);
-		 
-		 String userId = "";
-		 String password = "";
-		 String userSalt = "";
-		 
-		 userId = LoginService.searchPwdChk(paramMap);
-		 userSalt = LoginService.getUserSalt(userId);
-		 
-		 paramMap.put("userId", userId);
-		 paramMap.put("salt", userSalt);
-				 
-		 if(!"".equals(userId) && userId != null) {		
-			//임시비밀번호 생성
-			 password = getRandomPassword();
-			 
-			 // 임시비밀번호 회원정보에 등록
-			 paramMap.put("password", SHA256Util.encrypt(password,userSalt));
-			 int tmpPassword = 0;
-			 tmpPassword = MemberService.updatePwd(paramMap);
-			 
-			 if(tmpPassword == 1) {
-				// 이메일 발송 메서드
-				 int mailSendChk = 0;
-				 mailSendChk = mailSend(password);
-				 
-				 if(mailSendChk == 1) {
-					 resultMap.put("result", "success");
-				 }else {
-					 //TODO : 기존 비밀번호로 되돌려야
-				 }
-			 }else {
-				 resultMap.put("result", "error");
-			 }
-		 }else {
-			 resultMap.put("result", "fail");
-		 }
-		 
-		 
-		 
-		 return resultMap;
-	 }
-	 
+//	 @ResponseBody
+//	 @RequestMapping("/pwdSearch")
+//	 public Map<String,String> pwdSearch(ModelMap model,HttpServletRequest request,HttpServletResponse response) throws Exception {
+//		 HashMap<String,Object> paramMap = new HashMap<String,Object>();
+//		 Map<String,String> resultMap = new HashMap<String,String>();
+//		 
+//		 String userNm = request.getParameter("userNm");
+//		 String phoneNumber = request.getParameter("phoneNumber");
+//		 String email = request.getParameter("email");
+//
+//		 paramMap.put("userNm",userNm);
+//		 paramMap.put("phoneNumber", phoneNumber);
+//		 paramMap.put("email", email);
+//		 
+//		 String userId = "";
+//		 String password = "";
+//		 String userSalt = "";
+//		 
+//		 userId = LoginService.searchPwdChk(paramMap);
+//		 userSalt = LoginService.getUserSalt(userId);
+//		 
+//		 paramMap.put("userId", userId);
+//		 paramMap.put("salt", userSalt);
+//				 
+//		 if(!"".equals(userId) && userId != null) {		
+//			//임시비밀번호 생성
+//			 password = getRandomPassword();
+//			 
+//			 // 임시비밀번호 회원정보에 등록
+//			 paramMap.put("password", SHA256Util.encrypt(password,userSalt));
+//			 int tmpPassword = 0;
+//			 tmpPassword = MemberService.updatePwd(paramMap);
+//			 
+//			 if(tmpPassword == 1) {
+//				// 이메일 발송 메서드
+//				 int mailSendChk = 0;
+//				 mailSendChk = mailSend(password);
+//				 
+//				 if(mailSendChk == 1) {
+//					 resultMap.put("result", "success");
+//				 }else {
+//					 //TODO : 기존 비밀번호로 되돌려야
+//				 }
+//			 }else {
+//				 resultMap.put("result", "error");
+//			 }
+//		 }else {
+//			 resultMap.put("result", "fail");
+//		 }
+//		 
+//		 
+//		 
+//		 return resultMap;
+//	 }
+//	 
 	 // 임시비밀번호 생성
 	 public static String getRandomPassword() { 
 		 char[] charSet = new char[] { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
@@ -380,43 +378,43 @@ public class LoginController{
 	 }
 
 	 // 비밀번호 찾기 시 메일발송 처리 
-	 public int mailSend(String password) throws Exception{
-		 	String subject = "MovieBox에서 회원님의 임시비밀번호를 보내드립니다.";
-	        String content = "MovieBox 임시비밀번호 : " + password;
-	        String from = "baechantest@naver.com";
-	        String to = "asdfjklddd@naver.com";
-
-	        try {
-	            MimeMessage mail = mailSender.createMimeMessage();
-	            MimeMessageHelper mailHelper = new MimeMessageHelper(mail,true,"UTF-8");
-	            // true는 멀티파트 메세지를 사용하겠다는 의미
-	            
-	            /*
-	             * 단순한 텍스트 메세지만 사용시엔 아래의 코드도 사용 가능 
-	             * MimeMessageHelper mailHelper = new MimeMessageHelper(mail,"UTF-8");
-	             */
-	            mailHelper.setFrom(from);
-	            // 빈에 아이디 설정한 것은 단순히 smtp 인증을 받기 위해 사용 따라서 보내는이(setFrom())반드시 필요
-	            // 보내는이와 메일주소를 수신하는이가 볼때 모두 표기 되게 원하신다면 아래의 코드를 사용하시면 됩니다.
-	            //mailHelper.setFrom("보내는이 이름 <보내는이 아이디@도메인주소>");
-	            mailHelper.setTo(to);
-	            mailHelper.setSubject(subject);
-	            mailHelper.setText(content, true);
-	            // true는 html을 사용하겠다는 의미입니다.
-	            
-	            /*
-	             * 단순한 텍스트만 사용하신다면 다음의 코드를 사용하셔도 됩니다. mailHelper.setText(content);
-	             */
-	            
-	            mailSender.send(mail);
-	            return 1;
-	        } catch(Exception e) {
-	            e.printStackTrace();
-	            return 0;
-	        }
-			
-		 
-		 
-	 }
+//	 public int mailSend(String password) throws Exception{
+//		 	String subject = "MovieBox에서 회원님의 임시비밀번호를 보내드립니다.";
+//	        String content = "MovieBox 임시비밀번호 : " + password;
+//	        String from = "baechantest@naver.com";
+//	        String to = "asdfjklddd@naver.com";
+//
+//	        try {
+//	            MimeMessage mail = mailSender.createMimeMessage();
+//	            MimeMessageHelper mailHelper = new MimeMessageHelper(mail,true,"UTF-8");
+//	            // true는 멀티파트 메세지를 사용하겠다는 의미
+//	            
+//	            /*
+//	             * 단순한 텍스트 메세지만 사용시엔 아래의 코드도 사용 가능 
+//	             * MimeMessageHelper mailHelper = new MimeMessageHelper(mail,"UTF-8");
+//	             */
+//	            mailHelper.setFrom(from);
+//	            // 빈에 아이디 설정한 것은 단순히 smtp 인증을 받기 위해 사용 따라서 보내는이(setFrom())반드시 필요
+//	            // 보내는이와 메일주소를 수신하는이가 볼때 모두 표기 되게 원하신다면 아래의 코드를 사용하시면 됩니다.
+//	            //mailHelper.setFrom("보내는이 이름 <보내는이 아이디@도메인주소>");
+//	            mailHelper.setTo(to);
+//	            mailHelper.setSubject(subject);
+//	            mailHelper.setText(content, true);
+//	            // true는 html을 사용하겠다는 의미입니다.
+//	            
+//	            /*
+//	             * 단순한 텍스트만 사용하신다면 다음의 코드를 사용하셔도 됩니다. mailHelper.setText(content);
+//	             */
+//	            
+//	            mailSender.send(mail);
+//	            return 1;
+//	        } catch(Exception e) {
+//	            e.printStackTrace();
+//	            return 0;
+//	        }
+//			
+//		 
+//		 
+//	 }
 	 
 }

@@ -7,12 +7,12 @@ import java.util.Map;
 import org.springframework.stereotype.Repository;
 
 import com.kdis.demo.vo.CouponVO;
-import com.kdis.demo.vo.UserVo;
+import com.kdis.demo.vo.UserVO;
 
 @Repository
 public interface MemberDao {
 
-	public UserVo selectMyInfo(Map<String, Object> paramMap) throws Exception;
+	public UserVO selectMyInfo(Map<String, Object> paramMap) throws Exception;
 
 	public int updateMyInfo(HashMap<String, Object> paramMap) throws Exception;
 

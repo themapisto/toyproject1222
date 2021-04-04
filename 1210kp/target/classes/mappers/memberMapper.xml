@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kdis.demo.dao.MemberDao">
+	
+	<!-- 마이페이지 회원정보 가져오기 -->
+	<select id="selectMyInfo" parameterType="Map" resultType="com.kdis.demo.vo.UserVO">
+		select userId, userNm, DATE_FORMAT(birthday,'%Y-%m-%d') as birthday, phoneNumber,
+		email,grade,userState,loginFailCount,loginFailTime
+		from USER
+		where userId = #{userId}
+	</select>
+	
+	<!-- 회원정보 수정 -->
+	<update id="updateMyInfo" parameterType="Map">
+		update USER
+		set userNm = #{userNm}, birthday = #{birthday}, phoneNumber = #{phoneNumber}, email = #{email}
+		where userId = #{userId}
+	</update>
+
+	<!-- 비밀번호 수정 -->
+	<update id="updatePwd" parameterType="Map">
+		update USER
+		set password = #{password} , salt = #{salt}
+		where userId = #{userId}
+	</update>
+	
+	<!-- 회원탈퇴 -->
+	<update id="userWithdrawal" parameterType="Map">
+		update USER
+		set userState = "9"
+		where userId = #{userId} and password = #{password}
+	</update>
+	
+		<!-- 계정 상태 변경 -->
+	<update id="updateUserState" parameterType="Map">
+		update USER
+		set userState = #{userState}
+		where userId = #{userId}
+	</update>
+	
+	<!-- 쿠폰정보가져오기 -->
+	<select id="selectCouponInfo" parameterType="String" resultType="com.kdis.demo.vo.CouponVO">
+		select *
+		from COUPON
+		where couponId = #{couponId}
+	</select>
+	
+	<!-- 쿠폰등록하기 -->
+	<insert id="insertCouponRegister" parameterType="Map">
+		INSERT INTO usercoupon(couponId,userId,registDt,expireDt,useChk) 
+		VALUES (#{couponId},#{userId},NOW(),DATE_ADD(NOW(), INTERVAL #{usePeriod} DAY),"1");
+	</insert>
+	
+	<!-- my쿠폰불러오기 -->
+	<select id="selectMyCoupon" parameterType="Map" resultType="com.kdis.demo.vo.UserCouponVO">
+		SELECT uc.userId as userId
+			, uc.couponId as couponId
+			, uc.registDt as registDt
+			, uc.expireDt as expireDt
+			, uc.useChk as useChk
+			, uc.useDt as useDt
+			, c.couponNm as couponNm
+			, c.dscntRate as dscntRate
+		FROM usercoupon uc
+		LEFT JOIN coupon c
+		ON uc.couponId = c.couponId
+		WHERE uc.userId = #{userId}
+		ORDER BY registDt DESC, expireDt DESC;
+	</select>
+</mapper>

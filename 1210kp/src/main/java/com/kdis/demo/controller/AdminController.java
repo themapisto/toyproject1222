@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kdis.demo.service.LoginService;
 import com.kdis.demo.service.MemberService;
-import com.kdis.demo.vo.UserVo;
+import com.kdis.demo.vo.UserVO;
 
 import prjc.baechan.common.SHA256Util;
 
@@ -71,7 +71,7 @@ public class AdminController {
 		 
 		// 로그인 계정 체크 후 회원정보 가져오기
 		loginChk = LoginService.adminLoginSubmit(paramMap);
-		UserVo userVO = MemberService.selectMyInfo(paramMap);
+		UserVO userVO = MemberService.selectMyInfo(paramMap);
 		 
 		// 회원 로그인 실패 횟수 가져와서 로그인 할 수 있는 상태인지 판별
 		Integer loginFailCount = userVO.getLoginFailCount();
