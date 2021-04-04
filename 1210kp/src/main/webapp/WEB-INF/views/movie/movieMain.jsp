@@ -22,9 +22,9 @@
 	<h2>MOVIE LIST 검색 </h2>
 	<div class="header">
 		<div>
-			<a href="javascript:window.open('/movie/dailyBoxOf','_blank','width=1000px,height=500px');" title="일별 박스오피스">일별 박스오피스</a>
+			<a href="/movie/dailyBoxOf" title="일별 박스오피스">일별 박스오피스</a>
 			&nbsp;|&nbsp;
-			<a href="javascript:window.open('/movie/weeklyBoxOf','_blank','width=1000px,height=500px');" title="주간 박스오피스">주간 박스오피스</a>
+			<a href="/movie/weeklyBoxOf" title="주간 박스오피스">주간 박스오피스</a>
 			&nbsp;|&nbsp;
 		</div>
 	</div> 

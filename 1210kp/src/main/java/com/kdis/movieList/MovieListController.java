@@ -44,11 +44,14 @@ public class MovieListController {
 
 		String REQUEST_URL = "http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json";
 		String AUTH_KEY = "92be55421c9d9393f92251cbcb6fea1a";
-		SimpleDateFormat DATE_FMT = new SimpleDateFormat("20210329");
+		SimpleDateFormat DATE_FMT = new SimpleDateFormat("20210402");
 		Calendar cal = Calendar.getInstance();
 		cal.setTime(new Date());
 		cal.add(Calendar.DATE, -1);
-
+		
+		System.out.print(DATE_FMT.format(cal.getTime()));
+		
+		
 		Map<String, String> paramMap = new HashMap<String, String>();
 
 		paramMap.put("key", AUTH_KEY);
@@ -60,7 +63,7 @@ public class MovieListController {
 		StringBuilder sb = new StringBuilder();
 
 		for (String mapkey : paramMap.keySet()) {
-			System.out.println("Key:" + mapkey + ", Value:" + paramMap.get(mapkey));
+			
 
 			sb.append("&");
 			sb.append(mapkey).append('=').append(paramMap.get(mapkey));
@@ -70,7 +73,7 @@ public class MovieListController {
 		try {
 
 			URL requestURL = new URL(REQUEST_URL + "?" + sb.toString());
-			System.out.println(requestURL);
+			
 			HttpURLConnection conn = (HttpURLConnection) requestURL.openConnection();
 
 			Date now = new Date();
@@ -86,15 +89,15 @@ public class MovieListController {
 
 		
 			
-			System.out.println(response);
+			
 			JSONObject responseBody = new JSONObject(response.toString());
-			System.out.println(responseBody);
+			
 			JSONObject boxOfficeResult = responseBody.getJSONObject("boxOfficeResult");
 			String boxofficeType = boxOfficeResult.getString("boxofficeType");
-			System.out.println(boxofficeType);
+			
 			JSONArray dailyBoxOfficeList = boxOfficeResult.getJSONArray("dailyBoxOfficeList");
 			Iterator<Object> iter = dailyBoxOfficeList.iterator();
-			System.out.println(dailyBoxOfficeList);
+			
 			while (iter.hasNext()) {
 				
 				// 기존 데이터와 비교해서 중복되지 않도록 처리
@@ -110,13 +113,10 @@ public class MovieListController {
 				vo.setInsertDt(DATE_FMT.format(cal.getTime()));
 				// System.out.println(DATE_FMT);
 
-				System.out.print("??" + vo.getAudiAcc() + "???" + vo.getMovieNm() + "sddd" + vo.getMovieCd() + "???"
-						+ vo.getRank());
+			
 				sqlSession.insert("movieInsert", vo);
 
-				System.out.printf("{순위:%s, 제목:%s, 개봉일:%s, 누적관객수:%s}\n", boxOffice.get("rank"), boxOffice.get("movieNm"),
-						boxOffice.get("openDt"), boxOffice.get("audiAcc"));
-
+		
 			}
 
 		} catch (Exception e) {
@@ -124,14 +124,22 @@ public class MovieListController {
 			e.printStackTrace();
 		}
 		
-		//model.addAttribute("list", service.list(vo.getMovieVal(), vo.getInsertDt()));
-
+		//TODO 현재날짜-1 day로  
+		List<MovieVO> vos=service.list("daily","20210402");
+		System.out.println(vos.toString());
+	    
+	    movieListCommon common=new movieListCommon();
+	    common.sortListVO(vos, "1", "ASC");
+		model.addAttribute("list", vos);
+		
+	
 		return "/movie/dailyBoxOf";
 	}
 
 	@RequestMapping(value = "/weeklyBoxOf")
 	public String weeklyList(Model model) throws Exception {
-
+		
+		System.out.print("weeklyBoxOf에 대한 컨트롤러 메서드가 시작됩니다.");
 		String REQUEST_URL = "http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchWeeklyBoxOfficeList.json";
 		String AUTH_KEY = "92be55421c9d9393f92251cbcb6fea1a";
 		SimpleDateFormat DATE_FMT = new SimpleDateFormat("20210322");
@@ -149,8 +157,7 @@ public class MovieListController {
 		StringBuilder sb = new StringBuilder();
 
 		for (String mapkey : paramMap.keySet()) {
-			System.out.println("Key:" + mapkey + ", Value:" + paramMap.get(mapkey));
-
+		
 			sb.append("&");
 			sb.append(mapkey).append('=').append(paramMap.get(mapkey));
 
@@ -159,7 +166,7 @@ public class MovieListController {
 		try {
 
 			URL requestURL = new URL(REQUEST_URL + "?" + sb.toString());
-			System.out.println(requestURL);
+			
 			HttpURLConnection conn = (HttpURLConnection) requestURL.openConnection();
 
 			Date now = new Date();
@@ -172,22 +179,22 @@ public class MovieListController {
 			while ((readline = br.readLine()) != null) {
 				response.append(readline);
 			}
-
-			System.out.println(response);
+		
+			System.out.print(response.toString());
+			
 			JSONObject responseBody = new JSONObject(response.toString());
-			System.out.println(responseBody);
 			JSONObject boxOfficeResult = responseBody.getJSONObject("boxOfficeResult");
 			String boxofficeType = boxOfficeResult.getString("boxofficeType");
-			System.out.println(boxofficeType);
+		
 			JSONArray weeklyBoxOfficeList = boxOfficeResult.getJSONArray("weeklyBoxOfficeList");
 			Iterator<Object> iter = weeklyBoxOfficeList.iterator();
-			System.out.println(weeklyBoxOfficeList);
+			
 			while (iter.hasNext()) {
 
 				// 기존 데이터와 비교해서 중복되지 않도록 처리
 
 				JSONObject boxOffice = (JSONObject) iter.next();
-				System.out.print("??" + boxOffice.get("movieNm"));	
+				System.out.println(boxOffice.get("movieNm"));	
 				vo.setMovieVal("weekly");
 				vo.setMovieCd(boxOffice.get("movieCd").toString());
 				vo.setMovieNm(boxOffice.get("movieNm").toString());
@@ -210,9 +217,14 @@ public class MovieListController {
 			e.printStackTrace();
 		}
 
-	
+		//TODO 현재날짜-7day 로 바꿔야함  
+		List<MovieVO> vos=service.list("weekly","20210322");
 		
-		model.addAttribute("list", service.list(vo.getMovieVal(), vo.getInsertDt()));
+	    
+	    movieListCommon common=new movieListCommon();
+	    common.sortListVO(vos, "1", "ASC");
+		model.addAttribute("list", vos);
+		
 
 		return "/movie/weeklyBoxOf";
 	}
