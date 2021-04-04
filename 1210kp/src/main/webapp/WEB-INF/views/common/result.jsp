@@ -21,7 +21,7 @@
 				alert("로그인이 실패하였습니다. 다시 확인해주시기 바랍니다.");
 				location.href="/login/login";
 			}else{
-				// TODO : 에러페이지
+				location.href="/common/errorDefault";
 			}
 		}else if(submit == 'join'){
 			if(result == 'Y'){
@@ -31,43 +31,43 @@
 				alert("회원가입이 실패하였습니다. 다시 확인해주시기 바랍니다.");
 				location.href="/login/join";
 			}else{
-				// TODO : 에러페이지
+				location.href="/common/errorDefault";
 			}
 		}else if(submit == 'logout'){
 			if(result == 'Y'){
 				alert("로그아웃 되었습니다.");
 				location.href="/login/login";
 			}else{
-				// TODO : 에러페이지
 				alert("로그아웃 실패");
+				location.href="/common/errorDefault";
 			}
 		}else if(submit == 'adminLogout'){
 			if(result == 'Y'){
 				alert("로그아웃 되었습니다.");
 				location.href="/admin/login";
 			}else{
-				// TODO : 에러페이지
 				alert("로그아웃 실패");
+				location.href="/common/errorDefault";
 			}
 		}else if(submit == 'updateMyInfo'){
 			if(result == 'Y'){
 				alert("회원정보가 수정되었습니다.");
 				location.href="/member/myInfo";
 			}else{
-				// TODO : 에러페이지
 				alert("회원정보 수정실패");
-				location.href="/member/myInfoModify";
+				location.href="/common/errorDefault";
 			}
 		}else if(submit == 'userWithdrawal'){
 			if(result == 'success'){
 				alert("회원탈퇴 처리되었습니다.");
 			}else if(result == 'updateFail'){
-				// TODO : 에러페이지
 				alert("회원탈퇴 처리가 실패하였습니다.");
 				location.href="/member/userWithdrawal";
 			}else if(result = 'selectFail'){
 				alert("비밀번호를 잘못 입력하셨습니다.");
 				location.href="/member/userWithdrawal";
+			}else{
+				location.href="/common/errorDefault";
 			}
 		}
 		

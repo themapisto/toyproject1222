@@ -94,7 +94,7 @@
 			}else if(object == phoneNumber){
 				regType= /^01([0|1|6|7|8|9]?)-?([0-9]{3,4})-?([0-9]{4})$/
 			}else{
-				// TODO : 에러페이지
+				location.href="/common/errorDefault";
 			}
 			
 			if(regType.test(object.value)){
@@ -257,10 +257,10 @@
 						}else if(result == "N"){
 							showMsg(idMsg,"이미 사용중이거나 탈퇴한 아이디입니다.","fail");
 						}else{
-							// TODO : 에러페이지
+							location.href="/common/errorDefault";
 						}
 					}else{
-						alert("요청 오류 : "+xhr.status);
+						location.href="/common/errorDefault";
 					}
 				}
 			}

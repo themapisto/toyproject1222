@@ -106,7 +106,7 @@
 								return false;
 							}
 						}else{
-							alert("요청 오류 : "+xhr.status);
+							location.href="/common/errorDefault";
 						}
 					}
 				}
@@ -120,11 +120,9 @@
 				loginMsg.innerHTML = "<span style='color:red'> 비밀번호를 확인하세요.";
 				return false;
 			}else {
-				// TODO : 에러페이지
+				location.href="/common/errorDefault";
 				return false;
 			}
-				
-			
 		}
 	</script>
 </body>

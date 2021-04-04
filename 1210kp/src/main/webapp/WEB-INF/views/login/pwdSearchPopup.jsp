@@ -69,7 +69,7 @@
 						    return false;
 						}
 					}else{
-						alert("요청 오류 : "+xhr.status);
+						location.href="/common/errorDefault";
 					}
 				}
 			}
