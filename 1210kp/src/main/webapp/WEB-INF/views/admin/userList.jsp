@@ -14,7 +14,7 @@
 <body>
 <%@include file="/WEB-INF/views/admin/header.jsp" %>
 <%@include file="/WEB-INF/views/admin/sidebar.jsp" %>
-<form id="filter" name="filter" method="get" action="/manage/userList">
+<form id="filter" name="filter" method="get" action="/admin/userList">
 		&nbsp;&nbsp;<select id="option" name="option">
 			<option value="userNm" ${pageDto.option eq userNm? selected:"" }>이름</option>
 			<option value="userId" ${pageDto.option eq userId? selected:"" }>아이디</option>
@@ -66,7 +66,7 @@
 </table>
 <div style="display: block; text-align: center;">		
 		<c:if test="${pageDto.prev == true }">
-			<a href="/manage/userList?keyword=${pageDto.keyword}&option=${pageDto.option}&page=${pageDto.startPage - 1 }">&lt;</a>
+			<a href="/admin/userList?keyword=${pageDto.keyword}&option=${pageDto.option}&page=${pageDto.startPage - 1 }">&lt;</a>
 		</c:if>
 		<c:forEach begin="${pageDto.startPage}" end="${pageDto.endPage}" var="p">
 			<c:choose>
@@ -74,12 +74,12 @@
 					<b>${p }</b>
 				</c:when>
 				<c:when test="${p != pageDto.page}">
-					<a href="/manage/userList?keyword=${pageDto.keyword}&option=${pageDto.option}&page=${p }">${p }</a>
+					<a href="/admin/userList?keyword=${pageDto.keyword}&option=${pageDto.option}&page=${p }">${p }</a>
 				</c:when>
 			</c:choose>
 		</c:forEach>
 		<c:if test="${pageDto.next == true}">
-			<a href="/manage/userList?keyword=${pageDto.keyword}&option=${pageDto.option}&page=${pageDto.endPage+1 }">&gt;</a>
+			<a href="/admin/userList?keyword=${pageDto.keyword}&option=${pageDto.option}&page=${pageDto.endPage+1 }">&gt;</a>
 		</c:if>
 	</div>
 

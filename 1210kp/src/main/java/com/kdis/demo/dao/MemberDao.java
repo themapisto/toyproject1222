@@ -7,6 +7,7 @@ import java.util.Map;
 import org.springframework.stereotype.Repository;
 
 import com.kdis.demo.vo.CouponVO;
+import com.kdis.demo.vo.PaginationDto;
 import com.kdis.demo.vo.UserVo;
 
 @Repository
@@ -27,4 +28,8 @@ public interface MemberDao {
 	public int insertCouponRegister(HashMap<String, Object> paramMap) throws Exception;
 
 	public List<HashMap<String, Object>> selectMyCoupon(HashMap<String, Object> paramMap) throws Exception;
+	
+	List<UserVo> showAllUser(PaginationDto page) throws Exception;
+
+	int countTotal(PaginationDto page) throws Exception;
 }

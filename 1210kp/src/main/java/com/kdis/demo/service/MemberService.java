@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.kdis.demo.dao.MemberDao;
 import com.kdis.demo.vo.CouponVO;
+import com.kdis.demo.vo.PaginationDto;
 import com.kdis.demo.vo.UserVo;
 
 @Service
@@ -47,6 +48,14 @@ public class MemberService implements MemberDao{
 
 	public List<HashMap<String,Object>> selectMyCoupon(HashMap<String, Object> paramMap) throws Exception {
 		return MemberDAO.selectMyCoupon(paramMap);
+	}
+	
+	public List<UserVo> showAllUser(PaginationDto page) throws Exception {
+		return MemberDAO.showAllUser(page);
+	}
+
+	public int countTotal(PaginationDto page) throws Exception{
+		return MemberDAO.countTotal(page);
 	}
 
 }

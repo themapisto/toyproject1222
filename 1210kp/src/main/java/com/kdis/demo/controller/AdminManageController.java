@@ -23,27 +23,27 @@ public class AdminManageController {
 	private AdminManageService adminManageService;
 	
 		// 유저 리스트 
-		@RequestMapping(value = "userList")
-		public String adminLogin(PaginationDto dto, ModelMap model, 
-//				@RequestParam(value="page", required=false)String page, 
-//				@RequestParam(value="option", required=false)String option,
-//				@RequestParam(value="keyword", required=false)String keyword,
-				HttpServletRequest request,HttpServletResponse response) throws Exception {
-			//dto = new PaginationDto();
-//			if(page!=null) {
-//				dto.setPage(Integer.parseInt(page));
-//			}
-//			if(keyword!=""&&keyword!=null) {
-//				dto.setOption(option);
-//				dto.setKeyword(keyword);
-//			}
-			dto.setTotal(adminManageService.countTotal(dto));
-			List<UserVo> userList = adminManageService.showAllUser(dto);
-			model.addAttribute("pageDto", dto);
-			model.addAttribute("userList",userList);
-			System.out.println(dto.toString());
-			return "/admin/userList";
-		}
+//		@RequestMapping(value = "userList")
+//		public String adminLogin(PaginationDto dto, ModelMap model, 
+////				@RequestParam(value="page", required=false)String page, 
+////				@RequestParam(value="option", required=false)String option,
+////				@RequestParam(value="keyword", required=false)String keyword,
+//				HttpServletRequest request,HttpServletResponse response) throws Exception {
+//			//dto = new PaginationDto();
+////			if(page!=null) {
+////				dto.setPage(Integer.parseInt(page));
+////			}
+////			if(keyword!=""&&keyword!=null) {
+////				dto.setOption(option);
+////				dto.setKeyword(keyword);
+////			}
+//			dto.setTotal(adminManageService.countTotal(dto));
+//			List<UserVo> userList = adminManageService.showAllUser(dto);
+//			model.addAttribute("pageDto", dto);
+//			model.addAttribute("userList",userList);
+//			System.out.println(dto.toString());
+//			return "/admin/userList";
+//		}
 		
 		
 }
