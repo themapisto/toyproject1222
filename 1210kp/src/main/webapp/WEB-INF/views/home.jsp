@@ -8,9 +8,9 @@
     <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="author" content="webstoryboy">
-    <meta name="description" content="메가박스 사이트 따라하면서 배우는 튜토리얼입니다.">
-    <meta name="keywords" content="메가박스, 유투브, 영화, 최신영화, 영화관, CGV, 롯데시네마, 웹스토리보이, 웹스, 사이트 만들기, 따라하기, 이미지 슬라이드">
-    <title>메가박스 사이트 코딩하기 : 고객센터 / SVG</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <title></title>
 	
     <!-- css -->
     <link rel="stylesheet" href="/resources/css/home_reset.css">
@@ -21,14 +21,6 @@
     
     <!-- 웹 폰트 -->
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:100,300,400,500,700,900&amp;subset=korean" rel="stylesheet">
-    
-    <!-- HTLM5shiv ie6~8 -->
-    <!--[if lt IE 9]> 
-      <script src="assets/js/html5shiv.min.js"></script>
-      <script type="text/javascript">
-         alert("현재 브라우저는 지원하지 않습니다. 크롬 브라우저를 추천합니다.!");
-      </script>
-   <![endif]-->
 </head>
 <body>
     <%@include file="/WEB-INF/views/common/header.jsp" %>
@@ -188,13 +180,6 @@
                                </div>
                            </div>
                         </div>
-                        <!-- //chart_cont1-->
-                        
-                        
-                        
-                        
-                        
-                        
                     </div>
                 </div>
             </div>
