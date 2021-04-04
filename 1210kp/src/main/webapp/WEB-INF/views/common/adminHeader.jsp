@@ -10,7 +10,7 @@
 					<div class="afterLogin">
 						<span title="관리자이름">${sessionUserNm}</span>
 						|
-						<a href="#" title="로그아웃">로그아웃</a>
+						<a href="/admin/logout" title="관리자사이트 로그아웃">로그아웃</a>
 					</div>
 				</c:when>
 			</c:choose>

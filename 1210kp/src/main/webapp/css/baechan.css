@@ -338,7 +338,7 @@ html, body{
 
 .adminHeader a{
 	all:unset;
-	color:gray;
+	color:white;
 	cursor:pointer;
 }
 

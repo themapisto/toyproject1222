@@ -183,4 +183,16 @@ public class AdminController {
 		resultMap.put("result", result);
 		return resultMap;
 	}
+	
+	// 로그아웃 처리
+	@RequestMapping(value="/logout")
+	public String logout(ModelMap model,HttpServletRequest request,HttpServletResponse response) throws Exception {
+
+		 HttpSession session = request.getSession(true);
+		 session.invalidate();
+		 
+		 model.addAttribute("result", "Y");
+		 model.addAttribute("submit","adminLogout");
+		 return "/common/result";
+	}
 }

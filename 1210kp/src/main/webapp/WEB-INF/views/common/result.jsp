@@ -41,6 +41,14 @@
 				// TODO : 에러페이지
 				alert("로그아웃 실패");
 			}
+		}else if(submit == 'adminLogout'){
+			if(result == 'Y'){
+				alert("로그아웃 되었습니다.");
+				location.href="/admin/login";
+			}else{
+				// TODO : 에러페이지
+				alert("로그아웃 실패");
+			}
 		}else if(submit == 'updateMyInfo'){
 			if(result == 'Y'){
 				alert("회원정보가 수정되었습니다.");

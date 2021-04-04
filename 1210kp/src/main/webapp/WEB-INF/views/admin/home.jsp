@@ -6,7 +6,7 @@
 	<%@include file="/WEB-INF/views/common/common.jsp" %>
 </head>
 <body>
-	<%@include file="/WEB-INF/views/admin/header.jsp" %>
-	<%@include file="/WEB-INF/views/admin/sidebar.jsp" %>
+	<%@include file="/WEB-INF/views/common/adminHeader.jsp" %>
+	<%@include file="/WEB-INF/views/common/adminSidebar.jsp" %>
 </body>
 </html>

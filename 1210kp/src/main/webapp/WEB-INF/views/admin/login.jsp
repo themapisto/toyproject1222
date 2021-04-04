@@ -6,7 +6,6 @@
 	<%@include file="/WEB-INF/views/common/common.jsp" %>
 </head>
 <body>
-	<%@include file="/WEB-INF/views/admin/header.jsp" %>
 	<div class="adminLoginContents">
 		<section>
 			<h1>관리자 로그인</h1>
