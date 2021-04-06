@@ -188,25 +188,28 @@ public class AdminController {
 	}
 	
 	// 유저 리스트 
-			@RequestMapping(value = "userList")
-			public String adminLogin(PaginationDto dto, ModelMap model, 
-//					@RequestParam(value="page", required=false)String page, 
-//					@RequestParam(value="option", required=false)String option,
-//					@RequestParam(value="keyword", required=false)String keyword,
-					HttpServletRequest request,HttpServletResponse response) throws Exception {
-				//dto = new PaginationDto();
-//				if(page!=null) {
-//					dto.setPage(Integer.parseInt(page));
-//				}
-//				if(keyword!=""&&keyword!=null) {
-//					dto.setOption(option);
-//					dto.setKeyword(keyword);
-//				}
-				dto.setTotal(MemberService.countTotal(dto));
-				List<UserVo> userList = MemberService.showAllUser(dto);
-				model.addAttribute("pageDto", dto);
-				model.addAttribute("userList",userList);
-				System.out.println(dto.toString());
-				return "/admin/userList";
-			}
+	@RequestMapping(value = "userList")
+	public String showAllUser(PaginationDto dto, ModelMap model, 
+			HttpServletRequest request,HttpServletResponse response) throws Exception {
+
+		dto.setTotal(MemberService.countTotal(dto));
+		List<UserVo> userList = MemberService.showAllUser(dto);
+		model.addAttribute("pageDto", dto);
+		model.addAttribute("userList",userList);
+		
+		return "/admin/userList";
+	}
+	
+	// 회원 상태변경
+	@RequestMapping(value = "userList/modify")
+	public String adminLogin(PaginationDto dto, UserVo user, ModelMap model, 
+			HttpServletRequest request,HttpServletResponse response) throws Exception {
+
+		dto.setTotal(MemberService.countTotal(dto));
+		List<UserVo> userList = MemberService.showAllUser(dto);
+		model.addAttribute("pageDto", dto);
+		model.addAttribute("userList",userList);
+		
+		return "/admin/userList";
+	}
 }

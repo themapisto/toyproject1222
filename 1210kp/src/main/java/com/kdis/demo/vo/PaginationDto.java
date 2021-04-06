@@ -14,8 +14,10 @@ public class PaginationDto {
 	private boolean prev;		// 이전 페이지 버튼
 	private boolean next;		// 다음 페이지 버튼
 	
-	private String keyword="";
+	private String state="";
 	private String option="";
+	private String keyword="";
+	
 	
 	
 	public PaginationDto() {
@@ -174,5 +176,12 @@ public class PaginationDto {
 
 	public void setOption(String option) {
 		this.option = option;
+	}
+	public String getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
 	}
 }

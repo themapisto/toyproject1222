@@ -5,7 +5,7 @@
 <head>
 
 <title>회원관리 리스트</title>
-<link href="/resources/css/default.css?h" rel="stylesheet" type="text/css">
+<link href="/resources/css/default.css?s" rel="stylesheet" type="text/css">
 	<script src="https://code.jquery.com/jquery-3.5.1.js" type="text/javascript"></script>
 <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
@@ -15,9 +15,16 @@
 <%@include file="/WEB-INF/views/admin/header.jsp" %>
 <%@include file="/WEB-INF/views/admin/sidebar.jsp" %>
 <form id="filter" name="filter" method="get" action="/admin/userList">
-		&nbsp;&nbsp;<select id="option" name="option">
-			<option value="userNm" ${pageDto.option eq userNm? selected:"" }>이름</option>
-			<option value="userId" ${pageDto.option eq userId? selected:"" }>아이디</option>
+		&nbsp;&nbsp;
+		<select id="state" name="state">
+			<option value="0">전체</option>
+			<option value="1" ${pageDto.state eq "1"? "selected":"" }>가입</option>
+			<option value="8" ${pageDto.state eq "8"? "selected":"" }>잠김</option>
+			<option value="9" ${pageDto.state eq "9"? "selected":"" }>탈퇴</option> 
+		</select>
+		<select id="option" name="option">
+			<option value="userNm" ${pageDto.option eq "userNm"? "selected":"" }>이름</option>
+			<option value="userId" ${pageDto.option eq "userId"? "selected":"" }>아이디</option>
 		</select>
 		<input type="text" id="keyword" name="keyword" value="${pageDto.keyword}">
     <button type="button" onclick="searchChk()">검색</button>
@@ -27,9 +34,10 @@
         <col style="width:10%;">
         <col style="width:10%;">
         <col style="width:15%;">
+        <col style="width:15%;">
         <col style="width:20%;">
         <col style="width:20%;">
-        <col style="width:25%;">
+        <col style="width:10%;">
     </colgroup>
 
     <thead>
@@ -38,8 +46,9 @@
             <th scope="col">회원등급</th>
             <th scope="col">이름</th>
             <th scope="col">아이디</th>
-            <th scope="col">회원상태(가입/탈퇴/잠김/휴면)</th>
             <th scope="col">가입일자</th>
+            <th scope="col">회원상태<br>(가입/잠김/탈퇴)</th>
+            <th scope="col">상태변경</th>
         </tr>
     </thead>
     <tbody>
@@ -50,23 +59,33 @@
             <td>${user.userNm}</td>
             <td>${user.userId}</td>
             <td>
-            	<c:choose>
-					<c:when test="${user.userState eq 1}">가입</c:when>
-					<c:when test="${user.userState eq 8}">잠금</c:when>
-					<c:when test="${user.userState eq 9}">탈퇴</c:when>
-					<c:otherwise>휴면</c:otherwise>
-				</c:choose>
-            </td>
-            <td>
             	<fmt:formatDate value="${user.regDt}" pattern="yyyy-MM-dd"/>
             </td>
+            <td>
+            <form id="modify" name="modify" method="post" action="/admin/userList/modify">
+            	<select id="userState" name="userState">
+					<option value="1" ${user.userState eq "1"? "selected":"" }>가입</option>
+					<option value="8" ${user.userState eq "8"? "selected":"" }>잠김</option>
+					<option value="9" ${user.userState eq "9"? "selected":"" }>탈퇴</option> 
+				</select>
+            </td>
+            <td>
+            	<input type="hidden" name="userId" value="${user.userId}">
+            	<input type="hidden" name="state" value="${pageDto.state}">
+            	<input type="hidden" name="keyword" value="${pageDto.keyword}">
+            	<input type="hidden" name="option" value="${pageDto.option}">
+            	<input type="hidden" name="page" value="${pageDto.page}">
+            	<button type="button" onclick="modifyChk()">변경</button>
+            </form>
+            </td>
+            
         </tr>
         </c:forEach>   
     </tbody>
 </table>
 <div style="display: block; text-align: center;">		
 		<c:if test="${pageDto.prev == true }">
-			<a href="/admin/userList?keyword=${pageDto.keyword}&option=${pageDto.option}&page=${pageDto.startPage - 1 }">&lt;</a>
+			<a href="/admin/userList?state=${pageDto.state}&keyword=${pageDto.keyword}&option=${pageDto.option}&page=${pageDto.startPage - 1 }">&lt;</a>
 		</c:if>
 		<c:forEach begin="${pageDto.startPage}" end="${pageDto.endPage}" var="p">
 			<c:choose>
@@ -74,12 +93,12 @@
 					<b>${p }</b>
 				</c:when>
 				<c:when test="${p != pageDto.page}">
-					<a href="/admin/userList?keyword=${pageDto.keyword}&option=${pageDto.option}&page=${p }">${p }</a>
+					<a href="/admin/userList?state=${pageDto.state}&keyword=${pageDto.keyword}&option=${pageDto.option}&page=${p }">${p }</a>
 				</c:when>
 			</c:choose>
 		</c:forEach>
 		<c:if test="${pageDto.next == true}">
-			<a href="/admin/userList?keyword=${pageDto.keyword}&option=${pageDto.option}&page=${pageDto.endPage+1 }">&gt;</a>
+			<a href="/admin/userList?state=${pageDto.state}&keyword=${pageDto.keyword}&option=${pageDto.option}&page=${pageDto.endPage+1 }">&gt;</a>
 		</c:if>
 	</div>
 
@@ -92,6 +111,15 @@
 		}else{
 			alert("검색어를 입력해주세요" );
 		}	
+    }
+    
+    function searchChk(){
+    	if(confirm("수정하시겠습니까?")==true){
+			 modify.submit();
+		 }else{
+		     return false;
+		 }
+			
     }
 </script>
 </body>

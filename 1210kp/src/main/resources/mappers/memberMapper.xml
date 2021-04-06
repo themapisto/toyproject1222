@@ -75,6 +75,9 @@
 		select *
 		from user
 		where grade=1
+		<if test="state != '' and state !='0'">
+			and userState=#{state}
+		</if>
 		<if test="keyword != ''">
 			and ${option} like CONCAT('%', #{keyword}, '%')
 		</if>	
@@ -87,6 +90,9 @@
 		select count(*)
 		from user
 		where grade=1
+		<if test="state != '' and state !='0'">
+			and userState=#{state}
+		</if>
 		<if test="keyword != ''">
 			and ${option} like CONCAT('%', #{keyword}, '%')
 		</if>
