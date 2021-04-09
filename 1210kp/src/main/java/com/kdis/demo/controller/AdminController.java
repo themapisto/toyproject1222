@@ -15,6 +15,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kdis.demo.service.LoginService;
@@ -196,20 +197,110 @@ public class AdminController {
 		List<UserVo> userList = MemberService.showAllUser(dto);
 		model.addAttribute("pageDto", dto);
 		model.addAttribute("userList",userList);
-		
 		return "/admin/userList";
 	}
 	
 	// 회원 상태변경
-	@RequestMapping(value = "userList/modify")
-	public String adminLogin(PaginationDto dto, UserVo user, ModelMap model, 
+	@RequestMapping(value = "/modifyState", method = RequestMethod.POST)
+	@ResponseBody
+	public HashMap<String, String> modifyState(UserVo user, ModelMap model, 
 			HttpServletRequest request,HttpServletResponse response) throws Exception {
 
-		dto.setTotal(MemberService.countTotal(dto));
-		List<UserVo> userList = MemberService.showAllUser(dto);
+		HashMap<String, String> result = new HashMap <String,String>();
+		int modifyRst = MemberService.modifyState(user);
+		
+		if ( modifyRst > 0) {
+			String Msg = "수정되었습니다";
+			String Code = "0";
+			
+			result.put("Msg", Msg);
+			result.put("Code", Code);
+			
+		} else {
+			String Msg = "잠시 후 다시 시도해주세요";
+			String Code = "1";
+			
+			result.put("Msg", Msg);
+			result.put("Code", Code);
+		}
+		return result;
+	}
+	
+	// 관리자 리스트 
+	@RequestMapping(value = "adminList")
+	public String showAllAdmin(PaginationDto dto, ModelMap model, 
+			HttpServletRequest request,HttpServletResponse response) throws Exception {
+
+		dto.setTotal(MemberService.countAdmin(dto));
+		List<UserVo> userList = MemberService.showAllAdmin(dto);
 		model.addAttribute("pageDto", dto);
 		model.addAttribute("userList",userList);
-		
-		return "/admin/userList";
+		return "/admin/adminList";
+	}
+	
+	// 관리자 추가양식 
+	@RequestMapping(value = "/join")
+	public String join() throws Exception {
+		return "/admin/join";
+	}
+	
+	// 회원가입 처리
+	@RequestMapping(value = "/adminJoinSubmit")
+	public String joinSubmit(ModelMap model,HttpServletRequest request,HttpServletResponse response) throws Exception {
+		HashMap<String,Object> paramMap = new HashMap<String,Object>();
+
+		String userId = request.getParameter("userId");
+		String password = request.getParameter("password");
+		String userNm = request.getParameter("userNm");
+		String birthday = request.getParameter("birthday");
+		String email = request.getParameter("email");
+		String phoneNumber = request.getParameter("phoneNumber");
+
+		String salt = SHA256Util.getNewSalt();
+
+		paramMap.put("userId", userId);
+		paramMap.put("userNm", userNm);
+		paramMap.put("password", SHA256Util.encrypt(password,salt));
+		paramMap.put("salt", salt);
+		paramMap.put("birthday", birthday);
+		paramMap.put("phoneNumber", phoneNumber);
+		paramMap.put("email", email);
+		paramMap.put("grade", '5');
+		paramMap.put("userState", '1');
+		paramMap.put("loginFailCount", '0');
+
+		int result = 0;
+		result = LoginService.userJoin(paramMap);
+
+		if(result == 1) {
+			model.addAttribute("result", "Y");
+		}else if(result == 0) {
+			model.addAttribute("result", "N");
+		}
+
+		model.addAttribute("submit", "join");
+		return "/common/result";
+	}
+	
+	// 관리자 삭제 
+	@RequestMapping(value = "/deleteAdmin", method = RequestMethod.POST)
+	@ResponseBody
+	public HashMap<String, String> deleteAdmin(UserVo user, ModelMap model, 
+			HttpServletRequest request,HttpServletResponse response) throws Exception {
+
+		HashMap<String, String> result = new HashMap <String,String>();
+		int deleteRst = MemberService.deleteAdmin(user);
+
+		if ( deleteRst > 0) {
+			String Msg = "삭제되었습니다";
+
+			result.put("Msg", Msg);
+
+		} else {
+			String Msg = "잠시 후 다시 시도해주세요";
+
+			result.put("Msg", Msg);
+		}
+		return result;
 	}
 }

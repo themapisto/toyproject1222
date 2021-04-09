@@ -32,4 +32,12 @@ public interface MemberDao {
 	List<UserVo> showAllUser(PaginationDto page) throws Exception;
 
 	int countTotal(PaginationDto page) throws Exception;
+
+	public int modifyState(UserVo user) throws Exception;
+
+	public List<UserVo> showAllAdmin(PaginationDto page) throws Exception;
+	
+	public int countAdmin(PaginationDto page) throws Exception;
+
+	public int deleteAdmin(UserVo user) throws Exception;
 }

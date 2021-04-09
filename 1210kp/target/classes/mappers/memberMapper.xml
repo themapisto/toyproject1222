@@ -75,7 +75,7 @@
 		select *
 		from user
 		where grade=1
-		<if test="state != '' and state !='0'">
+		<if test="state != ''">
 			and userState=#{state}
 		</if>
 		<if test="keyword != ''">
@@ -85,16 +85,56 @@
 		limit #{startIdx},#{cntPerPage}
 	</select>
 	
-	<!-- 페이지  -->
+	<!-- 회원 페이징  -->
 	<select  id="countTotal" resultType="int" parameterType="com.kdis.demo.vo.PaginationDto">
 		select count(*)
 		from user
 		where grade=1
-		<if test="state != '' and state !='0'">
+		<if test="state != ''">
 			and userState=#{state}
 		</if>
 		<if test="keyword != ''">
 			and ${option} like CONCAT('%', #{keyword}, '%')
 		</if>
 	</select>
+	
+	<!-- 상태변경  -->
+	<update id="modifyState" parameterType="com.kdis.demo.vo.UserVo">
+		UPDATE user
+		SET userState =#{userState}
+		WHERE userId = #{userId}
+	</update>
+	
+	<!-- 모든 관리자 -->
+	<select id="showAllAdmin" resultType="com.kdis.demo.vo.UserVo" parameterType="com.kdis.demo.vo.PaginationDto">
+		select *
+		from user
+		where grade=5
+		<if test="state != ''">
+			and userState=#{state}
+		</if>
+		<if test="keyword != ''">
+			and ${option} like CONCAT('%', #{keyword}, '%')
+		</if>	
+		order by regDt desc
+		limit #{startIdx},#{cntPerPage}
+	</select>
+	
+	<!-- 관리자 페이징  -->
+	<select  id="countAdmin" resultType="int" parameterType="com.kdis.demo.vo.PaginationDto">
+		select count(*)
+		from user
+		where grade=5
+		<if test="keyword != ''">
+			and ${option} like CONCAT('%', #{keyword}, '%')
+		</if>
+	</select>
+	
+	<!-- 관리자 페이징  -->
+	<delete  id="deleteAdmin" parameterType="com.kdis.demo.vo.UserVo">
+		delete 
+		from user 
+		where userId = #{userId}
+	</delete>
+	
 </mapper>

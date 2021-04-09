@@ -58,4 +58,20 @@ public class MemberService implements MemberDao{
 		return MemberDAO.countTotal(page);
 	}
 
+	public int modifyState(UserVo user) throws Exception {
+		return MemberDAO.modifyState(user);
+	}
+
+	public List<UserVo> showAllAdmin(PaginationDto page) throws Exception {
+		return MemberDAO.showAllAdmin(page);
+	}
+	
+	public int countAdmin(PaginationDto page) throws Exception{
+		return MemberDAO.countAdmin(page);
+	}
+
+	public int deleteAdmin(UserVo user) throws Exception{
+		return MemberDAO.deleteAdmin(user);
+	}
+
 }

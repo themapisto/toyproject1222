@@ -9,7 +9,7 @@
 	            <div><a>통합회원관리</a></div>
 	            <ul>
 	                <li><a href="/admin/userList">회원관리</a></li>
-	                <li><a>관리자관리</a></li>
+	                <li><a href="/admin/adminList">관리자관리</a></li>
 	            </ul>
 	        </li>
 	        <li class="menu" id="menu2">
