@@ -23,7 +23,7 @@
 	            <div><a>예매관리</a></div>
 	            <ul>
 	                <li><a>결제내역</a></li>
-	                <li><a>할인관련</a></li> 
+	                <li><a href="/admin/couponList">쿠폰관리</a></li> 
 	            </ul>
 	        </li>
 	    </ul>

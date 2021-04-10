@@ -2,7 +2,7 @@ package prjc.baechan.common;
 
 import java.util.Date;
 
-public class CouponVO {
+public class CouponDTO {
 
 	private String couponId;			// 쿠폰ID
 	private String couponNm;			// 쿠폰이름
@@ -36,5 +36,30 @@ public class CouponVO {
 	}
 	public String getCouponChk() {
 		return couponChk;
-	}	
+	}
+	public void setCouponId(String couponId) {
+		this.couponId = couponId;
+	}
+	public void setCouponNm(String couponNm) {
+		this.couponNm = couponNm;
+	}
+	public void setDscntRate(int dscntRate) {
+		this.dscntRate = dscntRate;
+	}
+	public void setRegistStartDt(Date registStartDt) {
+		this.registStartDt = registStartDt;
+	}
+	public void setRegistEndDt(Date registEndDt) {
+		this.registEndDt = registEndDt;
+	}
+	public void setRegistChk(String registChk) {
+		this.registChk = registChk;
+	}
+	public void setUsePeriod(int usePeriod) {
+		this.usePeriod = usePeriod;
+	}
+	public void setCouponChk(String couponChk) {
+		this.couponChk = couponChk;
+	}
+	
 }

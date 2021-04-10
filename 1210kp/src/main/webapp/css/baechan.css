@@ -116,6 +116,7 @@ html, body{
   border-collapse : collapse;
   border : solid 0.1px #d7d7d7;
   font-size: 18px;
+  text-align:center;
 }
 .myInfoContents th{
   width:200px;
@@ -124,6 +125,7 @@ html, body{
   background-color: #7aa5d2;
   border-collapse : collapse;
   border : solid 0.1px #d7d7d7;
+  text-align:center;
 }
 .myInfoContents td{
   max-width:300px;
@@ -134,6 +136,7 @@ html, body{
   overflow:hidden;
   text-overflow:ellipsis;
   white-space:nowrap;
+  text-align:center; 
 }
 .myInfoContents a{
   all:unset;
@@ -514,4 +517,54 @@ aside > ul > li , .menu > ul > li{
 #filter > span > input{
     width:90px;
     height:20px;
+}
+
+.adminContents{
+  margin-left: 190px;
+  width:1048px;
+  height:200px;
+  padding:30px;
+}
+
+.adminContents h1{
+  text-align:center;
+}
+.adminContents table{
+  margin: 5px 0px 0px 90px;  
+  border-collapse : collapse;
+  border : solid 0.1px #d7d7d7;
+  font-size: 18px;
+  text-align:center;
+}
+.adminContents th{
+  width:200px;
+  height: 50px;
+  color: white;
+  background-color: #034f84;
+  border-collapse : collapse;
+  border : solid 0.1px #d7d7d7;
+  text-align:center;
+}
+.adminContents td{
+  max-width:300px;
+  height:50px;
+  border-collapse:collapse;
+  border:solid 0.1px #d7d7d7;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+  text-align:center; 
+}
+.adminContents a{
+  all:unset;
+  width:150px;
+  height:30px;
+  background-color:#034f84;
+  color:white;
+  position:relative;
+  margin:20px 5px 20px 5px;
+  padding-top:7px;
+  float:right;
+  text-align:center;
+  cursor: pointer;
 }

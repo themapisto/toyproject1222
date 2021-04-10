@@ -1,6 +1,7 @@
 package prjc.baechan.admin;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
@@ -16,6 +17,8 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import prjc.baechan.common.CouponDTO;
+import prjc.baechan.common.CouponVO;
 import prjc.baechan.common.SHA256Util;
 import prjc.baechan.common.UserVO;
 import prjc.baechan.login.LoginService;
@@ -31,6 +34,8 @@ public class AdminController {
 	@Inject
 	private MemberService MemberService;
 	
+	@Inject
+	private AdminService AdminService;
 	// 관리자 로그인 페이지
 	@RequestMapping(value = "/login")
 	public String adminLogin() throws Exception {
@@ -195,4 +200,61 @@ public class AdminController {
 		 model.addAttribute("submit","adminLogout");
 		 return "/common/result";
 	}
+	
+	@RequestMapping(value="/couponList")
+	public String asyncBBS(CouponDTO param, ModelMap model) throws Exception {
+		
+		ArrayList<CouponVO> couponList = AdminService.couponList(param);
+		
+		model.addAttribute("couponList",couponList);
+		
+		return "/admin/couponList";
+	}
+	
+	@RequestMapping(value="/couponUpdtRgstChkAjax")
+	@ResponseBody
+	public Map<String,Object> couponUpdtRgstChkAjax(CouponDTO param, ModelMap model) throws Exception {
+		
+		Map<String,Object> resultMap = new HashMap<String,Object>();
+		String result = "N";
+		
+		String couponId = param.getCouponId();
+		couponId = couponId.substring(0,couponId.length()-1);
+		String[] couponIdArr = couponId.split(",");
+
+		int updateResult = 0;
+		
+		updateResult = AdminService.couponUpdtRgstChk(couponIdArr); 
+
+		if(updateResult != 0) {
+			result = "Y";
+		}
+		
+		resultMap.put("result", result);
+		return resultMap;
+	}
+	
+	@RequestMapping(value="/couponDeleteAjax")
+	@ResponseBody
+	public Map<String,Object> couponDeleteAjax(CouponDTO param, ModelMap model) throws Exception {
+		
+		Map<String,Object> resultMap = new HashMap<String,Object>();
+		String result = "N";
+		
+		String couponId = param.getCouponId();
+		couponId = couponId.substring(0,couponId.length()-1);
+		String[] couponIdArr = couponId.split(",");
+
+		int updateResult = 0;
+		
+		updateResult = AdminService.couponDeleteAjax(couponIdArr); 
+
+		if(updateResult != 0) {
+			result = "Y";
+		}
+		
+		resultMap.put("result", result);
+		return resultMap;
+	}
+	
 }
