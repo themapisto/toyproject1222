@@ -13,13 +13,13 @@ public class movieListCommon {
             @Override
             public int compare(Object firstObject, Object secondObject) {
                 int rtn = 0;
-                int compareIndex = 0; // 비교 인덱스 (작은 문자열 수)
+                int compareIndex = 0; // ë¹„êµ� ì�¸ë�±ìŠ¤ (ìž‘ì�€ ë¬¸ìž�ì—´ ìˆ˜)
                 String firstData = "";
                 String secondData = "";
                 int firstValue = 0;
                 int secondValue = 0;
- 
-                // 비교할 대상
+                //hi
+                // ë¹„êµ�í•  ëŒ€ìƒ�
                 try {
                     Method firstDeclaredMethod = firstObject.getClass().getDeclaredMethod(getterMethodText);
                     firstData = (String) firstDeclaredMethod.invoke(firstObject, new Object[] {});
@@ -37,7 +37,7 @@ public class movieListCommon {
  
                 if (firstData == null || firstData == "" || secondData == null || secondData == "") { return rtn; }
  
-                // 기본 정렬값 설정
+                // ê¸°ë³¸ ì •ë ¬ê°’ ì„¤ì •
                 if ("DESC".equals(sortInfo)) {
                     if (firstData.length() > secondData.length()) {
                         rtn = -1;
