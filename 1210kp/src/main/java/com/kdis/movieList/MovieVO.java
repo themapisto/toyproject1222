@@ -2,13 +2,6 @@ package com.kdis.movieList;
 
 public class MovieVO {
 
-
-	@Override
-	public String toString() {
-		return "MovieVO [movieVal=" + movieVal + ", movieCd=" + movieCd + ", movieNm=" + movieNm + ", rank=" + rank
-				+ ", openDt=" + openDt + ", audiAcc=" + audiAcc + ", salesAmt=" + salesAmt + ", insertDt=" + insertDt
-				+ ", image=" + image + "]";
-	}
 	public String movieVal;
 	public String movieCd;
 	public String movieNm;
@@ -19,12 +12,6 @@ public class MovieVO {
 	public String insertDt;
 	public String image;
 	
-	public String getImage() {
-		return image;
-	}
-	public void setImage(String image) {
-		this.image = image;
-	}
 	public String getMovieVal() {
 		return movieVal;
 	}
@@ -73,7 +60,12 @@ public class MovieVO {
 	public void setInsertDt(String insertDt) {
 		this.insertDt = insertDt;
 	}
-
+	public String getImage() {
+		return image;
+	}
+	public void setImage(String image) {
+		this.image = image;
+	}
 	
 
 }

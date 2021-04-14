@@ -9,6 +9,7 @@ public class InfoDto {
 	String movieRate;
 	String movieOpenDate;
 	
+	
 	public InfoDto(int seq, String rank, String img, String movieAge, String movieTitle, String movieRate,
 			String movieOpenDate) {
 		super();
