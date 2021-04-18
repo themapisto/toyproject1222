@@ -48,9 +48,9 @@ public class CGVCrwalingController {
 			String rank = ranks.get(i).text();
 			String img = imgs.get(i).attr("src");
 			//kpkim 
-		    rank=rank.substring(3);
+		    //rank=rank.substring(3);
 	
-			movieList.Crwaling(img,rank);
+			//movieList.Crwaling(img,rank);
 			
 			
 			String movieAge = movieAges.get(i).text();
