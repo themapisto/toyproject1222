@@ -21,7 +21,8 @@ MemberDto login = (MemberDto)session.getAttribute("login");
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
     <link rel='stylesheet' href='//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css' />
     <script src='//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js'></script>
-    <script src="https://www.paypal.com/sdk/js?client-id=AQPrrIuemnOd2qvQmtxdrRwxteZcdhs3o-0y5hZxVAdr5NqGarbDmeY0jExpXYGIVXDVK7oRpRqJ6yhz"></script>
+    <%--<script src="https://www.paypal.com/sdk/js?client-id=AQPrrIuemnOd2qvQmtxdrRwxteZcdhs3o-0y5hZxVAdr5NqGarbDmeY0jExpXYGIVXDVK7oRpRqJ6yhz"></script>--%>
+    <script src="https://www.paypal.com/sdk/js?client-id=AQ1yuAc4OmF4a-mExint2UsG9gDK1L0wXZVNhpzdqVbvXQy4LxkfPFZZcpBO72ULdZgvx7n33tHWCktf"></script>    
 </head>
 
 <body>
@@ -157,6 +158,8 @@ MemberDto login = (MemberDto)session.getAttribute("login");
 				            <!-- 티켓 정보 -->
 				            <input type="hidden" class="selectedSeat" name="selectedSeat">
 				            <input type="hidden" class="payMoney" name="payMoney">
+				            <!-- <input type="hidden" name="return" value="http://localhost:8080/order/complete"> -->
+				            <!-- <input type="hidden" name="currency_code" value="KRW"> -->
 							<button type="button" class="reserve-btn">
 								<div id="reserve-btn-wrapper"></div>
 							</button>
