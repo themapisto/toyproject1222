@@ -4,17 +4,19 @@ public class MovieRankVO {
 	int seq;
 	String rank;
 	String img;
+	String imgCd;
 	String movieAge;
 	String movieTitle;
 	String movieRate;
 	String movieOpenDate;
 	
-	public MovieRankVO(int seq, String rank, String img, String movieAge, String movieTitle, String movieRate,
+	public MovieRankVO(int seq, String rank, String img, String imgCd, String movieAge, String movieTitle, String movieRate,
 			String movieOpenDate) {
 		super();
 		this.seq = seq;
 		this.rank = rank;
 		this.img = img;
+		this.imgCd = imgCd;
 		this.movieAge = movieAge;
 		this.movieTitle = movieTitle;
 		this.movieRate = movieRate;
@@ -40,6 +42,13 @@ public class MovieRankVO {
 	public void setImg(String img) {
 		this.img = img;
 	}
+	public String getImgCd() {
+		return imgCd;
+	}
+	public void setImgCd(String imgCd) {
+		this.imgCd = imgCd;
+	}
+	
 	public String getMovieAge() {
 		return movieAge;
 	}
@@ -67,7 +76,7 @@ public class MovieRankVO {
 
 	@Override
 	public String toString() {
-		return "MovieRankVO [seq=" + seq + ", rank=" + rank + ", img=" + img + ", movieAge=" + movieAge + ", movieTitle="
+		return "MovieRankVO [seq=" + seq + ", rank=" + rank + ", img=" + img + ",  imgCd=" + imgCd + ",  movieAge=" + movieAge + ", movieTitle="
 				+ movieTitle + ", movieRate=" + movieRate + ", movieOpenDate=" + movieOpenDate + "]";
 	}
 }

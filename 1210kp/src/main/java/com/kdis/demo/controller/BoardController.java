@@ -39,6 +39,7 @@ public class BoardController {
 		Elements movieTitles = doc.select(".box-contents strong.title");
 		Elements movieRates = doc.select(".percent span");
 		Elements movieOpenDates = doc.select(".txt-info strong");
+		Elements imgLink = doc.select(".thumb-image > img > a");
 
 		for (int i = 0; i < ranks.size(); i++) {
 			int seq = i;
@@ -48,8 +49,12 @@ public class BoardController {
 			String movieTitle = movieTitles.get(i).text();
 			String movieRate = movieRates.get(i).text();
 			String movieOpenDate = movieOpenDates.get(i).text();
-
-			MovieRankVO dto = new MovieRankVO(seq, rank, img, movieAge, movieTitle, movieRate, movieOpenDate);
+			
+			String imgText = imgs.get(i).text();
+			String imgTemp = img.substring(img.lastIndexOf("/"));
+			String imgCd = imgTemp.substring(1,6);
+	
+			MovieRankVO dto = new MovieRankVO(seq, rank, img, imgCd, movieAge, movieTitle, movieRate, movieOpenDate);
 
 			list.add(dto);
 
