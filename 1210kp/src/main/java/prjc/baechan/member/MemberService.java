@@ -9,6 +9,7 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
+import prjc.baechan.common.CouponDTO;
 import prjc.baechan.common.CouponVO;
 import prjc.baechan.common.UserCouponVO;
 import prjc.baechan.common.UserVO;

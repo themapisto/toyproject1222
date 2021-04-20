@@ -519,52 +519,157 @@ aside > ul > li , .menu > ul > li{
     height:20px;
 }
 
-.adminContents{
-  margin-left: 190px;
-  width:1048px;
-  height:200px;
-  padding:30px;
+.couponMainContents{
+	position:relative;
+	left:44%; 
+	transform:translate(-50%);
+	margin-left: 190px;
+	width:1048px;
+	height:200px;
+	padding:30px;
 }
 
-.adminContents h1{
+.couponMainContents table{
+	margin: 5px 0px 0px 0px;  
+	border-collapse : collapse;
+	border : solid 0.1px #d7d7d7;
+	font-size: 18px;
+	text-align:center;
+}
+.couponMainContents th{
+	width:200px;
+	height: 50px;
+	color: white;
+	background-color: #034f84;
+	border-collapse : collapse;
+	border : solid 0.1px #d7d7d7;
+	text-align:center;
+}
+.couponMainContents td{
+	max-width:300px;
+	height:50px;
+	border-collapse:collapse;
+	border:solid 0.1px #d7d7d7;
+	overflow:hidden;
+	text-overflow:ellipsis;
+	white-space:nowrap;
+	text-align:center; 
+}
+.couponMainContents a{
+	all:unset;
+	width:150px;
+	height:30px;
+	background-color:#034f84;
+	color:white;
+	position:relative;
+	margin:20px 5px 20px 5px;
+	padding-top:7px;
+	float:right;
+	text-align:center;
+	cursor: pointer;
+}
+
+.couponSubContents{
+	position:relative;
+	left:70%; 
+	transform:translate(-50%);
+	padding:30px;
+}
+
+.couponSubContents table{
+	margin: 5px 0px 0px 0px;  
+	border-collapse : collapse;
+	border : solid 0.1px #d7d7d7;
+	font-size: 18px;
+	text-align:center;
+}
+.couponSubContents th{
+	width:200px;
+	height: 50px;
+	color: white;
+	background-color: #034f84;
+	border-collapse : collapse;
+	border : solid 0.1px #d7d7d7;
+	text-align:center;
+}
+.couponSubContents td{
+	max-width:300px;
+	height:50px;
+	border-collapse:collapse;
+	border:solid 0.1px #d7d7d7;
+	overflow:hidden;
+	text-overflow:ellipsis;
+	white-space:nowrap;
+	text-align:center; 
+}
+.couponSubContents button{
+	all:unset;
+	width:150px;
+	height:30px;
+	background-color:#034f84;
+	color:white;
+	position:relative;
+	margin:20px 5px 20px 5px;
+	padding-top:7px;
+	text-align:center;
+	cursor: pointer;
+}
+
+.couponSubContents  input{
+	border: solid 0.1px black;
+	margin-left:10px;
+	float:left;
+	width:260px;
+	height:30px;
+	font-size:18px;
+}
+
+.couponSubContents div{
+	margin-left: 280px;
+}
+
+.adminModal{
+  position: absolute;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%);
+  width:600px;
+  height: 200px;
+  background-color: white;
+  font-size:25px;
   text-align:center;
 }
-.adminContents table{
-  margin: 5px 0px 0px 90px;  
-  border-collapse : collapse;
-  border : solid 0.1px #d7d7d7;
-  font-size: 18px;
-  text-align:center;
-}
-.adminContents th{
-  width:200px;
-  height: 50px;
-  color: white;
-  background-color: #034f84;
-  border-collapse : collapse;
-  border : solid 0.1px #d7d7d7;
-  text-align:center;
-}
-.adminContents td{
-  max-width:300px;
-  height:50px;
-  border-collapse:collapse;
-  border:solid 0.1px #d7d7d7;
-  overflow:hidden;
-  text-overflow:ellipsis;
-  white-space:nowrap;
-  text-align:center; 
-}
-.adminContents a{
+
+.adminModal button{
   all:unset;
-  width:150px;
-  height:30px;
-  background-color:#034f84;
+  width:130px;
+  height: 40px;
+  margin:5px;
+  margin-top:20px;
+  background-color: #034f84;
   color:white;
-  position:relative;
-  margin:20px 5px 20px 5px;
-  padding-top:7px;
-  float:right;
-  text-align:center;
-  cursor: pointer;
+}
+.adminModalHead{
+    padding-left:10px;
+    text-align: left;
+    line-height: 50px;
+    width:590px;
+    height: 50px;
+    background-color: #034f84;
+    color:white;
+}
+.adminModalBody{
+    width:600px;
+    height: 150px;
+    background-color: white;
+}
+.adminModalWrap{
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+   	position: fixed; /* Stay in place */
+   	z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width:100%;
+    height: 100%;
+    overflow: auto;
 }

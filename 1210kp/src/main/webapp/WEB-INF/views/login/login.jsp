@@ -20,9 +20,10 @@
 				<label for="password">비밀번호</label>
 				<input type="password" id="password" name="password" title="비밀번호" onkeydown="javascript:if(event.keyCode == 13){loginChk(); return false;}">
 			</div>
+			<div id="loginMsg" data-id-flag="false" data-pw-flag="false"><span></span></div>
+			<button type="button" title="로그인버튼" id="loginBtn">로그인</button>
 		</form>
-		<div id="loginMsg" data-id-flag="false" data-pw-flag="false"><span></span></div>
-		<button type="button" title="로그인버튼" onclick="loginChk();">로그인</button>
+		
 		<div>
 			<a href="javascript:window.open('/login/idSearchPopup','_blank','width=900px,height=500px');" title="아이디찾기">아이디 찾기</a>
 			&nbsp;|&nbsp;
@@ -76,8 +77,7 @@
 			}
 		});
 	
-		function loginChk(){
-			
+		document.getElementById('loginBtn').addEventListener("mousedown",function(){
 			var userId = document.getElementById("userId").value;
 	    	var password = document.getElementById("password").value;
 			
@@ -128,9 +128,7 @@
 				// TODO : 에러페이지
 				return false;
 			}
-				
-			
-		}
+		});
 	</script>
 </body>
 </html>

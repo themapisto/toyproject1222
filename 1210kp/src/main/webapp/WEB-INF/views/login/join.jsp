@@ -351,37 +351,37 @@
 			var phoneNumberMsg = document.getElementById('phoneNumberMsg');
 
 
-			if(idMsg.dataset.flag == "false"){
+			if(idMsg.dataset.flag == "false" || userId == ""){
 				alert("아이디를 확인해주세요.");
 				userId.focus();
 				return false;
 		
-			}else if(pwMsg.dataset.flag == "false"){
+			}else if(pwMsg.dataset.flag == "false" || password == ""){
 				alert("비밀번호를 확인해주세요.");
 				password.focus();
 				return false;
 				
-			}else if(pwChkMsg.dataset.flag == "false"){
+			}else if(pwChkMsg.dataset.flag == "false" || pwChk == ""){
 				alert("비밀번호 재확인을 확인해주세요.");
 				pwChk.focus();
 				return false;
 
-			}else if(nmMsg.dataset.flag == "false"){
+			}else if(nmMsg.dataset.flag == "false" || userNm == ""){
 				alert("이름을 확인해주세요.");
 				userNm.focus();
 				return false;
 
-			}else if(birthdayMsg.dataset.flag == "false"){
+			}else if(birthdayMsg.dataset.flag == "false" || birthday == "" ){
 				alert("생년월일을 확인해주세요.");
 				birthday.focus();
 				return false;
 				
-			}else if(emailMsg.dataset.flag == "false"){
+			}else if(emailMsg.dataset.flag == "false" || email == ""){
 				alert("이메일을 확인해주세요.");
 				email.focus();
 				return false;
 				
-			}else if(phoneNumberMsg.dataset.flag == "false"){
+			}else if(phoneNumberMsg.dataset.flag == "false" || phoneNumber == ""){
 				alert("핸드폰번호를 확인해주세요.");
 				phoneNumber.focus();
 				return false;

@@ -17,4 +17,12 @@
 	<fmt:formatDate type="date" var="today" value="${now}" pattern="yyyy-MM-dd"/>
 	<fmt:formatDate type="date" var="todayMinusOneYear" value="${todayMinusOneYear}" pattern="yyyy-MM-dd"/>
 
+	<script type="text/javascript">
+		function onlyNumber(){
+			if((event.keyCode < 48)||(event.keyCode > 57)){
+                event.returnValue=false;
+			}
+		}
+
+	</script>
 <!-- /common -->

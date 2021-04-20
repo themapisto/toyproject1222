@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import prjc.baechan.common.CouponVO;
 import prjc.baechan.common.SHA256Util;
-import prjc.baechan.common.UserCouponVO;
 import prjc.baechan.common.UserVO;
 import prjc.baechan.login.LoginService;
 

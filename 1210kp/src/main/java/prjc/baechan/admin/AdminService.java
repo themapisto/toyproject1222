@@ -33,9 +33,8 @@ public class AdminService implements AdminDAO{
 	public int couponDeleteAjax(String[] couponIdArr) throws Exception {
 		return AdminDAO.couponDeleteAjax(couponIdArr);
 	}
-	 
-	
 
-
-
+	public int couponMakeAjax(CouponDTO param) throws Exception{
+		return AdminDAO.couponMakeAjax(param);
+	}
 }

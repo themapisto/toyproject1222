@@ -6,7 +6,8 @@
 		select *
 		from coupon
 		where couponChk = 'N'
-	</select>
+		order by registStartDt desc, registEndDt desc
+ 	</select>
 	
 	<!-- 쿠폰 등록가능여부 변경 -->
 	<update id="couponUpdtRgstChk" >
@@ -15,7 +16,6 @@
 			case
 				when registChk = 'Y' then 'N' else 'Y'
 			end
-		
 		where couponId in
 		<foreach item="list" collection="array" open="(" separator="," close=")">
 			  #{list}
@@ -32,5 +32,11 @@
 			  #{list}
 		</foreach>
 	</update>
+	
+	<!-- 쿠폰 삭제여부 변경 -->
+	<insert id="couponMakeAjax" >
+		INSERT INTO COUPON (couponId,couponNm,dscntRate,registStartDt,registEndDt,registChk,usePeriod,couponChk)
+		VALUES(#{couponId},#{couponNm},#{dscntRate},#{registStartDt},#{registEndDt},'N',#{usePeriod},'N')
+	</insert>
 	
 </mapper>

@@ -20,7 +20,7 @@
 				</div>
 			</form>
 			<div id="loginMsg" data-id-flag="false" data-pw-flag="false"><span></span></div>
-			<button type="button" title="로그인버튼" onclick="loginChk();">로그인</button>
+			<button type="button" title="로그인버튼" id="loginBtn">로그인</button>
 		</section>
 	</div>
 	
@@ -67,8 +67,7 @@
 			}
 		});
 	
-		function loginChk(){
-			
+		document.getElementById('loginBtn').addEventListener("mousedown",function(){
 			var userId = document.getElementById("userId").value;
 	    	var password = document.getElementById("password").value;
 			
@@ -123,7 +122,7 @@
 				location.href="/common/errorDefault";
 				return false;
 			}
-		}
+		});
 	</script>
 </body>
 </html>

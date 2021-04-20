@@ -42,12 +42,22 @@
 	<mvc:interceptors>
 		<mvc:interceptor> 
 			<mvc:mapping path="/member/*"/> 
-			<mvc:mapping path="/admin/*"/>
-			<mvc:exclude-mapping path="/admin/login"/>
-			<mvc:exclude-mapping path="/admin/loginSubmit"/>
 			<beans:ref bean="SessionLoginInterceptor"/>
 		</mvc:interceptor>
 	</mvc:interceptors>
+	
+	<!-- 로그인 세션 인터셉터 -->
+	<beans:bean id="SessionAdminLoginInterceptor" class="prjc.baechan.common.SessionAdminLoginInterceptor"> </beans:bean> 
+	<mvc:interceptors>
+		<mvc:interceptor> 
+			<mvc:mapping path="/admin/*"/>
+			<mvc:exclude-mapping path="/admin/login"/>
+			<mvc:exclude-mapping path="/admin/loginSubmit"/>
+			<beans:ref bean="SessionAdminLoginInterceptor"/>
+		</mvc:interceptor>
+	</mvc:interceptors>
+	
+	
 
 
 

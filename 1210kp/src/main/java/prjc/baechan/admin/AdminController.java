@@ -201,6 +201,7 @@ public class AdminController {
 		 return "/common/result";
 	}
 	
+	// 관리자 쿠폰 관리 리스트
 	@RequestMapping(value="/couponList")
 	public String asyncBBS(CouponDTO param, ModelMap model) throws Exception {
 		
@@ -211,6 +212,7 @@ public class AdminController {
 		return "/admin/couponList";
 	}
 	
+	// 쿠폰 등록가능여부변경
 	@RequestMapping(value="/couponUpdtRgstChkAjax")
 	@ResponseBody
 	public Map<String,Object> couponUpdtRgstChkAjax(CouponDTO param, ModelMap model) throws Exception {
@@ -234,6 +236,7 @@ public class AdminController {
 		return resultMap;
 	}
 	
+	// 쿠폰 삭제하기 ( delete x update o )
 	@RequestMapping(value="/couponDeleteAjax")
 	@ResponseBody
 	public Map<String,Object> couponDeleteAjax(CouponDTO param, ModelMap model) throws Exception {
@@ -256,5 +259,43 @@ public class AdminController {
 		resultMap.put("result", result);
 		return resultMap;
 	}
+	
+	// coupon 정보 수정페이지
+	@RequestMapping(value="/updateCoupon")
+	public String updateCoupon(CouponDTO param, ModelMap model) throws Exception {
+		
+		ArrayList<CouponVO> couponList = AdminService.couponList(param);
+		
+		model.addAttribute("couponList",couponList);
+		
+		return "/admin/updateCoupon";
+	}
+	
+	// coupon 생성페이지
+	@RequestMapping(value="/makeCoupon")
+	public String makeCoupon() throws Exception {
+		return "/admin/makeCoupon";
+	}
+	
+	// 쿠폰 생성하기 
+	@RequestMapping(value="/couponMakeAjax")
+	@ResponseBody
+	public Map<String,Object> couponMakeAjax(CouponDTO param, ModelMap model) throws Exception {
+		
+		Map<String,Object> resultMap = new HashMap<String,Object>();
+		String result = "N";
+
+		int insertResult = 0;
+		
+		insertResult = AdminService.couponMakeAjax(param); 
+
+		if(insertResult != 0) {
+			result = "Y";
+		}
+		
+		resultMap.put("result", result);
+		return resultMap;
+	}
+	
 	
 }

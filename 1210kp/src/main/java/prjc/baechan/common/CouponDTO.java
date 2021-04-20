@@ -7,8 +7,8 @@ public class CouponDTO {
 	private String couponId;			// 쿠폰ID
 	private String couponNm;			// 쿠폰이름
 	private int dscntRate;				// 할인율
-	private Date registStartDt;			// 쿠폰등록시작일자
-	private Date registEndDt;			// 쿠폰등록만료일자
+	private String registStartDt;			// 쿠폰등록시작일자
+	private String registEndDt;			// 쿠폰등록만료일자
 	private String registChk;			// 쿠폰등록진행여부(1.진행 2.종료)
 	private int usePeriod;				// 쿠폰사용가능기간(userCoupon 쿠폰만료일자 - 쿠폰등록일자) 
 	private String couponChk;			// 쿠폰삭제여부(Y.삭제 N.삭제x)
@@ -22,10 +22,10 @@ public class CouponDTO {
 	public int getDscntRate() {
 		return dscntRate;
 	}
-	public Date getRegistStartDt() {
+	public String getRegistStartDt() {
 		return registStartDt;
 	}
-	public Date getRegistEndDt() {
+	public String getRegistEndDt() {
 		return registEndDt;
 	}
 	public String getRegistChk() {
@@ -46,10 +46,10 @@ public class CouponDTO {
 	public void setDscntRate(int dscntRate) {
 		this.dscntRate = dscntRate;
 	}
-	public void setRegistStartDt(Date registStartDt) {
+	public void setRegistStartDt(String registStartDt) {
 		this.registStartDt = registStartDt;
 	}
-	public void setRegistEndDt(Date registEndDt) {
+	public void setRegistEndDt(String registEndDt) {
 		this.registEndDt = registEndDt;
 	}
 	public void setRegistChk(String registChk) {
