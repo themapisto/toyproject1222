@@ -10,14 +10,14 @@ import org.springframework.stereotype.Service;
 
 import com.kdis.demo.dao.MemberDao;
 import com.kdis.demo.vo.CouponVO;
-import com.kdis.demo.vo.UserVo;
+import com.kdis.demo.vo.UserVO;
 
 @Service
 public class MemberService implements MemberDao{
 	@Inject
 	private MemberDao MemberDAO;
 	 
-	public UserVo selectMyInfo(Map<String,Object> paramMap) throws Exception{
+	public UserVO selectMyInfo(Map<String,Object> paramMap) throws Exception{
 		return MemberDAO.selectMyInfo(paramMap);
 	}
 

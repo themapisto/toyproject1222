@@ -4,12 +4,12 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import com.kdis.demo.vo.UserVo;
+import com.kdis.demo.vo.UserVO;
 
 @Repository
 public interface AdminManageDao {
 
-	List<UserVo> showAllUser() throws Exception;
+	List<UserVO> showAllUser() throws Exception;
 
 
 }
