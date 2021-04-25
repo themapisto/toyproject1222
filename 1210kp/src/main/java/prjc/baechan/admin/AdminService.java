@@ -29,12 +29,24 @@ public class AdminService implements AdminDAO{
 	public int couponUpdtRgstChk(String[] couponIdArr) throws Exception {
 		return AdminDAO.couponUpdtRgstChk(couponIdArr);
 	}
-
+	
+	@Override
 	public int couponDeleteAjax(String[] couponIdArr) throws Exception {
 		return AdminDAO.couponDeleteAjax(couponIdArr);
 	}
-
+	
+	@Override
 	public int couponMakeAjax(CouponDTO param) throws Exception{
 		return AdminDAO.couponMakeAjax(param);
+	}
+	
+	@Override
+	public CouponVO updateCouponView(CouponDTO param) throws Exception {
+		return AdminDAO.updateCouponView(param);
+	}
+
+	@Override
+	public int couponUpdateAjax(CouponDTO param) throws Exception {
+		return AdminDAO.couponUpdateAjax(param);
 	}
 }

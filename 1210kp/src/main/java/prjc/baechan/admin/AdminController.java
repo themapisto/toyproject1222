@@ -15,6 +15,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import prjc.baechan.common.CouponDTO;
@@ -261,14 +262,31 @@ public class AdminController {
 	}
 	
 	// coupon 정보 수정페이지
-	@RequestMapping(value="/updateCoupon")
+	@RequestMapping(value="/updateCoupon" , method=RequestMethod.GET)
 	public String updateCoupon(CouponDTO param, ModelMap model) throws Exception {
-		
-		ArrayList<CouponVO> couponList = AdminService.couponList(param);
-		
+		CouponVO couponList = AdminService.updateCouponView(param);
 		model.addAttribute("couponList",couponList);
-		
 		return "/admin/updateCoupon";
+	}
+	
+	// 쿠폰 수정하기 
+	@RequestMapping(value="/couponUpdateAjax")
+	@ResponseBody
+	public Map<String,Object> couponUpdateAjax(CouponDTO param, ModelMap model) throws Exception {
+		
+		Map<String,Object> resultMap = new HashMap<String,Object>();
+		String result = "N";
+
+		int updateResult = 0;
+		
+		updateResult = AdminService.couponUpdateAjax(param); 
+
+		if(updateResult != 0) {
+			result = "Y";
+		}
+		
+		resultMap.put("result", result);
+		return resultMap;
 	}
 	
 	// coupon 생성페이지

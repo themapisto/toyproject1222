@@ -111,7 +111,7 @@
 			}
 		}
 		
-		document.getElementById('userId').addEventListener("blur",function(){
+		document.getElementById('userId').addEventListener("keydown",function(){
 			var userId = document.getElementById('userId');
 			var idMsg = document.getElementById('idMsg');
 			if(userId.value == ""){
@@ -126,7 +126,7 @@
 			}
 		}); 
 		
-		document.getElementById('password').addEventListener("blur",function(){
+		document.getElementById('password').addEventListener("keydown",function(){
 			var password = document.getElementById('password');
 			var pwMsg = document.getElementById('pwMsg');
 			if(password.value == ""){
@@ -140,7 +140,7 @@
 			}
 		}); 
 		
-		document.getElementById('userNm').addEventListener("blur",function(){
+		document.getElementById('userNm').addEventListener("keydown",function(){
 			var userNm = document.getElementById('userNm');
 			var nmMsg = document.getElementById('nmMsg');
 			if(userNm.value == ""){
@@ -195,7 +195,7 @@
 			}
 		}); 
 		
-		document.getElementById('email').addEventListener("blur",function(){
+		document.getElementById('email').addEventListener("keydown",function(){
 			var email = document.getElementById('email');
 			var emailMsg = document.getElementById('emailMsg');
 			if(email.value == ""){
@@ -209,7 +209,7 @@
 			}
 		}); 
 		
-		/* document.getElementById('phoneNumber').addEventListener("blur",function(){
+		document.getElementById('phoneNumber').addEventListener("keydown",function(){
 			var phoneNumber = document.getElementById('phoneNumber');
 			var phoneNumberMsg = document.getElementById('phoneNumberMsg');
 			if(phoneNumber.value == ""){
@@ -221,9 +221,9 @@
 					showMsg(phoneNumberMsg,"핸드폰 번호 양식이 맞지 않습니다.","fail");
 				}
 			}
-		});  */
+		});  
 		
-		function phoneNumberValidate(){
+		/* function phoneNumberValidate(){
 			var phoneNumber = document.getElementById('phoneNumber').value;
 			
 			if(phoneNumber.indexOf("-") > -1){
@@ -239,8 +239,7 @@
 					showMsg(phoneNumberMsg,"핸드폰 번호 양식이 맞지 않습니다.","fail");
                 }
             }
-
-		}
+		} */
 		
 		<!-- ajax without jquery method post -->
 		function idCheck(userId){

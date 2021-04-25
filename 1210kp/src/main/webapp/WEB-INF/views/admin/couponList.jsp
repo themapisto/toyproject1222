@@ -15,12 +15,11 @@
 	<%@include file="/WEB-INF/views/common/adminHeader.jsp" %>
 	<%@include file="/WEB-INF/views/common/adminSidebar.jsp" %>
 	
-	<div class="adminContents">
+	<div class="couponMainContents">
 		<div>
 			<button type="button" class="couponUseViewBtn" id="able">진행중인 쿠폰</button>
 			<button type="button" class="couponUseViewBtn" id="unable">종료된 쿠폰</button>
 		</div>
-		<span style="position:relative;left:90px;">*1년 이내의 정보만 제공합니다.</span>
 		
 		<table id="ableList" class="couponTable on">
 		    <thead>
@@ -88,7 +87,7 @@
 			</tbody>
 		</table>
 		<a type="button" id="deleteCoupon" class="right">쿠폰삭제</a>
-		<a href="/admin/updateCoupon" class="right">쿠폰수정</a>
+		<a type="button" id="updateCoupon" class="right">쿠폰수정</a>
 		<a href="/admin/makeCoupon" class="right">쿠폰생성</a>
 		<a type="button" id="updateRegistChk" class="right">등록가능여부변경</button>
 	</div>
@@ -100,12 +99,14 @@
 			var ableList = document.getElementById('ableList');
 			var unableList = document.getElementById('unableList');
 			
+			var chkList = "";
+			var couponId = "";
+			
 			able.style.backgroundColor = '#034f84';
 			
 			$("#updateRegistChk").on('click',function(){		
-				var chkList = $('tbody').find("input[type=checkbox]:checked");
-				var couponId = "";
-				
+				chkList = $('tbody').find("input[type=checkbox]:checked");
+
 				if(chkList.length == 0){
 					alert("등록가능여부를 변경할 쿠폰을 선택해주세요.");
 				}else{
@@ -134,9 +135,25 @@
 				}
 			});
 			
+			
+			
+			$("#updateCoupon").on('click',function(){		
+				chkList = $('tbody').find("input[type=checkbox]:checked");
+				
+				if(chkList.length == 0){
+					alert("수정하실 쿠폰을 선택해주세요.");
+					return false;
+				}else if(chkList.length > 1){
+					alert("수정하실 쿠폰을 하나만 선택 해주시기 바랍니다.");
+					return false;
+				}else{
+					couponId = chkList.val();
+					location.href="/admin/updateCoupon?couponId="+couponId;
+				}
+			});
+			
 			$("#deleteCoupon").on('click',function(){		
-				var chkList = $('tbody').find("input[type=checkbox]:checked");
-				var couponId = "";
+				chkList = $('tbody').find("input[type=checkbox]:checked");
 				
 				if(chkList.length == 0){
 					alert("삭제하실 쿠폰을 선택해주세요.");
@@ -189,6 +206,8 @@
 			unableList.className = 'couponTable off';
 			ableList.className = 'couponTable on';
 		});	
+		
+		
 	</script>
 </body>
 </html>

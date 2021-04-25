@@ -16,4 +16,6 @@ public interface AdminDAO {
 	public int couponUpdtRgstChk(String[] couponIdArr) throws Exception;
 	public int couponDeleteAjax(String[] couponIdArr)throws Exception;
 	public int couponMakeAjax(CouponDTO param)throws Exception;
+	public CouponVO updateCouponView(CouponDTO param) throws Exception;
+	public int couponUpdateAjax(CouponDTO param) throws Exception;
 }

@@ -39,4 +39,17 @@
 		VALUES(#{couponId},#{couponNm},#{dscntRate},#{registStartDt},#{registEndDt},'N',#{usePeriod},'N')
 	</insert>
 	
+	<!-- 쿠폰 update 페이지 호출 -->
+	<select id="updateCouponView" parameterType="prjc.baechan.common.CouponDTO" resultType="prjc.baechan.common.CouponVO">
+		select *
+		from coupon
+		where couponChk = 'N' and couponId = #{couponId}
+ 	</select>
+ 	
+ 	<update id = "couponUpdateAjax">
+ 		update coupon
+ 		set couponNm = #{couponNm}, dscntRate = #{dscntRate} , registStartDt = #{registStartDt}, 
+ 		registEndDt = #{registEndDt}, usePeriod = #{usePeriod}
+ 		where couponId = #{couponId}
+ 	</update>
 </mapper>

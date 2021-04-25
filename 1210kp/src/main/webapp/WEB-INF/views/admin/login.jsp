@@ -29,7 +29,6 @@
 		document.getElementById('userId').addEventListener("blur",function(){
 			var userId = document.getElementById('userId');
 			var loginMsg = document.getElementById('loginMsg');
-			
 			var regType = /^.*(?=^.{5,20}$)[a-z0-9+]*$/;
 			
 			if(userId.value == ""){
@@ -49,7 +48,7 @@
 		document.getElementById('password').addEventListener("blur",function(){
 			var password = document.getElementById('password');
 			var loginMsg = document.getElementById('loginMsg');
-			
+
 			var regType = /^.*(?=^.{8,16}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&-_`~]).*$/;	
 			var regType2 = /^[^<>+=]*$/;
 			
@@ -67,11 +66,11 @@
 			}
 		});
 	
-		document.getElementById('loginBtn').addEventListener("mousedown",function(){
+		document.getElementById('loginBtn').addEventListener("click",function(){
 			var userId = document.getElementById("userId").value;
 	    	var password = document.getElementById("password").value;
-			
-			var loginMsg = document.getElementById('loginMsg');
+
+	    	var loginMsg = document.getElementById('loginMsg');
 			
 			if(loginMsg.dataset.idFlag == "true" && loginMsg.dataset.pwFlag == "true"){
 				var xhr = new XMLHttpRequest();

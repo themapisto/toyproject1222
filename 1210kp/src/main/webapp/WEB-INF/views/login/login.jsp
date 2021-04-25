@@ -77,7 +77,7 @@
 			}
 		});
 	
-		document.getElementById('loginBtn').addEventListener("mousedown",function(){
+		document.getElementById('loginBtn').addEventListener("click",function(){
 			var userId = document.getElementById("userId").value;
 	    	var password = document.getElementById("password").value;
 			
