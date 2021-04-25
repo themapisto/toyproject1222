@@ -1,3 +1,6 @@
+payMoney
+
+
 <%-- <%@page import="bit.com.a.model.MemberDto"%> --%>
 <%@page import="com.kdis.demo.vo.ReserveDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -12,7 +15,7 @@ MemberDto login = (MemberDto)session.getAttribute("login");
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
- 
+
     <link rel="stylesheet" href="/resources/css/reset.css">
     <!-- <link rel="stylesheet" href="/resources/css/header.css"> -->
     <link rel="stylesheet" href="/resources/css/layer_popup.css">
@@ -21,11 +24,12 @@ MemberDto login = (MemberDto)session.getAttribute("login");
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
     <link rel='stylesheet' href='//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css' />
     <script src='//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js'></script>
+    <%--<script src="https://www.paypal.com/sdk/js?client-id=AQPrrIuemnOd2qvQmtxdrRwxteZcdhs3o-0y5hZxVAdr5NqGarbDmeY0jExpXYGIVXDVK7oRpRqJ6yhz"></script>--%>
     <script src="https://www.paypal.com/sdk/js?client-id=AQPrrIuemnOd2qvQmtxdrRwxteZcdhs3o-0y5hZxVAdr5NqGarbDmeY0jExpXYGIVXDVK7oRpRqJ6yhz"></script>
 </head>
 
 <body>
-	<%@include file="/WEB-INF/views/common/header.jsp" %> 
+	<%@include file="/WEB-INF/views/common/header.jsp" %>
     <%-- <div class="header-nav-wrapper">
         <header class="header">
             <div class="header-inner">
@@ -45,7 +49,7 @@ MemberDto login = (MemberDto)session.getAttribute("login");
 	            </ul>
             </div>
             <div class="header-inner">
-                
+
                  <% if(login != null){
                 	%>
                 	<div><button><%=login.getName()%>님 환영합니다</button></div>
@@ -58,7 +62,7 @@ MemberDto login = (MemberDto)session.getAttribute("login");
                 	<div><a href="#"><button>회원가입</button></a></div>
                 	<%
                 }
-                %> 
+                %>
             </div>
         </header>
         <nav class="nav-wrapper">
