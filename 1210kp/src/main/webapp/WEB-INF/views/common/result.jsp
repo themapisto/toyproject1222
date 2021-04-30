@@ -61,6 +61,16 @@
 				alert("비밀번호를 잘못 입력하셨습니다.");
 				location.href="/member/userWithdrawal";
 			}
+		}else if(submit == 'adminJoin'){
+			if(result == 'Y'){
+				alert("회원가입에 성공하였습니다. 관리자 페이지로 이동합니다.");
+				location.href="/admin/home";
+			}else if(result == 'N'){
+				alert("회원가입이 실패하였습니다. 다시 확인해주시기 바랍니다.");
+				location.href="/admin/adminList";
+			}else{
+				// TODO : 에러페이지
+			}
 		}
 		
 	</script>

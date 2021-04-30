@@ -5,7 +5,8 @@
 <head>
 
 <title>회원관리 리스트</title>
-<link href="/resources/css/default.css?s" rel="stylesheet" type="text/css">
+<link href="/resources/css/default.css?p" rel="stylesheet" type="text/css">
+<link href="/resources/css/userList.css?" rel="stylesheet" type="text/css">
 	<script src="https://code.jquery.com/jquery-3.5.1.js" type="text/javascript"></script>
 <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
@@ -14,8 +15,10 @@
 <body>
 <%@include file="/WEB-INF/views/admin/header.jsp" %>
 <%@include file="/WEB-INF/views/admin/sidebar.jsp" %>
-<form id="filter" name="filter" method="get" action="/admin/userList">
-		&nbsp;&nbsp;
+<div id="contents">
+	<div id="contents_title"><span>|회원목록</span></div>
+	<form id="filter" name="filter" method="get" action="/admin/userList">
+		<div id="flex">
 		<select id="state" name="state">
 			<option value="">전체</option>
 			<option value="1" ${pageDto.state eq "1"? "selected":"" }>가입</option>
@@ -27,8 +30,9 @@
 			<option value="userId" ${pageDto.option eq "userId"? "selected":"" }>아이디</option>
 		</select>
 		<input type="text" id="keyword" name="keyword" value="${pageDto.keyword}">
-    <button type="submit">검색</button>
-</form>
+    	<button type="submit" id="searchBtn">검색</button>
+    	</div>
+	</form>
 <table id="userTable">
     <colgroup>
         <col style="width:10%;">
@@ -36,8 +40,7 @@
         <col style="width:15%;">
         <col style="width:15%;">
         <col style="width:20%;">
-        <col style="width:15%;">
-        <col style="width:15%;">
+        <col style="width:30%;">
     </colgroup>
 
     <thead>
@@ -47,8 +50,7 @@
             <th scope="col">이름</th>
             <th scope="col">아이디</th>
             <th scope="col">가입일자</th>
-            <th scope="col">회원상태<br>(가입/잠김/탈퇴)</th>
-            <th scope="col">상태변경</th>
+            <th scope="col">회원상태<br><font size="2">가입/잠김/탈퇴</font></th>
         </tr>
     </thead>
     <tbody>
@@ -62,24 +64,23 @@
             	<fmt:formatDate value="${user.regDt}" pattern="yyyy-MM-dd"/>
             </td>
             <td>
-            	<select class="userState" id="userState" name="userState">
+            	<select class="userState" name="userState">
 					<option value="1" ${user.userState eq "1"? "selected":"" }>가입</option>
 					<option value="8" ${user.userState eq "8"? "selected":"" }>잠김</option>
 					<option value="9" ${user.userState eq "9"? "selected":"" }>탈퇴</option> 
 				</select>
-            </td>
-            <td>
             	<button
             		type="button" id="modifyBtn" class="modifyBtn"
             		onClick="modifyState(this, '${user.userId}');">
-            		회원상태 변경</button>
+            		회원상태 변경✓
+            	</button>
             </td>
             
         </tr>
         </c:forEach>   
     </tbody>
 </table>
-<div style="display: block; text-align: center;">		
+<div id="pages" style="display: block; text-align: center;">
 		<c:if test="${pageDto.prev == true }">
 			<a href="/admin/userList?state=${pageDto.state}&keyword=${pageDto.keyword}&option=${pageDto.option}&page=${pageDto.startPage - 1 }">&lt;</a>
 		</c:if>
@@ -96,7 +97,8 @@
 		<c:if test="${pageDto.next == true}">
 			<a href="/admin/userList?state=${pageDto.state}&keyword=${pageDto.keyword}&option=${pageDto.option}&page=${pageDto.endPage+1 }">&gt;</a>
 		</c:if>
-	</div>
+</div>
+</div>
 
 <script type="text/javascript">
     

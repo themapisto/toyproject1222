@@ -1,5 +1,5 @@
 @charset "UTF-8";
-
+a{text-decoration-line : none;}
 .on {display:block;}
 .off{display:none;}
 .right{float:right;}
@@ -404,15 +404,16 @@ aside > ul > li , .menu > ul > li{
     color:white;
 }
 
-#userTable{
+/* #userTable{
     position: absolute;
     left:54%;
     top:20%;
     transform: translate(-50%);
-    height:500px;
 }
-
-/* 테이블 색상 구분 - col로 묶으려했더니 font 컬러가 적용이 안됌 */
+#userTable tr td{
+    height:50px;
+}
+테이블 색상 구분 - col로 묶으려했더니 font 컬러가 적용이 안됌
 #userTable th:nth-child(odd), #userTable td:nth-child(odd){
     background-color: #00f3be;
 }
@@ -425,10 +426,8 @@ tbody tr td{
     left:58%;
     top:10%;
     transform: translate(-50%);
-
     width:1143px;
     height: 50px;
-    border:1px solid black;
 
 }
 
@@ -449,11 +448,10 @@ tbody tr td{
     height:34px;
     background-color: #00f3be;
     text-align: center;
-    float:right;
     margin:10px;
     cursor: pointer;
 }
 #filter > span > input{
     width:90px;
     height:20px;
-}
+} */

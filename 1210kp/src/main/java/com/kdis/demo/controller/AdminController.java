@@ -278,7 +278,7 @@ public class AdminController {
 			model.addAttribute("result", "N");
 		}
 
-		model.addAttribute("submit", "join");
+		model.addAttribute("submit", "adminJoin");
 		return "/common/result";
 	}
 	
@@ -293,7 +293,6 @@ public class AdminController {
 
 		if ( deleteRst > 0) {
 			String Msg = "삭제되었습니다";
-
 			result.put("Msg", Msg);
 
 		} else {

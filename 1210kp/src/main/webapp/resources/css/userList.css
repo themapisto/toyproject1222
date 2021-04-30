@@ -1,0 +1,155 @@
+@charset "UTF-8";
+#contents{
+	position:absolute;
+	top:95px;
+	left:250px;
+	width:950px;
+	display:inline-block;
+}
+#contents_title{
+	position:relative;
+	left:25px;
+	margin-bottom:10px;
+}
+#contents_title span{
+	font-size:20px;
+	color:#132a3d;
+	font-weight: bold;
+}
+#userTable{
+	position:relative;
+	left:20px;
+    width:900px;
+    border-collapse: collapse;
+    margin-top:5px;
+}
+#userTable tr th{
+	height:45px;
+	color: #132a3d;
+  	border-bottom: 3px solid #036;
+  	font-size:20px;
+}
+#userTable tr td{
+    height:45px;
+    border-bottom: 1px solid #ccc;
+  	background: #f3f6f7;
+}
+/* 테이블 색상 구분 - col로 묶으려했더니 font 컬러가 적용이 안됌 */
+/* #userTable th:nth-child(odd), #userTable td:nth-child(odd){
+    background-color: #00f3be;
+} */
+tbody tr td{
+	text-align: center;
+}
+#flex{
+	float:right;
+}
+#filter{
+	position:relative;
+	left:20px;
+    width:900px;
+    height: 50px;
+    margin:0;
+}
+#flex > input{
+    margin-right:1px;
+    width:110px;
+    height: 40px;
+}
+#flex > select{
+    font-size:14px;
+    margin-right:1px;
+    height: 40px;
+}
+
+#flex button{
+    all:unset;
+    width:60px;
+    height:40px;
+    background-color: #369;
+    text-align: center;
+    cursor: pointer;
+    color:#fff;
+    border-radius:5px;
+}
+#flex > span > input{
+    width:90px;
+    height:20px;
+}
+#pages{
+	position:relative;
+	left:20px;
+    width:900px;
+    margin-top:10px;
+    font-size:20px;
+}
+.userState{
+	height:35px;
+	border:none;
+	background-color:#f3f6f7;
+	font-size:15px;
+}
+.deleteAdmin, .modifyBtn{
+	height:30px;
+	border: 1px solid #050000;
+	background-color: #fff;
+	border-radius:3px;
+}
+#addAdmin {
+  height: 35px;
+  line-height: 35px;
+  padding-right: 10px;
+  padding-left: 30px;
+  position: relative;
+  background-color:#369;
+  color:rgb(255,255,255);
+  text-decoration: none;
+  font-size:15px;
+  letter-spacing: 1px;
+ 	float:right;
+  
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  text-shadow:0px 1px 0px rgba(0,0,0,0.5);
+-ms-filter:"progid:DXImageTransform.Microsoft.dropshadow(OffX=0,OffY=1,Color=#ff123852,Positive=true)";zoom:1;
+filter:progid:DXImageTransform.Microsoft.dropshadow(OffX=0,OffY=1,Color=#ff123852,Positive=true);
+
+  -moz-box-shadow:0px 2px 2px rgba(0,0,0,0.2);
+  -webkit-box-shadow:0px 2px 2px rgba(0,0,0,0.2);
+  box-shadow:0px 2px 2px rgba(0,0,0,0.2);
+  -ms-filter:"progid:DXImageTransform.Microsoft.dropshadow(OffX=0,OffY=2,Color=#33000000,Positive=true)";
+filter:progid:DXImageTransform.Microsoft.dropshadow(OffX=0,OffY=2,Color=#33000000,Positive=true);
+}
+
+#addAdmin span {
+  position: absolute;
+  left: 0;
+  width: 20px;
+  background-color:rgba(0,0,0,0.5);
+  
+  -webkit-border-top-left-radius: 5px;
+-webkit-border-bottom-left-radius: 5px;
+-moz-border-radius-topleft: 5px;
+-moz-border-radius-bottomleft: 5px;
+border-top-left-radius: 5px;
+border-bottom-left-radius: 5px;
+border-right: 1px solid  rgba(0,0,0,0.15);
+	text-align: center;
+}
+
+#addAdmin:hover span, #addAdmin.active span {
+  background-color:rgb(205, 92, 92);
+  border-right: 1px solid  rgba(0,0,0,0.3);
+}
+
+#addAdmin:active {
+  margin-top: 2px;
+  margin-bottom: 13px;
+
+  -moz-box-shadow:0px 1px 0px rgba(255,255,255,0.5);
+-webkit-box-shadow:0px 1px 0px rgba(255,255,255,0.5);
+box-shadow:0px 1px 0px rgba(255,255,255,0.5);
+-ms-filter:"progid:DXImageTransform.Microsoft.dropshadow(OffX=0,OffY=1,Color=#ccffffff,Positive=true)";
+filter:progid:DXImageTransform.Microsoft.dropshadow(OffX=0,OffY=1,Color=#ccffffff,Positive=true);
+}
