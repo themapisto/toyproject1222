@@ -63,7 +63,7 @@ public class OrderController {
             JSONObject obj = (JSONObject)jsonParse.parse(result);
 
             /* result = (String) obj.get("access_token"); */
-            log.info(result);
+            //log.info(result);
         }catch(Exception e){
             // TODO
         }

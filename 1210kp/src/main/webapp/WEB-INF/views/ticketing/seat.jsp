@@ -1,6 +1,3 @@
-payMoney
-
-
 <%-- <%@page import="bit.com.a.model.MemberDto"%> --%>
 <%@page import="com.kdis.demo.vo.ReserveDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"

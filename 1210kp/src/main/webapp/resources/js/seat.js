@@ -266,7 +266,10 @@ function payMent(){
 		console.log($('input[type="hidden"]').next().next().next().next().next().val()); // seat (개발 안되있나봄  )
 		console.log($('input[type="hidden"]').next().next().next().next().next().next().val()); // money
 		
+		//session check하기  
 		
+		//sessionStorage.setItem('ID','kpkim123');
+		//console.log(sessionStorage.getItem("ID"));
 		
 		
 			// This function sets up the details of the transaction, including the amount and line item details.

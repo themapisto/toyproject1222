@@ -31,9 +31,9 @@
 	
 	<bean class="org.springframework.jdbc.datasource.DriverManagerDataSource" id="dataSource">
 	 <property name="driverClassName" value="${db.driver}" />
-	 <property name="url" value="${db.url}" />
-	 <property name="username" value="root" />
-	 <property name="password" value="1111" />
+	 <property name="url" value="jdbc:mariadb://database-1.crjhhum8b2li.ap-northeast-2.rds.amazonaws.com:3306/toyproject" />
+	 <property name="username" value="admin" />
+	 <property name="password" value="VMware123" />
 	</bean>
 
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
