@@ -21,6 +21,7 @@ public class TicketingController {
 	public String moveSeat(ModelMap model, ReserveDto dto) {
 		
 		model.addAttribute("reserve", dto);
+	    System.out.print(dto);
 		return "/ticketing/seat";
 	}
 	

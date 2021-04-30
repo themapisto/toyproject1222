@@ -38,7 +38,7 @@
     </beans:bean>
     
 
-    <!-- 로그인 세션 인터셉터 -->
+<!--     로그인 세션 인터셉터
 	<beans:bean id="SessionLoginInterceptor" class="prjc.baechan.common.SessionLoginInterceptor"> </beans:bean> 
 	<mvc:interceptors>
 		<mvc:interceptor> 
@@ -49,7 +49,7 @@
 			<mvc:exclude-mapping path="/movie/*"/>
 			<beans:ref bean="SessionLoginInterceptor"/>
 		</mvc:interceptor>
-	</mvc:interceptors>
+	</mvc:interceptors> -->
 	
 </beans:beans>
 

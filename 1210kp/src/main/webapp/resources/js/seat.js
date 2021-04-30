@@ -258,6 +258,17 @@ function mapping(input,i,j){
 function payMent(){
 	paypal.Buttons({
 		createOrder: function(data, actions) {
+		console.log($('input[type="hidden"]').val()); //moviename
+		console.log($('input[type="hidden"]').next().val()); // 19 
+		console.log($('input[type="hidden"]').next().next().val()); // 강변 
+		console.log($('input[type="hidden"]').next().next().next().val()); //date
+		console.log($('input[type="hidden"]').next().next().next().next().val()); // runtime
+		console.log($('input[type="hidden"]').next().next().next().next().next().val()); // seat (개발 안되있나봄  )
+		console.log($('input[type="hidden"]').next().next().next().next().next().next().val()); // money
+		
+		
+		
+		
 			// This function sets up the details of the transaction, including the amount and line item details.
 			return actions.order.create({
 				purchase_units: [{
@@ -289,6 +300,7 @@ function payMent(){
 					if(data.result == "success"){
 						// TODO
 						alert("결제성공~!");
+						
 						// 결제성공 페이지 이동처리
 					}else if(data.result == "fail"){
 						toastr.error(
@@ -402,6 +414,16 @@ function couponClick(){
 		});
 	})
 }
+
+
+
+
+
+
+
+
+
+
 
 // 쿠폰 번호 입력시 자동 대문자로 변환
 $(document).ready(function(){
