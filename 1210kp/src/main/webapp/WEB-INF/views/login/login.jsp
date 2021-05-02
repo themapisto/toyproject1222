@@ -36,48 +36,59 @@
 	
 	<script type="text/javascript">
 		
-		document.getElementById('userId').addEventListener("blur",function(){
-			var userId = document.getElementById('userId');
-			var loginMsg = document.getElementById('loginMsg');
-			
-			var regType = /^.*(?=^.{5,20}$)[a-z0-9+]*$/;
-			
-			if(userId.value == ""){
-				loginMsg.innerHTML = "<span style='color:red'>아이디를 입력하시기 바랍니다.</span>"
-				loginMsg.dataset.idFlag = "false";
-			}else{
-				if(regType.test(userId.value)){
-					loginMsg.innerHTML = "<span></span>"
-					loginMsg.dataset.idFlag = "true";
-				}else{
-					loginMsg.innerHTML = "<span style='color:red'>아이디를 확인하시기 바랍니다.</span>"
+		function blurValidate(param){
+			if(param == 'userId'){
+				var userId = document.getElementById('userId');
+				var loginMsg = document.getElementById('loginMsg');
+				
+				var regType = /^.*(?=^.{5,20}$)[a-z0-9+]*$/;
+				
+				if(userId.value == ""){
+					loginMsg.innerHTML = "<span style='color:red'>아이디를 입력하시기 바랍니다.</span>"
 					loginMsg.dataset.idFlag = "false";
+				}else{
+					if(regType.test(userId.value)){
+						loginMsg.innerHTML = "<span></span>"
+						loginMsg.dataset.idFlag = "true";
+					}else{
+						loginMsg.innerHTML = "<span style='color:red'>아이디를 확인하시기 바랍니다.</span>"
+						loginMsg.dataset.idFlag = "false";
+					}
+				}
+			}else if(param == 'password'){
+				var password = document.getElementById('password');
+				var loginMsg = document.getElementById('loginMsg');
+				
+				var regType = /^.*(?=^.{8,16}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&-_`~]).*$/;	
+				var regType2 = /^[^<>+=]*$/;
+				
+				if(password.value == ""){
+					loginMsg.innerHTML = "<span style='color:red'>비밀번호를 입력하시기 바랍니다.</span>"
+					loginMsg.dataset.pwFlag = "false";
+				}else{
+					if(regType.test(password.value) && regType2.test(password.value)){
+						loginMsg.innerHTML = "<span></span>"
+						loginMsg.dataset.pwFlag = "true";
+					}else{
+						loginMsg.innerHTML = "<span style='color:red'>비밀번호를 확인하시기 바랍니다.</span>"
+						loginMsg.dataset.pwFlag = "false";
+					}
 				}
 			}
+		}
+	
+		document.getElementById('userId').addEventListener("blur",function(){
+			blurValidate('userId');
 		}); 
 		
 		document.getElementById('password').addEventListener("blur",function(){
-			var password = document.getElementById('password');
-			var loginMsg = document.getElementById('loginMsg');
-			
-			var regType = /^.*(?=^.{8,16}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&-_`~]).*$/;	
-			var regType2 = /^[^<>+=]*$/;
-			
-			if(password.value == ""){
-				loginMsg.innerHTML = "<span style='color:red'>비밀번호를 입력하시기 바랍니다.</span>"
-				loginMsg.dataset.pwFlag = "false";
-			}else{
-				if(regType.test(password.value) && regType2.test(password.value)){
-					loginMsg.innerHTML = "<span></span>"
-					loginMsg.dataset.pwFlag = "true";
-				}else{
-					loginMsg.innerHTML = "<span style='color:red'>비밀번호를 확인하시기 바랍니다.</span>"
-					loginMsg.dataset.pwFlag = "false";
-				}
-			}
+			blurValidate('password');
 		});
 	
 		document.getElementById('loginBtn').addEventListener("click",function(){
+			blurValidate('userId');
+			blurValidate('password');
+			
 			var userId = document.getElementById("userId").value;
 	    	var password = document.getElementById("password").value;
 			
