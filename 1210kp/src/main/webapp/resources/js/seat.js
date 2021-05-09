@@ -258,6 +258,9 @@ function mapping(input,i,j){
 function payMent(){
 	paypal.Buttons({
 		createOrder: function(data, actions) {
+		
+
+		
 		console.log($('input[type="hidden"]').val()); //moviename
 		console.log($('input[type="hidden"]').next().val()); // 19 
 		console.log($('input[type="hidden"]').next().next().val()); // 강변 
@@ -294,6 +297,58 @@ function payMent(){
 			var execute_url = '/order/executePayment';
 			/* Set up the data you need to pass to your server */
 			/* Make a call to your server to execute the payment */
+			
+		var moviename= $('input[type="hidden"]').val();
+		var movieage = $('input[type="hidden"]').next().val()
+		var movietheater= $('input[type="hidden"]').next().next().val()
+		var moviedate= $('input[type="hidden"]').next().next().next().val()
+		var movieruntime= $('input[type="hidden"]').next().next().next().next().val()
+		var movieseat= $('input[type="hidden"]').next().next().next().next().next().val()
+		var movietotalmoney= $('input[type="hidden"]').next().next().next().next().next().next().val()
+			
+			/*  Auth KP
+				OrderDetail you need to add database
+				you sent a information for order
+				
+				moviename
+				movietheater
+				moviedate
+				movieruntime
+				movieseat
+				movietotalmoney
+				paypal orderid
+				
+			*/
+			
+			$.ajax({
+			
+				type: "GET",
+				url : "/orderdetail/addOrderDetail",
+				async: false,
+				data: {
+				
+				moviename: moviename,
+				movietheater: movietheater,
+				moviedate: moviedate,
+				movieruntime: movieruntime,
+				movieseat: movieseat,
+				movietotalmoney: movietotalmoney
+				
+				
+				},
+				success: function (data) {
+				
+			alert("orderdetail 전송")
+			}
+			
+			
+			
+			
+			});
+
+
+
+
 
 			$.ajax({
 				type:"GET",
