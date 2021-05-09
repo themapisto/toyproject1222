@@ -15,6 +15,13 @@
 	<%@include file="/WEB-INF/views/common/adminHeader.jsp" %>
 	<%@include file="/WEB-INF/views/common/adminSidebar.jsp" %>
 	
+	<div class="navi">
+		<li class='blue'>쿠폰수정하기</li>
+		<li><a href="/admin/couponList">쿠폰관리</a></li>
+	    <li><a href="/admin/home">home</a></li>
+	</div>
+	<br><hr>
+	
 	<div class="couponSubContents">
      	<table>
 	        <colgroup>
