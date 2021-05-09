@@ -226,6 +226,17 @@ public class AdminController {
 		return result;
 	}
 	
+	@RequestMapping(value = "lockingDate", method = RequestMethod.POST)
+	public String lockingDate(PaginationDto dto, ModelMap model, 
+			HttpServletRequest request,HttpServletResponse response) throws Exception {
+		System.out.println(dto.getEndDate());
+		dto.setTotal(MemberService.countTotal(dto));
+		List<UserVo> userList = MemberService.showAllUser(dto);
+		model.addAttribute("pageDto", dto);
+		model.addAttribute("userList",userList);
+		return "/admin/userList";
+	}
+	
 	// 관리자 리스트 
 	@RequestMapping(value = "adminList")
 	public String showAllAdmin(PaginationDto dto, ModelMap model, 

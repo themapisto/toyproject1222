@@ -18,6 +18,9 @@ public class PaginationDto {
 	private String option="";
 	private String keyword="";
 	
+	private String startDate = "";
+	private String endDate = "";
+	
 	
 	
 	public PaginationDto() {
@@ -184,4 +187,17 @@ public class PaginationDto {
 	public void setState(String state) {
 		this.state = state;
 	}
+	public String getStartDate() {
+		return startDate;
+	}
+	public String getEndDate() {
+		return endDate;
+	}
+	public void setStartDate(String startDate) {
+		this.startDate = startDate;
+	}
+	public void setEndDate(String endDate) {
+		this.endDate = endDate;
+	}
+	
 }

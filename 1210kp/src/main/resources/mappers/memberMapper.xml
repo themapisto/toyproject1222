@@ -78,9 +78,12 @@
 		<if test="state != ''">
 			and userState=#{state}
 		</if>
+		<if test="state==8 and endDate !=''">
+			and loginFailTime between #{startDate} and #{endDate}
+		</if>
 		<if test="keyword != ''">
 			and ${option} like CONCAT('%', #{keyword}, '%')
-		</if>	
+		</if>
 		order by regDt desc
 		limit #{startIdx},#{cntPerPage}
 	</select>
@@ -92,6 +95,9 @@
 		where grade=1
 		<if test="state != ''">
 			and userState=#{state}
+		</if>
+		<if test="state==8 and endDate !=''">
+			and loginFailTime between #{startDate} and #{endDate}
 		</if>
 		<if test="keyword != ''">
 			and ${option} like CONCAT('%', #{keyword}, '%')
