@@ -136,11 +136,24 @@
 		</if>
 	</select>
 	
-	<!-- 관리자 페이징  -->
+	<!-- 관리자 삭제  -->
 	<delete  id="deleteAdmin" parameterType="com.kdis.demo.vo.UserVo">
 		delete 
 		from user 
 		where userId = #{userId}
 	</delete>
 	
+	<!-- 모든 유저(회원,관리자) -->
+	<select id="allUserTable" resultType="Map">
+		select *
+		from user
+		order by grade, userNm
+	</select>
+	
+	<!-- 유저 컬럼이름 -->
+	<select id="userColumnName" resultType="String">
+		SELECT COLUMN_NAME 
+		FROM INFORMATION_SCHEMA.COLUMNS 
+		WHERE TABLE_SCHEMA = 'movietoyproject' AND TABLE_NAME = 'user';
+	</select>
 </mapper>

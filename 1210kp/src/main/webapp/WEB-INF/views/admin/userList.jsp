@@ -6,7 +6,7 @@
 
 <title>회원관리 리스트</title>
 <link href="/resources/css/default.css?p" rel="stylesheet" type="text/css">
-<link href="/resources/css/userList.css?o" rel="stylesheet" type="text/css">
+<link href="/resources/css/userList.css?a" rel="stylesheet" type="text/css">
 	<script src="https://code.jquery.com/jquery-3.5.1.js" type="text/javascript"></script>
 <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
@@ -81,12 +81,12 @@
             		회원상태 변경✓
             	</button>
             </td>
-            
         </tr>
         </c:forEach>   
     </tbody>
 </table>
 <div id="pages" style="display: block; text-align: center;">
+	<a href="/admin/xlsDown" id="xlsDown">Excel다운</a>
 		<c:if test="${pageDto.prev == true }">
 			<a href="/admin/userList?state=${pageDto.state}&keyword=${pageDto.keyword}&option=${pageDto.option}&page=${pageDto.startPage - 1 }">&lt;</a>
 		</c:if>

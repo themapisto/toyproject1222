@@ -40,4 +40,8 @@ public interface MemberDao {
 	public int countAdmin(PaginationDto page) throws Exception;
 
 	public int deleteAdmin(UserVo user) throws Exception;
+	
+	public List<Map<String, Object>> allUserTable() throws Exception;
+
+	public String[] userColumnName() throws Exception;
 }

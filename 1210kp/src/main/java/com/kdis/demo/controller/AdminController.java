@@ -12,6 +12,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.hssf.util.HSSFColor.HSSFColorPredefined;
+import org.apache.poi.ss.usermodel.BorderStyle;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellStyle;
+import org.apache.poi.ss.usermodel.FillPatternType;
+import org.apache.poi.ss.usermodel.HorizontalAlignment;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -312,5 +322,71 @@ public class AdminController {
 			result.put("Msg", Msg);
 		}
 		return result;
+	}
+	
+	@RequestMapping(value = "/xlsDown")
+	public void excelDown(HttpServletResponse response) throws Exception {
+		List<Map<String, Object>> userList = MemberService.allUserTable();
+		
+		// 워크북 생성
+		Workbook wb = new HSSFWorkbook();
+		Sheet sheet = wb.createSheet("회원");
+		Row row = null;
+		Cell cell = null;
+		int rowNo = 0;
+		
+		// 테이블 헤더용 스타일
+	    CellStyle headStyle = wb.createCellStyle();
+	    // 가는 경계선을 가집니다.
+	    headStyle.setBorderTop(BorderStyle.THIN);
+	    headStyle.setBorderBottom(BorderStyle.THIN);
+	    headStyle.setBorderLeft(BorderStyle.THIN);
+	    headStyle.setBorderRight(BorderStyle.THIN);
+
+	    // 배경색은 노란색입니다.
+	    headStyle.setFillForegroundColor(HSSFColorPredefined.LIGHT_CORNFLOWER_BLUE.getIndex());
+	    headStyle.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+
+	    // 데이터는 가운데 정렬합니다.
+	    headStyle.setAlignment(HorizontalAlignment.CENTER);
+
+	    // 데이터용 경계 스타일 테두리만 지정
+	    CellStyle bodyStyle = wb.createCellStyle();
+	    bodyStyle.setBorderTop(BorderStyle.THIN);
+	    bodyStyle.setBorderBottom(BorderStyle.THIN);
+	    bodyStyle.setBorderLeft(BorderStyle.THIN);
+	    bodyStyle.setBorderRight(BorderStyle.THIN);
+	    
+	    // 헤더 생성
+	    String[] columnName = MemberService.userColumnName();
+	    row = sheet.createRow(rowNo++);
+	    for(int i = 0; i < columnName.length; i++){
+	    	cell = row.createCell(i);
+	    	cell.setCellStyle(headStyle);
+	    	cell.setCellValue(columnName[i].toString());
+	    }
+
+	    // 데이터 부분 생성
+	    for(Map<String, Object> vo : userList) {
+	    	row = sheet.createRow(rowNo++);
+	    	for(int i = 0; i < columnName.length; i++){
+		    	cell = row.createCell(i);
+		    	cell.setCellStyle(bodyStyle);
+		    	String data = vo.get(columnName[i])==null? "-" : vo.get(columnName[i]).toString();
+		    	System.out.println(data);
+		    	cell.setCellValue(data);
+		    }
+	    }
+	    SimpleDateFormat format1 = new SimpleDateFormat ( "yyyyMMdd");		
+	    Date time = new Date();	
+	    String time1 = format1.format(time);
+	    
+	    // 컨텐츠 타입과 파일명 지정
+	    response.setContentType("ms-vnd/excel");
+	    response.setHeader("Content-Disposition", "attachment;filename=user_"+time1+".xls");
+
+	    // 엑셀 출력
+	    wb.write(response.getOutputStream());
+	    wb.close();
 	}
 }

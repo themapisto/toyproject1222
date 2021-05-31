@@ -73,5 +73,13 @@ public class MemberService implements MemberDao{
 	public int deleteAdmin(UserVo user) throws Exception{
 		return MemberDAO.deleteAdmin(user);
 	}
+	
+	public List<Map<String, Object>> allUserTable() throws Exception{
+		return MemberDAO.allUserTable();
+	}
+
+	public String[] userColumnName() throws Exception{
+		return MemberDAO.userColumnName();
+	}
 
 }
