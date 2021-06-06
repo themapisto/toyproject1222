@@ -337,17 +337,16 @@ public class AdminController {
 		
 		// 테이블 헤더용 스타일
 	    CellStyle headStyle = wb.createCellStyle();
-	    // 가는 경계선을 가집니다.
+	    // 
 	    headStyle.setBorderTop(BorderStyle.THIN);
 	    headStyle.setBorderBottom(BorderStyle.THIN);
 	    headStyle.setBorderLeft(BorderStyle.THIN);
 	    headStyle.setBorderRight(BorderStyle.THIN);
 
-	    // 배경색은 노란색입니다.
 	    headStyle.setFillForegroundColor(HSSFColorPredefined.LIGHT_CORNFLOWER_BLUE.getIndex());
 	    headStyle.setFillPattern(FillPatternType.SOLID_FOREGROUND);
 
-	    // 데이터는 가운데 정렬합니다.
+	    // 데이터 가운데 정렬 
 	    headStyle.setAlignment(HorizontalAlignment.CENTER);
 
 	    // 데이터용 경계 스타일 테두리만 지정
@@ -373,7 +372,6 @@ public class AdminController {
 		    	cell = row.createCell(i);
 		    	cell.setCellStyle(bodyStyle);
 		    	String data = vo.get(columnName[i])==null? "-" : vo.get(columnName[i]).toString();
-		    	System.out.println(data);
 		    	cell.setCellValue(data);
 		    }
 	    }
