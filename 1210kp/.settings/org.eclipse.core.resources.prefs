@@ -1,6 +1,9 @@
 eclipse.preferences.version=1
 encoding//src/main/java/com/kdis/demo/controller/BoardController.java=UTF-8
+encoding//src/main/java/com/kdis/demo/controller/TicketingAPIController.java=UTF-8
 encoding//src/main/java/com/kdis/demo/vo/UserCouponDto.java=UTF-8
+encoding//src/main/java/com/kdis/demo/vo/UserCouponVO.java=UTF-8
+encoding//src/main/java/com/kdis/movieList/MovieListController.java=UTF-8
 encoding//src/main/java/com/kdis/movieList/movieListCommon.java=UTF-8
 encoding//src/main/webapp/WEB-INF/views/movie/movieMain.jsp=UTF-8
 encoding//src/main/webapp/resources/css/baechan.css=UTF-8

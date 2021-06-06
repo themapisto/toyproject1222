@@ -52,7 +52,7 @@
                                        <h3><span class="icon all ir_pm">전체관람가</span> <strong>${list.movieTitle}</strong></h3>
                                        <div class="infor_btn">
                                            <a href="#">상세정보</a>
-                                           <a href="#">예매하기</a>
+                                           <a href="/reserve">예매하기</a>
                                        </div>
                                    </div>
                                </div>

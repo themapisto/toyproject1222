@@ -95,7 +95,7 @@ public class MovieListController {
 
 			while (iter.hasNext()) {
 
-				// 기존 데이터와 비교해서 중복되지 않도록 처리
+				// 湲곗〈 �뜲�씠�꽣�� 鍮꾧탳�빐�꽌 以묐났�릺吏� �븡�룄濡� 泥섎━
 
 				JSONObject boxOffice = (JSONObject) iter.next();
 				vo.setMovieVal("daily");
@@ -117,7 +117,7 @@ public class MovieListController {
 			e.printStackTrace();
 		}
 
-		// TODO 현재날짜-1 day로
+		// TODO �쁽�옱�궇吏�-1 day濡�
 		List<MovieVO> vos = service.list("daily", "20210402");
 		System.out.println(vos.toString());
 
@@ -131,7 +131,7 @@ public class MovieListController {
 	@RequestMapping(value = "/weeklyBoxOf")
 	public String weeklyList(Model model) throws Exception {
 
-		System.out.print("weeklyBoxOf에 대한 컨트롤러 메서드가 시작됩니다.");
+		System.out.print("weeklyBoxOf�뿉 ���븳 而⑦듃濡ㅻ윭 硫붿꽌�뱶媛� �떆�옉�맗�땲�떎.");
 		String REQUEST_URL = "http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchWeeklyBoxOfficeList.json";
 		String AUTH_KEY = "92be55421c9d9393f92251cbcb6fea1a";
 		SimpleDateFormat DATE_FMT = new SimpleDateFormat("20210322");
@@ -181,7 +181,7 @@ public class MovieListController {
 
 			while (iter.hasNext()) {
 
-				// 기존 데이터와 비교해서 중복되지 않도록 처리
+				// 湲곗〈 �뜲�씠�꽣�� 鍮꾧탳�빐�꽌 以묐났�릺吏� �븡�룄濡� 泥섎━
 
 				JSONObject boxOffice = (JSONObject) iter.next();
 				System.out.println(boxOffice.get("movieNm"));
@@ -194,7 +194,7 @@ public class MovieListController {
 				vo.setSalesAmt(boxOffice.get("salesAmt").toString());
 				vo.setInsertDt(DATE_FMT.format(cal.getTime()));
 
-				// TODO 기본키와 index를 입력하여, insert가 되진 않지만, 1주일에 한번만 insert가 되도록 수정해야함.
+				// TODO 湲곕낯�궎�� index瑜� �엯�젰�븯�뿬, insert媛� �릺吏� �븡吏�留�, 1二쇱씪�뿉 �븳踰덈쭔 insert媛� �릺�룄濡� �닔�젙�빐�빞�븿.
 
 				sqlSession.insert("movieInsert", vo);
 
@@ -205,7 +205,7 @@ public class MovieListController {
 			e.printStackTrace();
 		}
 
-		// TODO 현재날짜-7day 로 바꿔야함
+		// TODO �쁽�옱�궇吏�-7day 濡� 諛붽퓭�빞�븿
 		List<MovieVO> vos = service.list("weekly", "20210322");
 
 		movieListCommon common = new movieListCommon();
@@ -218,7 +218,7 @@ public class MovieListController {
 	@RequestMapping(value = "/movieMain")
 	public String movieMain(Model model) throws Exception {
 
-		// TODO 현재날짜-7day 로 바꿔야함
+		// TODO �쁽�옱�궇吏�-7day 濡� 諛붽퓭�빞�븿
 		List<MovieVO> vos = service.list("weekly", "20210322");
 
 		movieListCommon common = new movieListCommon();
@@ -235,7 +235,7 @@ public class MovieListController {
 		vo.setImage(image);
 		vo.setRank(rank);
 
-		// TODO 영화 진흥원api를 통해 받아온 rank와 영화제목을 비교하여, 정확한 이미지 크롤링 주소를 입력하여야함.
+		// TODO �쁺�솕 吏꾪씎�썝api瑜� �넻�빐 諛쏆븘�삩 rank�� �쁺�솕�젣紐⑹쓣 鍮꾧탳�븯�뿬, �젙�솗�븳 �씠誘몄� �겕濡ㅻ쭅 二쇱냼瑜� �엯�젰�븯�뿬�빞�븿.
 
 		sqlSession.update("movieInsertImage", vo);
 

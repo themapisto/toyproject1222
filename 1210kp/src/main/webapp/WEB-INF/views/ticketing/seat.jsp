@@ -1,6 +1,3 @@
-payMoney
-
-
 <%-- <%@page import="bit.com.a.model.MemberDto"%> --%>
 <%@page import="com.kdis.demo.vo.ReserveDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -182,9 +179,21 @@ MemberDto login = (MemberDto)session.getAttribute("login");
        	<div class="popup_layer">
        		<div class="text_area">
        			<button type="button" class="close-btn">x</button>
-       			<strong class="title">쿠폰 번호 입력</strong>
-       			<input type="text" id="coupon-number" class="coupon-number" name="coupon-number" maxlength="8" placeholder="쿠폰번호를 입력해주세요">
-       			<button type="button" class="coupon-find">확인</button>
+       			<strong class="title">쿠폰 정보</strong>
+       			<table class="coupon-table">
+       				<thead class="coupon-thead">
+       					<tr>
+       						<th>쿠폰 이름</th>
+       						<th>쿠폰 번호</th>
+       						<th>할인율</th>
+       						<th>만료일</th>
+       						<th>사용</th>
+       					</tr>
+       				</thead>
+       				<tbody class="coupon-tbody">
+       				
+       				</tbody>
+       			</table>
        		</div>
        	</div>
        	<div class="popup_dimmed"></div>

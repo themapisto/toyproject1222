@@ -404,3 +404,12 @@ body {
 .popup_layer{
 	min-height: 150px;
 }
+.coupon-table{
+	width: 100%;
+	border : 1px solid;
+	border-collapse: collapse;
+	margin-top: 25px;
+}
+.coupon-table tr{
+	border : 1px solid;
+}

@@ -6,8 +6,11 @@
 
 
 	<!-- 쿠폰 번호 조회 -->
-	<select id="getCoupon" parameterType="String" resultType="long">
-		select discount from coupon where coupon_name = #{couponName}
+	<select id="getCoupon" parameterType="String" resultType="com.kdis.demo.vo.UserCouponVO">
+		select c.couponId, c.couponNm, c.dscntRate, uc.expireDt FROM coupon c 
+		LEFT JOIN usercoupon uc ON c.couponId = uc.couponId 
+		WHERE (uc.expireDt <![CDATA[<=]]> c.registEndDt AND c.registStartDt <![CDATA[<=]]> uc.registDt) AND
+		uc.userId = "gksckdfhr99" AND c.registChk = "Y" AND uc.useChk = 1;
 	</select>
 
 </mapper>
