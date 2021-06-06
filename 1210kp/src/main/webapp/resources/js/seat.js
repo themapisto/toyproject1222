@@ -459,7 +459,18 @@ function click_use(use_td, discount){
 	use_td.addEventListener('click',function(){
 		tot_discount = tot_discount - (tot_discount * discount/100);
 		ticketPrice.innerHTML = allMoney * tot_discount + '원';
+		alert('할인이 적용되었습니다.');
+		// 자동 창 닫기
+		close_Btn();
 	});
+}
+
+function close_Btn(){
+	popUp.style.display = 'none';
+	reserveBtnWrapper.firstChild.style.zIndex = '0';
+	while(couponTbody.hasChildNodes()){
+		couponTbody.removeChild(couponTbody.firstChild);
+	};
 }
 
 // 쿠폰 번호 입력시 자동 대문자로 변환
