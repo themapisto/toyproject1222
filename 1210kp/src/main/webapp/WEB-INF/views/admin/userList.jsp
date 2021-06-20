@@ -67,7 +67,9 @@
             <td class="userId">${user.userId}</td>
             <td>
             	<fmt:formatDate value="${user.regDt}" pattern="yyyy-MM-dd"/><br>
-            	<fmt:formatDate value="${user.loginFailTime}" pattern="yyyy-MM-dd"/>
+            	<c:if test="${pageDto.state == 8 }">
+            		<fmt:formatDate value="${user.loginFailTime}" pattern="yyyy-MM-dd"/>
+            	</c:if>
             </td>
             <td>
             	<select class="userState" name="userState">
