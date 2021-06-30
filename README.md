@@ -1,3 +1,7 @@
+
+
+##
+
 <table id="tableCustomCPU" class="dataTable-cell dataTable-hover" style="width: 100%;">
 			<thead>
 				<tr>
